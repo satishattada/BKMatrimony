@@ -1,0 +1,16 @@
+.bk-logo{
+    width: 15%;
+    margin:5px;
+    padding:1px;
+}
+.header-container{
+    background: black;
+}
+.dropdown{
+    position: relative;
+    display: flex;
+}
+.dropdown-content{
+    position: absolute;
+    display: inline-block;
+}

@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { Component } from "react";
 import './styles.css'; 
+import { Header} from '../../components';
 
 export class Layout extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export class Layout extends Component {
   }
   render() {
     return (
-      <div className='container'>
+      <div className='container-fluid'>
+        <Header/>
       {/* <nav>
         <ul>
           <li>

@@ -12,9 +12,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container container-fluid ">
-
-        <img className="bk-logo" src={bk} alt=" " />
-
         <div className="home-row   row">
           <div className="home-sidebar col-md-3 col-sm-3">
             <img className="female-image" src={female} alt="" />
