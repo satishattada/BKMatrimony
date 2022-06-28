@@ -10,7 +10,7 @@ export class Layout extends Component {
   render() {
     return (
       <div className='container'>
-      <nav>
+      {/* <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -19,7 +19,7 @@ export class Layout extends Component {
             <Link to="/blogs">Blogs</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
 
       <Outlet />
     </div>
