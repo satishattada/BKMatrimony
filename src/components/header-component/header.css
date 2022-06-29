@@ -1,4 +1,40 @@
-.bk-logo{
+/* .bk-logo{
+    width: 15%;
+    margin:5px;
+    padding:1px;
+}
+.header-container{
+    background: black;
+
+}
+.dropdown{
+    text-decoration: none;
+    background-color: black;
+
+}
+.dropdown-content{
+
+    padding: 2px;
+    list-style-type: none;
+    }
+.dropdown-content li a {
+    text-decoration:none;
+    color:rgb(239, 138, 23);
+}
+.header-navbar{
+    padding: 10px;
+    display: flex;
+    float: right;
+    margin: 10px;
+
+}
+.header-navbar a{
+    color:rgb(239, 138, 23);
+    text-decoration: none;
+padding:0px 30px 0px 30px;
+}
+ */
+ .bk-logo{
     width: 15%;
     margin:5px;
     padding:1px;
@@ -6,11 +42,21 @@
 .header-container{
     background: black;
 }
-.dropdown{
-    position: relative;
-    display: flex;
+.header-navbar a{
+    color:rgb(239, 138, 23);
+    border-radius: 0px 2px 2px 0px;
 }
-.dropdown-content{
-    position: absolute;
-    display: inline-block;
+.header-navbar{
+    display: flex;
+    color:rgb(239, 138, 23);
+    background: black;
+    justify-content: flex-end;
+    width: 80%;
+    padding: 10px 15px 10px 0px;
+}
+.bell-icon{
+    width: 20px;
+    height: 20px;
+    margin-top: 23px;
+    margin-left: 5px;
 }
