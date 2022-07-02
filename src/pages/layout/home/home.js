@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import './styles.css';
 import female from '../../../assets/female_large.jpg';
@@ -91,6 +92,7 @@ class Home extends Component {
                         <p className="text-center" >
                           <a href="#">Improve text score</a>
                         </p>
+
                       </span>
                     </div>
                   </div>
@@ -106,6 +108,8 @@ class Home extends Component {
           </div>
         </div>
       </div>
+
+
 
     );
   }
