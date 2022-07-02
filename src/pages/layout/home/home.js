@@ -4,26 +4,47 @@ import './styles.css';
 import female from '../../../assets/female_large.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
-import { getUser } from "./../../../services/user.service";
+import UserService from './../../../services/user.service';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      userData: {},
+      usersData: []
+    }
   }
 
   componentDidMount = () => {
-    // getUser();
+    UserService.getUser().then(
+      (data) => {
+        this.setState({userData: data});
+      },
+      (error) => {
+        error.toString();
+      },
+    );
+
+    UserService.getUsers().then(
+      (data) => {
+        this.setState({usersData: data});
+      },
+      (error) => {
+        error.toString();
+      },
+    );
   }
 
 
   render() {
+    const { userData, usersData } = this.state;
+
     return (
       <div className="home-container container ">
          <div className="verify-details">
             <p className="details">
               your document verification is still pending!
-              <a href="#" class='verify  btn  ' >verify</a>
+              <a href="#" className='verify  btn  ' >verify</a>
             </p>
           </div>
         <div className="home-row">
@@ -31,7 +52,7 @@ class Home extends Component {
          
           <div className="home-sidebar col-md-3 col-sm-3">
             <img className="female-image" src={female} alt="" />
-            <div class="progress-bar " role="progressbar" >progress bar</div>
+            <div className="progress-bar " role="progressbar" >progress bar</div>
             <div className="side-navbar">
               <a href="#" > Basic Details</a>
               <a href="#" > Education and Career</a>
@@ -48,14 +69,14 @@ class Home extends Component {
                 <div className="dash-name">
                   <h2 className="welcome-message">
                     "HI "
-                    <span><b>Aparna</b></span>
+                    <span><b>{userData.name}</b></span>
                    ", welcome back"
                   </h2>
                    <ul>
                     <li><a href="#">{'my profile'}</a></li>
-                    <li>{'id'}</li>
-                    <li>email</li>
-                    <li>phone number</li>
+                    <li>{userData.id}</li>
+                    <li>{userData.email}</li>
+                    <li>{userData.phoneNumber}</li>
 
                   </ul>
                 </div>
@@ -78,6 +99,11 @@ class Home extends Component {
             </div>
             </div>
             <div className="row2  " >row</div>
+            <div> 
+              { usersData.map((user) => {
+                return (<div> {user.name} </div>)
+              })}
+            </div>
           </div>
         </div>
         </div>
