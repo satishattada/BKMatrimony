@@ -2,17 +2,33 @@
 import React, { Component } from "react";
 import './styles.css';
 import female from '../../../assets/female_large.jpg';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle} from "@fortawesome/free-solid-svg-icons";
+import { getUser } from "./../../../services/user.service";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
+
+  componentDidMount = () => {
+    // getUser();
+  }
+
+
   render() {
     return (
-      <div className="home-container container-fluid ">
-        <div className="home-row   row">
+      <div className="home-container container ">
+         <div className="verify-details">
+            <p className="details">
+              your document verification is still pending!
+              <a href="#" class='verify  btn  ' >verify</a>
+            </p>
+          </div>
+        <div className="home-row">
+        <div className=" row">
+         
           <div className="home-sidebar col-md-3 col-sm-3">
             <img className="female-image" src={female} alt="" />
             <div class="progress-bar " role="progressbar" >progress bar</div>
@@ -25,11 +41,45 @@ class Home extends Component {
               <a href="#" > verify(Facebook/Linkedin)</a>
             </div>
           </div>
+          <div className="main-home1  col-md-8 col-sm-8">
+            <div className="user-card">
+            <div className="row" >
+              <div className="col-md-8 col-sm-8">
+                <div className="dash-name">
+                  <h2 className="welcome-message">
+                    "HI "
+                    <span><b>Aparna</b></span>
+                   ", welcome back"
+                  </h2>
+                   <ul>
+                    <li><a href="#">{'my profile'}</a></li>
+                    <li>{'id'}</li>
+                    <li>email</li>
+                    <li>phone number</li>
 
-          <div className="row">
-            <div className=" col-md-3 col-sm-3">main detais</div>
+                  </ul>
+                </div>
+              </div>
+              <div className="trust-score col-m-4 col-sm-4">
+                <a  className="QuestionCircle"  href="#" data-toggle="collapse">
+                <FontAwesomeIcon className='QuestionCircle'  icon={faQuestionCircle} />
+                </a>
+                <div className="trust-meter-dash" >
+                  <span className="dash-trust-meter" >
+                    <span className="pointer-trust-meter"></span>
+                    <h5 className="trust-score-text" >Trust Score 20%</h5>
+                    <p className="text-center" >
+                      <a href="#">Improve text score</a>
+                    </p>
 
+                  </span>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div className="row2  " >row</div>
           </div>
+        </div>
         </div>
       </div>
 

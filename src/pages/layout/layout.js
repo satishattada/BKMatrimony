@@ -10,7 +10,7 @@ export class Layout extends Component {
   }
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='layout-container'>
         <Header/>
       {/* <nav>
         <ul>

@@ -35,17 +35,20 @@
 // }
 
 // export default Header;
-import Container from 'react-bootstrap/Container';
+ import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import bk from '../../assets/bk-logo.png';
+import bk from '../../assets/bk-logo-flat.png';
 import './header.css';
-import bell from '../../assets/bell-2-64.jpg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBell,faUserCircle} from "@fortawesome/free-solid-svg-icons";
 
-
-function Header() {
+class Header extends Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
   return (
-    
       <div>
           <Nav className="header-container" >
           <img className="bk-logo" src={bk} alt=" " />
@@ -62,12 +65,17 @@ function Header() {
             </NavDropdown>
             <Nav.Link href="buy">Buy Plan</Nav.Link>
             </div>
-            <img  className='bell-icon'  src={bell} alt='bell-icon'/>
-            <span id='bellIcon'></span>
+            <button className='bell-button' >
+              <FontAwesomeIcon className='bell-icon'  icon={faBell} />
+            </button>
+            <button className='user'>
+            <FontAwesomeIcon className='user-logo'  icon={faUserCircle} />
+            </button>
+
           </Nav>
           </div>
 
   );
 }
-
+}
 export default Header;
