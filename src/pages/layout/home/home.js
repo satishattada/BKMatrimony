@@ -5,6 +5,7 @@ import female from '../../../assets/female_large.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import UserService from './../../../services/user.service';
+import { Outlet, Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -73,7 +74,9 @@ class Home extends Component {
                         ", welcome back"
                       </h2>
                       <ul>
-                        <li><a href="#">{'my profile'}</a></li>
+                        <li>
+                          <Link to="/profile">{'My Profile'}</Link>
+                          </li>
                         <li>{userData.id}</li>
                         <li>{userData.email}</li>
                         <li>{userData.phoneNumber}</li>
