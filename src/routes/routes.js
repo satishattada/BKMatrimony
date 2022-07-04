@@ -6,6 +6,7 @@ import Blogs from "./../pages/layout/blogs/blogs";
 import NoPage from "./../pages/noPage/noPage";
 import Register from "./../pages/register/register";
 import Login from "./../pages/login/login";
+import Profile from '../pages/layout/profile/profile';
 
 function RoutesContainer() {
   return (
@@ -14,6 +15,9 @@ function RoutesContainer() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="blogs" element={<Blogs />} />
+          <Route path="/profile" element={<Profile />} />
+
+          
         </Route>
         <Route path="*" element={<NoPage />} />
         <Route path="/login" element={<Login />} />

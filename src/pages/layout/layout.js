@@ -22,8 +22,10 @@ export class Layout extends Component {
           </li>
         </ul>
       </nav> */}
-
-      <Outlet />
+    
+      <div className="page-container">
+        <Outlet />
+      </div>
     </div>
     );
   }

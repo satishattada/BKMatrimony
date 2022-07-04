@@ -40,6 +40,10 @@ padding:0px 30px 0px 30px;
 }
 .header-container{
     background: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 .header-navbar a{
     color:rgb(239, 138, 23);

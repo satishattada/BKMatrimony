@@ -8,6 +8,7 @@ import UserService from './../../../services/user.service';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../../redux/actions';
+import { Outlet, Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -33,7 +34,6 @@ class Home extends Component {
       },
     );
   }
-
 
   render() {
     const { userData, usersData } = this.state;
@@ -72,7 +72,9 @@ class Home extends Component {
                         ", welcome back"
                       </h2>
                       <ul>
-                        <li><a href="#">{'my profile'}</a></li>
+                        <li>
+                          <Link to="/profile">{'My Profile'}</Link>
+                          </li>
                         <li>{userData.id}</li>
                         <li>{userData.email}</li>
                         <li>{userData.phoneNumber}</li>
@@ -113,8 +115,6 @@ class Home extends Component {
     );
   }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => ({
   appAction: bindActionCreators(appAction, dispatch),
