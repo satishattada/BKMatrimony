@@ -5,6 +5,9 @@ import female from '../../../assets/female_large.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import UserService from './../../../services/user.service';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as appAction from '../../../redux/actions';
 
 class Home extends Component {
   constructor(props) {
@@ -16,14 +19,10 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    UserService.getUser().then(
-      (data) => {
-        this.setState({ userData: data });
-      },
-      (error) => {
-        error.toString();
-      },
-    );
+
+    this.props.appAction.getUserDetails().then(() => {
+      this.setState({ userData: this.props.userData });
+    })
 
     UserService.getUsers().then(
       (data) => {
@@ -100,8 +99,8 @@ class Home extends Component {
               </div>
               <div className="row2  " >row</div>
               <div>
-                {usersData.map((user) => {
-                  return (<div> {user.name} </div>)
+                {usersData.map((user, i) => {
+                  return (<div key={i}> {user.name} </div>)
                 })}
               </div>
             </div>
@@ -115,4 +114,18 @@ class Home extends Component {
   }
 }
 
-export default Home;
+
+
+const mapDispatchToProps = (dispatch) => ({
+  appAction: bindActionCreators(appAction, dispatch),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user.userData,
+
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
