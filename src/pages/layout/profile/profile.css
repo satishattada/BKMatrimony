@@ -1,0 +1,30 @@
+.profile-section{
+    display: flex;
+    background: #c1baba73;
+    margin: 20px;
+
+}
+.profile-data{
+    width: 500px;
+}
+.profile-data ul{
+    list-style: none;
+    margin: 20px;
+}
+
+.profile-female-image{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+}
+.profile-name{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.profile-id{
+    margin-left: 20px;
+}
+.presentations{
+    display: flex;
+    margin:10px;
+}
