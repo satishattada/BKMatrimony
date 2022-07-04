@@ -6,7 +6,9 @@ import PersonalDetails from '../../../components/personaldetails/personaldetails
 import FamilyDetails from '../../../components/familydetails/familydetails';
 import PartnerPreferences from '../../../components/partnerpreferences/partnerpreferences';
 import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab'
+import Tab from 'react-bootstrap/Tab';
+import { connect } from 'react-redux';
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -15,16 +17,17 @@ class Profile extends Component {
         }
     }
     componentDidMount = () => {
-        userService.getUser().then(
-            (data) => {
-                this.setState({
-                    userData: data
-                })
-            },
-            (error) => {
-                error.toString();
-            }
-        )
+        this.setState({ userData: this.props.userData });
+        // userService.getUser().then(
+        //     (data) => {
+        //         this.setState({
+        //             userData: data
+        //         })
+        //     },
+        //     (error) => {
+        //         error.toString();
+        //     }
+        // )
     }
 
     render() {
@@ -82,4 +85,10 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+      userData: state.user.userData,
+    };
+  };
+
+  export default connect(mapStateToProps)(Profile);

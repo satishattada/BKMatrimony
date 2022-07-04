@@ -20,19 +20,32 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-
-    this.props.appAction.getUserDetails().then(() => {
+    if (!this.props.userData.id) {
+      this.props.appAction.getUserDetails().then(() => {
+        this.setState({ userData: this.props.userData });
+      })
+    } else {
       this.setState({ userData: this.props.userData });
-    })
+    }
 
-    UserService.getUsers().then(
-      (data) => {
-        this.setState({ usersData: data });
-      },
-      (error) => {
-        error.toString();
-      },
-    );
+    // if no new data
+    this.props.appAction.getUsersDetails().then((data) => {
+      this.setState({ usersData: this.props.usersData });
+    });
+
+    // if new data loads every time 
+    // this.props.appAction.getUsersDetails().then((data) => {
+    //   this.setState({ usersData: data });
+    // });
+
+    // UserService.getUsers().then(
+    //   (data) => {
+    //     this.setState({ usersData: data });
+    //   },
+    //   (error) => {
+    //     error.toString();
+    //   },
+    // );
   }
 
   render() {
@@ -123,7 +136,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     userData: state.user.userData,
-
+    usersData: state.user.usersData
   };
 };
 
