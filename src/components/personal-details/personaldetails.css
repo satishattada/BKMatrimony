@@ -1,0 +1,68 @@
+.addresscard{
+    color: rgb(231, 90, 90);
+    margin-right: 15px;
+    font-style: 20px;
+}
+.iconcard{
+    color: rgb(231, 90, 90);
+    margin-right: 15px;
+    font-style: 20px;
+}
+
+.basic-information{
+    margin: 10px;
+    padding: 10px;
+}
+.contact-information{
+    margin: 10px;
+    padding: 10px;
+
+}
+.contact-container{
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.basic-container{
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.career-information{
+    margin: 10px;
+    padding: 10px;
+}
+.career-container{
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px  solid rgb(214 218 222 / 48%);
+    border-bottom:  1px  solid rgb(214 218 222 / 48%);
+}
+.personal-heading{
+    color: rgb(231, 90, 90);
+
+}
+.location-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.location-information{
+    margin: 10px;
+    padding: 10px;
+}
+.background-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.background-information{
+    margin: 10px;
+    padding: 10px;
+}
+
+
