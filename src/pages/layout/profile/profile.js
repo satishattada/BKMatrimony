@@ -34,6 +34,7 @@ class Profile extends Component {
         const { userData, usersData } = this.state;
         return (
             <div className='container'>
+               
                 <div className='profile-section'>
                     <div className='profile-image'>
                         <img className="profile-female-image" src={female} alt="" />

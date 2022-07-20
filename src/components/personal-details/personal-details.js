@@ -1,47 +1,178 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard, faAward, faBook, faLocationArrow,  faPrayingHands,  } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard, faAward, faBook, faLocationArrow, faPrayingHands, } from '@fortawesome/free-solid-svg-icons';
 import './personaldetails.css';
 import { connect } from 'react-redux';
+import Popup from '../popup/popup';
+import EditPopup from '../edit-popup/edit-popup';
+import CareerPopup from '../qualification-popup/qualification-popup';
 
-
+import { Button } from 'react-bootstrap';
+import LocationPopup from '../location-popup/location-popup';
+import BackgroundPopup from '../social-background-popup/social-background-popup';
 
 class PersonalDetails extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     // userData:this.props.userData,
-        //     userData: {}}
+        this.state = {
+            showEditModal: false,
+            editModalTitle: '',
+            editModalValue: '',
+            basicInfoTitle: '',
+            CareerInfoTitle: '',
+            LocationInfoTitle: '',
+            BackgroundInfoTitle: '',
+            showBasicModal: false,
+            showCareerModal: false,
+            showLocationModal:false,
+            showBackgroundModal:false,
+
         }
-    
+    }
+
+
+
     // componentDidMount(){
     //     this.setState({
     //         userData:this.props.userData
     //     })
     // }
 
+    openEditModal = (type, value) => {
+        this.setState({
+            showEditModal: true,
+            editModalValue: value
+        });
+        switch (type) {
+            case 'email':
+                this.setState({ editModalTitle: 'Update Email' });
+                break;
+            case 'phoneNumber':
+                this.setState({ editModalTitle: 'Update Phone Number' });
+                break;
+        }
+    }
+    phoneHandler = () => {
+        this.setState({ titleEditModal: true });
+
+    }
+    closeModal = () => {
+        this.setState({
+            showEditModal: false,
+            showBasicModal: false,
+            showCareerModal:false,
+            showLocationModal:false,
+            showBackgroundModal:false,
+
+        });
+    }
+
+    openBasicModal = () => {
+        this.setState({
+            basicInfoTitle: 'Update Basic Information',
+            showBasicModal: true,
+          
+        })
+    }
+
+    openCareerModal = () => {
+        this.setState({
+            careerInfoTitle: 'Update Qualification/career Information',
+            showCareerModal: true
+        })
+    }
+    openLocationModal = () => {
+        this.setState({
+            locationInfoTitle: 'Update current location Information',
+            showLocationModal: true
+        })
+    }
+    openBackgroundModal = () => {
+        this.setState({
+            backgroundInfoTitle: 'Update social background Information',
+            showBackgroundModal: true
+        })
+    }
+
+
+    setBasicInfo = (userData) => {
+        console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
+        console.log(userData);
+
+    }
+    setCareerInfo = (userData) => {
+        console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
+        console.log(userData);
+
+    }
+    setLocationInfo = (userData) => {
+        console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
+        console.log(userData);
+
+    }
+
+    setBackgroundInfo = (userData) => {
+        console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
+        console.log(userData);
+
+    }
+
+
     render() {
         // const {userData}=this.state
-        const { userData } = this.props
+        const { userData } = this.props;
+        const { showEditModal, editModalTitle, editModalValue, showBasicModal, basicInfoTitle, showCareerModal, careerInfoTitle ,showLocationModal,showBackgroundModal,locationInfoTitle,backgroundInfoTitle} = this.state;
         return (
             <>
+                <Popup inputValue={editModalValue}
+                    title={editModalTitle} show={showEditModal} handleClose={this.closeModal} />
+
+                <EditPopup basicInfo={userData}
+                    title={basicInfoTitle} show={showBasicModal} handleClose={this.closeModal}
+                    setBasicInfo={this.setBasicInfo} />
+
+                <CareerPopup careerInfo={userData}
+                    title={careerInfoTitle} show={showCareerModal} handleClose={this.closeModal}
+                    setCareerInfo={this.setCareerInfo} />
+
+                <LocationPopup locationInfo={userData}
+                title={locationInfoTitle} show={showLocationModal} handleClose={this.closeModal} 
+                setLocationInfo={this.setLocationInfo}
+                />
+
+                <BackgroundPopup backgroundInfo={userData}
+                title={backgroundInfoTitle} show={showBackgroundModal} handleClose={this.closeModal}
+                setBackgroundInfo={this.setBackgroundInfo}
+                
+                />
                 <div className='contact-container'>
                     <FontAwesomeIcon className='iconcard' icon={faAddressCard} />
                     <span className='personal-heading'>Contact information</span>
+                    {/* <Button className='edit-button' onClick={() => this.editHandler()}>Edit</Button> */}
                     <div className='contact-information'>
                         <div className='row'>
                             <div className='col-md-6'>Email</div>
-                            <div className='col-md-6'>{userData.email}</div>
+                            <div className='col-md-3'>{userData.email}</div>
+                            <div className='col-md-3'>
+                                <Button className='edit-button' onClick={() => this.openEditModal('email', userData.email)}>Edit</Button>
+                            </div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Phone</div>
-                            <div className='col-md-6'>{userData.phoneNumber}</div>
+                            <div className='col-md-3'>{userData.phoneNumber}</div>
+                            <div className='col-md-3'>
+                                <Button className='edit-button' onClick={() => this.openEditModal('phoneNumber', userData.phoneNumber)}>Edit</Button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 <div className='basic-container'>
                     <FontAwesomeIcon className='iconcard' icon={faBook} />
                     <span className='personal-heading'>Basic information</span>
+
+                    <Button className='edit-button' onClick={() => this.openBasicModal()}>Edit</Button>
+
                     <div className='basic-information'>
                         <div className='row'>
                             <div className='col-md-6'>Name</div>
@@ -76,6 +207,8 @@ class PersonalDetails extends Component {
                 <div className='career-container'>
                     <FontAwesomeIcon className='iconcard' icon={faAward} />
                     <span className='personal-heading'>Qualification/Career information</span>
+                    <Button className='edit-button' onClick={() => this.openCareerModal()}>Edit</Button>
+
                     <div className='career-information'>
                         <div className='row'>
                             <div className='col-md-6'>Education</div>
@@ -99,10 +232,12 @@ class PersonalDetails extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className='location-container'>
                     <FontAwesomeIcon className='iconcard' icon={faLocationArrow} />
                     <span className='personal-heading'>Current Location</span>
+                    <Button className='edit-button' onClick={() => this.openLocationModal()}>Edit</Button>
+
                     <div className='location-information'>
                         <div className='row'>
                             <div className='col-md-6'>Country</div>
@@ -114,10 +249,12 @@ class PersonalDetails extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className='background-container'>
                     <FontAwesomeIcon className='iconcard' icon={faPrayingHands} />
                     <span className='personal-heading'>Social Background</span>
+                    <Button className='edit-button' onClick={() => this.openBackgroundModal()}>Edit</Button>
+
                     <div className='background-information'>
                         <div className='row'>
                             <div className='col-md-6'>Religion</div>
@@ -144,6 +281,7 @@ class PersonalDetails extends Component {
             </>
         );
     }
+
 }
 const mapStateToProps = (state) => {
     return {
