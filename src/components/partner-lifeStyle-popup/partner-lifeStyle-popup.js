@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
-class LocationPopup extends Component {
+class LifeStylePopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,7 +15,7 @@ class LocationPopup extends Component {
         }
     }
     componentDidMount = () => {
-        let userData = this.props.locationInfo;
+        let userData = this.props.lifeStyleInfo;
         this.setState({
             userData
         })
@@ -23,12 +23,13 @@ class LocationPopup extends Component {
     setDetails = (value, type) => {
         let { userData } = this.state;
         switch (type) {
-            case 'countryOfResidence':
-                userData.countryOfResidence = value
+            case 'smoke':
+                userData.smoke = value
                 break;
-            case 'location':
-                userData.location = value
+            case 'drink':
+                userData.drink = value
                 break;
+                
         }
         this.setState({ userData })
         console.log(value)
@@ -36,7 +37,7 @@ class LocationPopup extends Component {
     saveDetails = () => {
 
         let { userData } = this.state;
-        this.props.setLocationInfo(userData);
+        this.props.setlifeStyleInfo(userData);
         // this.props.handleClose();
     }
 
@@ -52,23 +53,24 @@ class LocationPopup extends Component {
                 <Modal.Body>
                     <Form>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">countryOfResidence</Form.Label>
+                            <Form.Label column sm="3">smoke</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.countryOfResidence}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'countryOfResidence') }}
+                                    defaultValue={userData.smoke}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'smoke') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">Location/City</Form.Label>
+                            <Form.Label column sm="3">drink</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.location}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'location') }}
+                                    defaultValue={userData.drink}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'drink') }}
                                 />
                             </Col>
                         </Form.Group>
+                       
                        
                     </Form>
                 </Modal.Body>
@@ -85,4 +87,4 @@ class LocationPopup extends Component {
         </>)
     }
 }
-export default LocationPopup;
+export default LifeStylePopup;

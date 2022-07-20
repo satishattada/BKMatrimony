@@ -19,9 +19,9 @@ class PersonalDetails extends Component {
             editModalTitle: '',
             editModalValue: '',
             basicInfoTitle: '',
-            CareerInfoTitle: '',
-            LocationInfoTitle: '',
-            BackgroundInfoTitle: '',
+            careerInfoTitle: '',
+            locationInfoTitle: '',
+            backgroundInfoTitle: '',
             showBasicModal: false,
             showCareerModal: false,
             showLocationModal:false,
@@ -121,7 +121,8 @@ class PersonalDetails extends Component {
     render() {
         // const {userData}=this.state
         const { userData } = this.props;
-        const { showEditModal, editModalTitle, editModalValue, showBasicModal, basicInfoTitle, showCareerModal, careerInfoTitle ,showLocationModal,showBackgroundModal,locationInfoTitle,backgroundInfoTitle} = this.state;
+        const { showEditModal, editModalTitle, editModalValue, showBasicModal, basicInfoTitle, showCareerModal,
+         careerInfoTitle ,showLocationModal,showBackgroundModal,locationInfoTitle,backgroundInfoTitle} = this.state;
         return (
             <>
                 <Popup inputValue={editModalValue}

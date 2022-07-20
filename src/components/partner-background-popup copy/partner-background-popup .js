@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
-class FamilyPopup extends Component {
+class BackgroundPopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,7 +15,7 @@ class FamilyPopup extends Component {
         }
     }
     componentDidMount = () => {
-        let userData = this.props.familyInfo;
+        let userData = this.props.backgroundInfo;
         this.setState({
             userData
         })
@@ -23,24 +23,22 @@ class FamilyPopup extends Component {
     setDetails = (value, type) => {
         let { userData } = this.state;
         switch (type) {
-            case 'motherOccupation':
-                userData.motherOccupation = value
+            case 'religion':
+                userData.religion = value
                 break;
-            case 'fatherOccupation':
-                userData.fatherOccupation = value
+            case 'MotherTongue':
+                userData.MotherTongue = value
                 break;
-                case 'marriedSister':
-                    userData.marriedSister = value
+                case 'Caste':
+                    userData.Caste = value
                     break;
-                    case 'unmarriedSisiter':
-                        userData.unmarriedSisiter = value
+                    case 'manglik':
+                        userData.Manglik = value
                         break;
-                        case 'unmarriedBrother':
-                            userData.unmarriedBrother = value
+                        case 'gothram':
+                            userData.gothram = value
                             break;
-                            case 'marriedBrother':
-                                userData.marriedBrother = value
-                                break;
+                           
         }
         this.setState({ userData })
         console.log(value)
@@ -48,7 +46,7 @@ class FamilyPopup extends Component {
     saveDetails = () => {
 
         let { userData } = this.state;
-        this.props.setFamilyInfo(userData);
+        this.props.setBackgroundInfo(userData);
         // this.props.handleClose();
     }
 
@@ -64,61 +62,52 @@ class FamilyPopup extends Component {
                 <Modal.Body>
                     <Form>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">Mother's occupation</Form.Label>
+                            <Form.Label column sm="3">religion</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.motherOccupation}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'motherOccupation') }}
+                                    defaultValue={userData.religion}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'religion') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">Father's occupation</Form.Label>
+                            <Form.Label column sm="3">MotherTongue </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.fatherOccupation}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'fatherOccupation') }}
+                                    defaultValue={userData.MotherTongue}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'MotherTongue') }}
                                 />
                             </Col>
                         </Form.Group>
                        
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">Married Sister(s) </Form.Label>
+                            <Form.Label column sm="3">Caste </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.marriedSister}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'marriedSister') }}
+                                    defaultValue={userData.Caste}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'Caste') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">unmarried Sisiter</Form.Label>
+                            <Form.Label column sm="3">Manglik</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.unmarriedSisiter}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'unmarriedSisiter') }}
+                                    defaultValue={userData.manglik}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'manglik') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">unmarried Brother</Form.Label>
+                            <Form.Label column sm="3">gothram</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.unmarriedBrother}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'unmarriedBrother') }}
+                                    defaultValue={userData.gothram}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'gothram') }}
                                 />
                             </Col>
                         </Form.Group>
-                        <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">married Brother</Form.Label>
-                            <Col sm="9">
-                                <Form.Control
-                                    defaultValue={userData.marriedBrother}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'marriedBrother') }}
-                                />
-                            </Col>
-                        </Form.Group>
-                        
+
 
                        
                     </Form>
@@ -136,4 +125,4 @@ class FamilyPopup extends Component {
         </>)
     }
 }
-export default FamilyPopup;
+export default BackgroundPopup;
