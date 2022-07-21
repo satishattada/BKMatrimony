@@ -8,7 +8,11 @@ class BasicDetails extends Component {
     }
     state = {  }
     render() { 
-        return ( <div>hello world</div> );
+        return ( <div>
+<h5 className='basic-details'>Basic Details</h5>
+
+
+        </div> );
     }
 }
  
