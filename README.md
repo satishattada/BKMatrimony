@@ -91,9 +91,9 @@ Create a db.json file with some data
 }
 Start JSON Server
 
-json-server --watch data.json
+<!-- json-server --watch data.json -->
 
-$ json-server --watch data.json --port 3004
+json-server --watch data.json --port 3004
 
 Alternative port
 You can start JSON Server on other ports with the --port flag:

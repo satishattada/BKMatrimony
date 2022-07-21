@@ -99,5 +99,9 @@
     ],
     "profile": {
         "name": "typicode"
+    },
+    "cakes": {
+        "name": "vanila cake",
+        "type": "vanila cool cake"
     }
 }
