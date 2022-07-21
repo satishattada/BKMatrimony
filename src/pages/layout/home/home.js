@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import './styles.css';
-import female from '../../../assets/female_large.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import UserService from './../../../services/user.service';
@@ -86,8 +85,9 @@ class Home extends Component {
         <div className="home-row">
           <div className=" row">
         <div className="home-sidebar col-md-3 col-sm-3">
+        <div class="img">
               <img className="female-image" src={propfilePhoto} alt="" />
-
+        </div>
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
                 {/* <a href="#" > Basic Details</a> */}

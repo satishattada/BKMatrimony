@@ -52,24 +52,28 @@ class Header extends Component {
     return (
       <div className="header-container" >
         <Nav>
+          <Link to="/">
           <img className="bk-logo" src={bk} alt=" " />
+          </Link>
           <div className='header-navbar'>
             <Link className='nav-link' to="/">{'Home'}</Link>
             <Link className='nav-link' to="/matches">{'Discover Matches'}</Link>
             <NavDropdown title="Input" id="basic-nav-dropdown">
-              <NavDropdown.Item href="Interest received">Interest received</NavDropdown.Item>
-              <NavDropdown.Item href="Interest sent">Interest sent</NavDropdown.Item>
-              <NavDropdown.Item href="connections">connections</NavDropdown.Item>
-              <NavDropdown.Item href="Blocked"> Blocked</NavDropdown.Item>
-              <NavDropdown.Item href="Shortlisted"> Shortlisted</NavDropdown.Item>
+              <NavDropdown.Item href="/interest-received">Interest received</NavDropdown.Item>
+              <NavDropdown.Item href="/interest-sent">Interest sent</NavDropdown.Item>
+              <NavDropdown.Item href="/connection">connections</NavDropdown.Item>
+              <NavDropdown.Item href="/blocked"> Blocked</NavDropdown.Item>
+              <NavDropdown.Item href="/shortlisted"> Shortlisted</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="buy">Buy Plan</Nav.Link>          </div>
-          <button className='bell-button' >
+            <Nav.Link href="/buy">Buy Plan</Nav.Link>  </div>
+
+          
+            <Link className='bell-button' to="/profile">
             <FontAwesomeIcon className='bell-icon' icon={faBell} />
-          </button>
-          <button className='user'>
+            </Link>
+            <Link className='bell-button' >
             <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
-          </button>
+          </Link>
 
         </Nav>
       </div>

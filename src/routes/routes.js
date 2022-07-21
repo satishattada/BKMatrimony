@@ -15,6 +15,12 @@ import MediaDetails from '../pages/layout/media-detais/media-details';
 import PartnerDetails from '../pages/layout/partner-preferences/partner-details';
 import Verify from '../pages/layout/verify/verify';
 import Family from '../pages/layout/family-details/family-details';
+import InterestReceived from '../pages/layout/interest-received/interest-received';
+import InterestSent from '../pages/layout/interest-sent/interest-sent';
+import Shortlisted from '../pages/layout/shortlisted/shortlisted';
+import Connection from '../pages/layout/connections/connection';
+import Blocked from '../pages/layout/blocked/blocked';
+import Buy from '../pages/layout/buy/buy';
 
 function RoutesContainer() {
   return (
@@ -32,7 +38,12 @@ function RoutesContainer() {
           <Route path="/family-details" element={<Family/>} />
           <Route path="/partner-details" element={<PartnerDetails/>} />
           <Route path="/verify" element={<Verify/>} />
-
+          <Route path="/interest-received" element={<InterestReceived/>} />
+          <Route path="/interest-sent" element={<InterestSent/>} />
+          <Route path="/connection" element={<Connection/>} />
+          <Route path="/Blocked" element={<Blocked/>} />
+          <Route path="/shortlisted" element={<Shortlisted/>} />
+          <Route path="/buy" element={<Buy/>} />
 
           
         </Route>

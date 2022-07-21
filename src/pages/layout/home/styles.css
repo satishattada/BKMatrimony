@@ -116,3 +116,9 @@ height: 250px;
 .greenCls {
     color: green
 }
+
+.img {
+    overflow: hidden;
+    position: relative;
+    height: 290px;
+}

@@ -100,3 +100,9 @@ You can start JSON Server on other ports with the --port flag:
 Now if you go to http://localhost:3000/posts/1, you'll get
 
 { "id": 1, "title": "json-server", "author": "typicode" }
+
+
+search for powershell
+right click and run as administration
+run this simple command Set-ExecutionPolicy RemoteSigned
+Press A And Enter
