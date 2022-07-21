@@ -18,9 +18,9 @@ export class Layout extends Component {
             <Link to="/">Home</Link>
           </li>
           
-          <li>
+          {/* <li>
             <Link to="/blogs">Blogs</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/increase">Blogs</Link>
           </li>

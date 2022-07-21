@@ -89,12 +89,19 @@ class Home extends Component {
               <img className="female-image" src={female} alt="" />
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
-                <a href="#" > Basic Details</a>
-                <a href="#" > Education and Career</a>
+                {/* <a href="#" > Basic Details</a> */}
+                <Link to="/basic-details">{'Basic Details'}</Link>
+                <Link to="/education-details">{'Education and Career'}</Link>
+                <Link to="/media-details">{'Media(photos/videos)'}</Link>
+                <Link to="/family-details">{'Family'}</Link>
+                <Link to="/partner-details">{'Partner preference'}</Link>
+                <Link to="/verify">{'verify(Facebook/Linkedin)'}</Link>
+
+                {/* <a href="#" > Education and Career</a>
                 <a href="#" > Media(photos/videos)</a>
                 <a href="#" > Family Details</a>
                 <a href="#" > Partner preference</a>
-                <a href="#" > verify(Facebook/Linkedin)</a>
+                <a href="#" > verify(Facebook/Linkedin)</a> */}
               </div>
             </div>
             <div className="main-home1  col-md-8 col-sm-8">
