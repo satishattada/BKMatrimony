@@ -15,7 +15,7 @@ class Home extends Component {
     super(props);
     this.state = {
       userData: {},
-      usersData: []
+      usersData: [],
     }
   }
 
@@ -73,7 +73,8 @@ class Home extends Component {
 
   render() {
     const { userData, usersData } = this.state;
-    const className = "blueCls"
+    const className = "blueCls";
+    const propfilePhoto =  "data:image/jpeg;base64,"+userData?.profilePhoto?.image?.data;
     return (
       <div className="home-container container ">
         <div className="verify-details">
@@ -84,9 +85,9 @@ class Home extends Component {
         </div>
         <div className="home-row">
           <div className=" row">
+        <div className="home-sidebar col-md-3 col-sm-3">
+              <img className="female-image" src={propfilePhoto} alt="" />
 
-            <div className="home-sidebar col-md-3 col-sm-3">
-              <img className="female-image" src={female} alt="" />
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
                 {/* <a href="#" > Basic Details</a> */}

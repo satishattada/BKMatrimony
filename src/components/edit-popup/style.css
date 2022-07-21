@@ -16,3 +16,7 @@
     margin: 0px 10px!important;
     padding: 1px 14px!important;
 }
+
+.modal-header button {
+    background-color: rgb(239, 138, 23);
+}
