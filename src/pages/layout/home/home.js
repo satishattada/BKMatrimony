@@ -84,8 +84,7 @@ class Home extends Component {
         </div>
         <div className="home-row">
           <div className=" row">
-
-            <div className="home-sidebar col-md-3 col-sm-3">
+        <div className="home-sidebar col-md-3 col-sm-3">
               <img className="female-image" src={female} alt="" />
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
