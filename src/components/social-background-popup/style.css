@@ -1,0 +1,18 @@
+.email-heading{
+    background-color: black;
+    color:rgb(239, 138, 23);
+}
+.close-button{
+    background-color: black;
+    color:rgb(239, 138, 23);
+    border-radius:7px!important;
+    margin: 0px 10px;
+    padding: 0px 10px;
+}
+.save-button{
+    background-color: black!important;
+    color:rgb(239, 138, 23)!important;
+    border-radius:7px!important;
+    margin: 0px 10px!important;
+    padding: 1px 14px!important;
+}

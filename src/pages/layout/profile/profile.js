@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import userService from '../../../services/user.service';
 import "./profile.css";
 import female from '../../../assets/female_large.jpg';
-import PersonalDetails from '../../../components/personaldetails/personaldetails';
-import FamilyDetails from '../../../components/familydetails/familydetails';
-import PartnerPreferences from '../../../components/partnerpreferences/partnerpreferences';
+import PersonalDetails from '../../../components/personal-details/personal-details';
+import FamilyDetails from '../../../components/family-details/family-details';
+import PartnerPreferences from '../../../components/partner-preferences/partner-preferences';
 import Tabs from 'react-bootstrap/Tabs';
-import Tab from 'react-bootstrap/Tab'
+import Tab from 'react-bootstrap/Tab';
+import { connect } from 'react-redux';
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -15,22 +17,24 @@ class Profile extends Component {
         }
     }
     componentDidMount = () => {
-        userService.getUser().then(
-            (data) => {
-                this.setState({
-                    userData: data
-                })
-            },
-            (error) => {
-                error.toString();
-            }
-        )
+        this.setState({ userData: this.props.userData });
+        // userService.getUser().then(
+        //     (data) => {
+        //         this.setState({
+        //             userData: data
+        //         })
+        //     },
+        //     (error) => {
+        //         error.toString();
+        //     }
+        // )
     }
 
     render() {
         const { userData, usersData } = this.state;
         return (
             <div className='container'>
+               
                 <div className='profile-section'>
                     <div className='profile-image'>
                         <img className="profile-female-image" src={female} alt="" />
@@ -82,4 +86,10 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+      userData: state.user.userData,
+    };
+  };
+
+  export default connect(mapStateToProps)(Profile);

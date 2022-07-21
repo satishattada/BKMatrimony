@@ -20,24 +20,60 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-
-    this.props.appAction.getUserDetails().then(() => {
+    if (!this.props.userData.id) {
+      this.props.appAction.getUserDetails().then(() => {
+        this.setState({ userData: this.props.userData });
+      })
+    } else {
       this.setState({ userData: this.props.userData });
-    })
+    }
 
-    UserService.getUsers().then(
-      (data) => {
-        this.setState({ usersData: data });
-      },
-      (error) => {
-        error.toString();
-      },
-    );
+    // if no new data
+    this.props.appAction.getUsersDetails().then((data) => {
+
+      this.setState({ usersData: this.props.usersData });
+    });
+
+    // if new data loads every time 
+    // this.props.appAction.getUsersDetails().then((data) => {
+    //   this.setState({ usersData: data });
+    // });
+
+    // UserService.getUsers().then(
+    //   (data) => {
+    //     this.setState({ usersData: data });
+    //   },
+    //   (error) => {
+    //     error.toString();
+    //   },
+    // );
+  }
+
+  getColorStyle = (gender) => {
+    return gender === 'Female'? {color:'blue',background:'pink'}: {color:'green',background:'yellow'};
+
+
+    // let colorCode = '';
+    // if(gender === 'Female') {
+    //   colorCode = 'blue';
+    // // return {color:'blue'}
+
+    // } else {
+    //   colorCode = 'green'
+    // // return {color:'green'}
+
+    // }
+
+    // return {color:colorCode}
+  }
+
+  getClass = (gender) => {
+    return gender === 'Female'? 'blueCls': 'greenCls';
   }
 
   render() {
     const { userData, usersData } = this.state;
-
+    const className = "blueCls"
     return (
       <div className="home-container container ">
         <div className="verify-details">
@@ -66,7 +102,7 @@ class Home extends Component {
                 <div className="row" >
                   <div className="col-md-8 col-sm-8">
                     <div className="dash-name">
-                      <h2 className="welcome-message">
+                      <h2 className={`${className} welcome-message`} >
                         "HI "
                         <span><b>{userData.name}</b></span>
                         ", welcome back"
@@ -74,7 +110,7 @@ class Home extends Component {
                       <ul>
                         <li>
                           <Link to="/profile">{'My Profile'}</Link>
-                          </li>
+                        </li>
                         <li>{userData.id}</li>
                         <li>{userData.email}</li>
                         <li>{userData.phoneNumber}</li>
@@ -99,19 +135,18 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="row2  " >row</div>
+              <div className="row  " >row</div>
               <div>
                 {usersData.map((user, i) => {
-                  return (<div key={i}> {user.name} </div>)
+                  // return (<div style={this.getColorStyle(user.gender)} key={i}> {user.name} </div>)
+                  return (<div className={this.getClass(user.gender)} key={i}> {user.name} </div>)
+
                 })}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
     );
   }
 }
@@ -123,7 +158,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     userData: state.user.userData,
-
+    usersData: state.user.usersData
   };
 };
 

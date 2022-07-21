@@ -12,16 +12,21 @@ export class Layout extends Component {
     return (
       <div className='layout-container'>
         <Header/>
-      {/* <nav>
+      <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
+          
           <li>
             <Link to="/blogs">Blogs</Link>
           </li>
+          <li>
+            <Link to="/increase">Blogs</Link>
+          </li>
+
         </ul>
-      </nav> */}
+      </nav> 
     
       <div className="page-container">
         <Outlet />

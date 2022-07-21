@@ -42,7 +42,7 @@ import bk from '../../assets/bk-logo-flat.png';
 import './header.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
@@ -55,8 +55,7 @@ class Header extends Component {
           <img className="bk-logo" src={bk} alt=" " />
           <div className='header-navbar'>
             <Link className='nav-link' to="/">{'Home'}</Link>
-            <Nav.Link href="Search">Search</Nav.Link>
-            <Nav.Link href="discover">Discover Matches</Nav.Link>
+            <Link className='nav-link' to="/matches">{'Discover Matches'}</Link>
             <NavDropdown title="Input" id="basic-nav-dropdown">
               <NavDropdown.Item href="Interest received">Interest received</NavDropdown.Item>
               <NavDropdown.Item href="Interest sent">Interest sent</NavDropdown.Item>
@@ -64,8 +63,7 @@ class Header extends Component {
               <NavDropdown.Item href="Blocked"> Blocked</NavDropdown.Item>
               <NavDropdown.Item href="Shortlisted"> Shortlisted</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="buy">Buy Plan</Nav.Link>
-          </div>
+            <Nav.Link href="buy">Buy Plan</Nav.Link>          </div>
           <button className='bell-button' >
             <FontAwesomeIcon className='bell-icon' icon={faBell} />
           </button>

@@ -1,0 +1,70 @@
+.iconcard{
+    color: rgb(231, 90, 90);
+    margin-right: 15px;
+    font-style: 20px;
+}
+
+.partner-information{
+    margin: 10px;
+    padding: 10px;
+}
+.residence-information{
+    margin: 10px;
+    padding: 10px;
+
+}
+.residence-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.partner-container{
+    margin: 10px;
+    padding: 10px;
+
+}
+.career-information{
+    margin: 10px;
+    padding: 10px;
+}
+.career-container{
+    margin: 10px;
+    padding: 10px;
+    border-top: 1px  solid rgb(214 218 222 / 48%);
+    border-bottom:  1px  solid rgb(214 218 222 / 48%);
+}
+.partner-heading{
+    color: rgb(231, 90, 90);
+
+}
+.location-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.location-information{
+    margin: 10px;
+    padding: 10px;
+}
+.background-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.background-information{
+    margin: 10px;
+    padding: 10px;
+}
+.life-style-container{
+    margin: 10px;
+    padding: 10px;
+    border-bottom: 1px  solid rgb(214 218 222 / 48%);
+
+}
+.life-style-information{
+    margin: 10px;
+    padding: 10px;
+}
