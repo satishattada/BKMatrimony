@@ -3,11 +3,10 @@ import React, { Component } from "react";
 import './styles.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
-import UserService from './../../../services/user.service';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../../redux/actions';
-import { Outlet, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -69,11 +68,11 @@ class Home extends Component {
   getClass = (gender) => {
     return gender === 'Female'? 'blueCls': 'greenCls';
   }
-
   render() {
     const { userData, usersData } = this.state;
     const className = "blueCls";
-    const propfilePhoto =  "data:image/jpeg;base64,"+userData?.profilePhoto?.image?.data;
+    const propfilePhoto =  userData?.profilePhoto?.image?.data?
+     "data:image/jpeg;base64,"+userData?.profilePhoto?.image?.data: '';
     return (
       <div className="home-container container ">
         <div className="verify-details">
@@ -85,18 +84,18 @@ class Home extends Component {
         <div className="home-row">
           <div className=" row">
         <div className="home-sidebar col-md-3 col-sm-3">
-        <div class="img">
+        <div className="img">
               <img className="female-image" src={propfilePhoto} alt="" />
         </div>
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
                 {/* <a href="#" > Basic Details</a> */}
-                <Link to="/user-details">{'Basic Details'}</Link>
-                <Link to="/user-details">{'Education and Career'}</Link>
-                <Link to="/user-details">{'Media(photos/videos)'}</Link>
-                <Link to="/user-details">{'Family'}</Link>
-                <Link to="/user-details">{'Partner preference'}</Link>
-                <Link to="/user-details">{'verify(Facebook/Linkedin)'}</Link>
+                <Link to={`/user-details/basic`}>{'Basic Details'}</Link>
+                <Link to="/user-details/education">{'Education and Career'}</Link>
+                <Link to="/user-details/media">{'Media(photos/videos)'}</Link>
+                <Link to="/user-details/family">{'Family'}</Link>
+                <Link to="/user-details/partner">{'Partner preference'}</Link>
+                <Link to="/user-details/verify">{'verify(Facebook/Linkedin)'}</Link>
 
                 {/* <a href="#" > Education and Career</a>
                 <a href="#" > Media(photos/videos)</a>

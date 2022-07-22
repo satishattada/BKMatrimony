@@ -1,5 +1,5 @@
 import './styles.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Layout from "./../pages/layout/layout";
 import Home from "./../pages/layout/home/home";
 import NoPage from "./../pages/noPage/noPage";
@@ -21,7 +21,6 @@ import Shortlisted from '../pages/layout/shortlisted/shortlisted';
 import Connection from '../pages/layout/connections/connection';
 import Blocked from '../pages/layout/blocked/blocked';
 import Buy from '../pages/layout/buy/buy';
-
 function RoutesContainer() {
   return (
     <BrowserRouter>
@@ -32,20 +31,20 @@ function RoutesContainer() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/food" element={<Food />} />
           <Route path="/increase" element={<Increment />} />
-          <Route path="/user-details" element={<UserDetails/>} />
+          <Route path="/user-details/:id/" element={<UserDetails />} />
           {/* <Route path="/education-details" element={<EducationDetails/>} /> 
           <Route path="/media-details" element={<MediaDetails/>} />
           <Route path="/family-details" element={<Family/>} />
           <Route path="/partner-details" element={<PartnerDetails/>} />
           <Route path="/verify" element={<Verify/>} />  */}
-          <Route path="/interest-received" element={<InterestReceived/>} />
-          <Route path="/interest-sent" element={<InterestSent/>} />
-          <Route path="/connection" element={<Connection/>} />
-          <Route path="/Blocked" element={<Blocked/>} />
-          <Route path="/shortlisted" element={<Shortlisted/>} />
-          <Route path="/buy" element={<Buy/>} />
+          <Route path="/interest-received" element={<InterestReceived />} />
+          <Route path="/interest-sent" element={<InterestSent />} />
+          <Route path="/connection" element={<Connection />} />
+          <Route path="/Blocked" element={<Blocked />} />
+          <Route path="/shortlisted" element={<Shortlisted />} />
+          <Route path="/buy" element={<Buy />} />
 
-          
+
         </Route>
         <Route path="*" element={<NoPage />} />
         <Route path="/login" element={<Login />} />
