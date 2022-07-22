@@ -1,0 +1,33 @@
+.basic-container{
+    background: rgb(180, 172, 172);
+}
+.basic{
+    margin-top: 10px;
+    border-top: 1px solid rgb(227, 217, 217);
+}
+.row{
+    margin: 10px;
+
+}
+.basic-info{
+background: white;
+padding: 20px;
+margin: 50px;
+}
+.side-navbar a {
+    display: grid;
+    text-decoration: none;
+    color:black;
+    padding: 5px;
+    border-bottom: solid rgba(163, 159, 159, 0.934) 1px;
+    opacity: 0.6;
+   
+}
+dash-trust-meter {
+    background-image: url(http://localhost:3000/static/media/trust-meter.5147b0a….png);
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    width: 200px;
+    height: 250px;
+}

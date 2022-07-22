@@ -52,9 +52,9 @@ class Header extends Component {
     return (
       <div className="header-container" >
         <Nav>
-          <Link to="/">
+           <Link to="/"> 
           <img className="bk-logo" src={bk} alt=" " />
-          </Link>
+           </Link> 
           <div className='header-navbar'>
             <Link className='nav-link' to="/">{'Home'}</Link>
             <Link className='nav-link' to="/matches">{'Discover Matches'}</Link>
@@ -68,13 +68,16 @@ class Header extends Component {
             <Nav.Link href="/buy">Buy Plan</Nav.Link>  </div>
 
           
-            <Link className='bell-button' to="/profile">
+            <Link className='bell-button' to="">
             <FontAwesomeIcon className='bell-icon' icon={faBell} />
             </Link>
-            <Link className='bell-button' >
-            <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
-          </Link>
 
+            <Link className='bell-button' to="/profile">
+            <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
+            </Link>
+             {/* <button className='bell-button' >
+            <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
+          </button> */}
         </Nav>
       </div>
 

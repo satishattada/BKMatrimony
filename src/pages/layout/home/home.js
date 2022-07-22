@@ -91,12 +91,12 @@ class Home extends Component {
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
                 {/* <a href="#" > Basic Details</a> */}
-                <Link to="/basic-details">{'Basic Details'}</Link>
-                <Link to="/education-details">{'Education and Career'}</Link>
-                <Link to="/media-details">{'Media(photos/videos)'}</Link>
-                <Link to="/family-details">{'Family'}</Link>
-                <Link to="/partner-details">{'Partner preference'}</Link>
-                <Link to="/verify">{'verify(Facebook/Linkedin)'}</Link>
+                <Link to="/user-details">{'Basic Details'}</Link>
+                <Link to="/user-details">{'Education and Career'}</Link>
+                <Link to="/user-details">{'Media(photos/videos)'}</Link>
+                <Link to="/user-details">{'Family'}</Link>
+                <Link to="/user-details">{'Partner preference'}</Link>
+                <Link to="/user-details">{'verify(Facebook/Linkedin)'}</Link>
 
                 {/* <a href="#" > Education and Career</a>
                 <a href="#" > Media(photos/videos)</a>

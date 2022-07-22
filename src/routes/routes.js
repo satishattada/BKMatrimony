@@ -9,7 +9,7 @@ import Profile from '../pages/layout/profile/profile';
 import Matches from '../pages/layout/matches/matches';
 import Food from '../pages/layout/food/food';
 import Increment from '../pages/layout/increase/increase';
-import BaicDetails from '../pages/layout/basic-details/basic-details';
+import UserDetails from '../pages/layout/user-details/user-details';
 import EducationDetails from '../pages/layout/education-details/education-details';
 import MediaDetails from '../pages/layout/media-detais/media-details';
 import PartnerDetails from '../pages/layout/partner-preferences/partner-details';
@@ -32,7 +32,7 @@ function RoutesContainer() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/food" element={<Food />} />
           <Route path="/increase" element={<Increment />} />
-          <Route path="/basic-details" element={<BaicDetails/>} />
+          <Route path="/user-details" element={<UserDetails/>} />
           <Route path="/education-details" element={<EducationDetails/>} />
           <Route path="/media-details" element={<MediaDetails/>} />
           <Route path="/family-details" element={<Family/>} />
