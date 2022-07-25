@@ -6,38 +6,18 @@ import { connect } from 'react-redux';
 class BasicDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showBasicModal: false,
-
-        }
     }
-    closeModal = () => {
-        this.setState({
 
-            showBasicModal: false,
 
-        });
-    }
-    openBasicModal = () => {
-        this.setState({
-            basicInfoTitle: 'Update Basic Information',
-            showBasicModal: true,
-
-        })
-    }
     setBasicInfo = (userData) => {
         console.log(userData)
     }
 
     render() {
-        const { userData } = this.props
-        const { showBasicModal, basicInfoTitle } = this.state;
+        const { userData, editBasicModal } = this.props
         return (
             <div>
-                <BasicPopup basicInfo={userData}
-                    title={basicInfoTitle} show={showBasicModal} handleClose={this.closeModal}
-                    setBasicInfo={this.setBasicInfo}
-                />
+
                 <div className='basic-container'>
                     <div className='basic-info'>
                         <div>
@@ -47,7 +27,7 @@ class BasicDetails extends Component {
                                         <div className='col-md-6'>
                                             <h5 className='basic-details'>Basic Details</h5></div>
                                         <div className='col-md-1'>
-                                            <Button className='edit-button' onClick={() => this.openBasicModal()}>Edit</Button>
+                                            <Button className='edit-button' onClick={editBasicModal}>Edit</Button>
                                         </div>
                                     </div>
                                     <div className='basic'>

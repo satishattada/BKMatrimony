@@ -1,141 +1,67 @@
 import React, { Component } from 'react';
 import "./style.css";
 import { Button } from 'react-bootstrap';
-import BasicPopup from '../basic-popup/basic-popup';
 import { connect } from 'react-redux';
-class BasicDetails extends Component {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faDesktop } from '@fortawesome/free-solid-svg-icons';
+import { Link } from "react-router-dom";
+
+
+class MediaDetails extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showBasicModal: false,
-
-        }
-    }
-    closeModal = () => {
-        this.setState({
-
-            showBasicModal: false,
-
-        });
-    }
-    openBasicModal = () => {
-        this.setState({
-            basicInfoTitle: 'Update Basic Information',
-            showBasicModal: true,
-
-        })
-    }
-    setBasicInfo = (userData) => {
-        console.log(userData)
     }
 
     render() {
         const { userData } = this.props
-        const { showBasicModal, basicInfoTitle } = this.state;
-        return (
-            <div>
-                <BasicPopup basicInfo={userData}
-                    title={basicInfoTitle} show={showBasicModal} handleClose={this.closeModal}
-                    setBasicInfo={this.setBasicInfo}
-                />
-                <div className='basic-container'>
-                    <div className='basic-info'>
-                        <div>
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <div className='row'>
-                                        <div className='col-md-6'>
-                                            <h5 className='basic-details'>Basic Details</h5></div>
-                                        <div className='col-md-1'>
-                                            <Button className='edit-button' onClick={() => this.openBasicModal()}>Edit</Button>
-                                        </div>
+        return (<div>
+
+            <div className='media-container'>
+                <h5>Welcome Miss. {userData.name} @ LoveVivah!</h5><br /><br />
+                <div className='media-info'>
+                    <div className='row'>
+                        <h6>Get more responses by adding your photos</h6>
+                        <p className='para'>You can increase your profile visibility by adding more photographs.You
+                            can add maximum 20 photographs in your profile and you can’t update same image
+                            twice.Share photographs of self, family and friends to let the world know more
+                            about you.
+                        </p>
+                        <div className='col-md-4'>
+                            <img className="image" src="https://www.lovevivah.com/assets/img/avtar-image.png" alt="" />
+                        </div>
+                        <div className='col-md-4'>
+                            
+                                <div className='upload-ways'>
+
+                                    <h6 className='photo'>UPLOAD PHOTOS</h6>
+
+                                    <div className='link      col-md-12'>
+                                        <Link className='icon-button' to="">
+                                            <FontAwesomeIcon className='icon' icon={faDesktop} />
+                                        </Link>
+                                        <Button  className='computerbtn' variant="warning">From Computer</Button>
                                     </div>
-                                    <div className='basic'>
-                                        <div className='row'>
-                                            <div className='col-md-6'>About Yourself</div>
-                                            <textarea className='col-md-6'>{userData.aboutYourself}
-                                                {/* <div className='col-md-6'>{userData.aboutYourself}</div> */}
-                                            </textarea>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Height</div>
-                                            <div className='col-md-6'>{userData.height}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Marital Status</div>
-                                            <div className='col-md-6'>{userData.maritalStatus}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Mother Tongue</div>
-                                            <div className='col-md-6'>{userData.motherTongue}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Religion</div>
-                                            <div className='col-md-6'>{userData.religion}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Caste</div>
-                                            <div className='col-md-6'>{userData.caste}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Manglik</div>
-                                            <div className='col-md-6'>{userData.manglik}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Special Cases</div>
-                                            <div className='col-md-6'>{userData.specialCases}</div>
-                                        </div>
-                                        <h5>Location</h5>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Country</div>
-                                            <div className='col-md-6'>{userData.country}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>State</div>
-                                            <div className='col-md-6'>{userData.state}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>City</div>
-                                            <div className='col-md-6'>{userData.city}</div>
-                                        </div>
-                                        <h5>Your Horoscope detail</h5>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Gotra</div>
-                                            <div className='col-md-6'>{userData.gothram}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Time of Birth</div>
-                                            <div className='col-md-6'>{userData.birth}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Place of Birth</div>
-                                            <div className='col-md-6'>{userData.placeOfBirth}</div>
-                                        </div>
-                                        <h5>Likes and Preferences</h5>
-                                        <div className='row'>
-                                            <div className='col-md-6'>I am a smoker</div>
-                                            <div className='col-md-6'>{userData.smoker}</div>
-                                        </div><div className='row'>
-                                            <div className='col-md-6'>I drink alcohol</div>
-                                            <div className='col-md-6'>{userData.drink}</div>
-                                        </div>
-                                        <div className='row'>
-                                            <div className='col-md-6'>Diet</div>
-                                            <div className='col-md-6'>{userData.diet}</div>
-                                        </div>
+                                    <div className='link    col-md-12 '>
+                                        <Link className='icon-button' to="">
+                                            <FontAwesomeIcon className='icon' icon={faFacebook} />
+                                        </Link>
+                                        <Button className='facebookbtn' variant="warning">From Facebook</Button>
                                     </div>
-                                </div>
+                                    </div>
+                                
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>);
     }
 }
 const mapStateToProps = (state) => {
     return {
-        userData: state.user.userData
+                userData: state.user.userData
     }
 }
-export default connect(mapStateToProps)(BasicDetails);
+            export default connect(mapStateToProps)(MediaDetails);
 
