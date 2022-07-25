@@ -144,11 +144,10 @@ class Home extends Component {
               </div>
               <div className="row  " >row</div>
               <div>
-                {usersData.map((user, i) => {
-                  // return (<div style={this.getColorStyle(user.gender)} key={i}> {user.name} </div>)
+                {/* {usersData?.map((user, i) => {
                   return (<div className={this.getClass(user.gender)} key={i}> {user.name} </div>)
 
-                })}
+                })} */}
               </div>
             </div>
           </div>

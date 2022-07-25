@@ -4,6 +4,15 @@ export const apiHeaders = {
 	'Content-Type': 'application/json',
   }
 class UserService {
+
+	loginUser = async (credentials) => {
+		return fetch(url + 'login', {
+			method: 'POST',
+			headers: apiHeaders,
+			body: JSON.stringify(credentials)
+		}).then(data => data.json())
+	}
+	   
 	getUser = async () => {
 		return new Promise(function (resolve, reject) {
 			// fetch('https://mocki.io/v1/b68a5f90-99f3-4742-82e3-6fae626a16f3')

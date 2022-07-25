@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Aparna Duggapu",
     "email": "aparnaduggapu@gmail.com",
+    "password": "Hello123",
     "phoneNumber": "07879799086",
     "age": "31 years",
     "height": "160cm - 5ft 3in",
@@ -35,6 +36,7 @@
       "name": "Aparna D",
       "email": "aparnaduggapu12345@gmail.com",
       "phoneNumber": "071234567",
+      "password": "Hello123",
       "age": "30 years",
       "height": "160cm - 5ft 3in",
       "location": "Visakhapatnam - Andhra Pradesh",
@@ -58,6 +60,7 @@
       "id": "2",
       "name": "Satish Attada",
       "email": "satishattada@gmail.com",
+      "password": "Hello123",
       "phoneNumber": "07879799086",
       "age": "35 years",
       "height": "160cm - 5ft 3in",
@@ -72,6 +75,7 @@
       "id": "3",
       "name": "Raj Attada",
       "email": "rajattada@gmail.com",
+      "password": "Hello123",
       "phoneNumber": "07879799086",
       "age": "35 years",
       "height": "160cm - 5ft 3in",
@@ -86,6 +90,7 @@
       "id": "4",
       "name": "Prasuna Attada",
       "email": "prasunattada@gmail.com",
+      "password": "Hello123",
       "phoneNumber": "07879799086",
       "age": "28 years",
       "height": "160cm - 5ft 3in",
@@ -95,6 +100,14 @@
       "motherTongue": "Telugu",
       "education": "B.Pharm",
       "gender": "Female"
+    },
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$lQzU9TW/BjwRy3j6YPhJOOoYU9Vqv331QIRFSCkmbvDHV0V0EQuY6",
+      "firstname": "Olivier",
+      "lastname": "Monge",
+      "age": 32,
+      "id": "a-ElKxh"
     }
   ],
   "profile": {

@@ -1,36 +1,43 @@
 
-import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import './styles.css';
+import Button from './../../components/button/button';
+import userService from '../../services/user.service';
 import we from './../../assets/wed3.jpg';
 import Input from './../../components/input/input';
-import Button from './../../components/button/button';
 
-export class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
+export default function Login({ setToken }) {
+
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await userService.loginUser({
+      username,
+      password
+    });
+    setToken(token);
   }
-  render() {
-    console.log(we);
-    return (
-      <div className="login-container">
+
+  return (
+    <div className="login-container">
+      <form onSubmit={handleSubmit}>
         <div className="row m-0">
+
           <div className="col-md-4">
             <div className="login-content">
-            <div className="main-content">
-              <h1>Login</h1>
-              <Input
-                labelName="User Name"
-                type="text"
-                placeholder="User Name"
-              />
+              <div className="main-content">
+                <h1>Login</h1>
+                <Input labelName="User Name"
+                  type="text"
+                  placeholder="User Name" onChange={e => setUserName(e.target.value)} />
 
-              <Input
-                labelName="Password"
-                type="password"
-                placeholder="Password"
-              />
-              <Button btnClass="btn-danger" value="Login"/>
+                <Input labelName="Password"
+                  type="password"
+                  placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                <Button btnClass="btn-danger" value="Login" />
               </div>
             </div>
           </div>
@@ -38,9 +45,11 @@ export class Login extends Component {
             <img className="wedding-image" src={we} alt="wedding  logo" />
           </div>
         </div>
-      </div>
-    );
-  }
+      </form>
+    </div>
+  )
 }
 
-export default Login;
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
