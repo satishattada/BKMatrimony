@@ -1,5 +1,33 @@
 import UserService from "../../../services/user.service";
 
+export const loginUser = (params) => async (dispatch) => {
+
+  return UserService.loginUser(params).then(
+    (data) => {
+      if(data.accessToken) {
+        dispatch({
+          type: 'GET_LOGIN_SUCCESS',
+          payload: data,
+        });
+        return Promise.resolve("sucess");
+      } else {
+        dispatch({
+          type: 'GET_LOGIN_FAIL',
+        });
+        return Promise.reject();
+      }
+ 
+    },
+    (error) => {
+      dispatch({
+        type: 'GET_LOGIN_FAIL',
+      });
+      return Promise.reject();
+    },
+  );
+};
+
+
 export const getUserDetails = (params) => async (dispatch) => {
 
   return UserService.getUser(params).then(
@@ -44,7 +72,7 @@ export const updateUser = (params) => async (dispatch) => {
   return UserService.updateUser(params).then(
     (data) => {
       dispatch({
-        type: 'UPDATE_USER_SUCCESS',
+        type: 'UPDATE_USERS_SUCCESS',
         payload: data,
       });
       return Promise.resolve(data);

@@ -10,7 +10,12 @@ class UserService {
 			method: 'POST',
 			headers: apiHeaders,
 			body: JSON.stringify(credentials)
-		}).then(data => data.json())
+		}).then(data => {
+			return data.json()
+		}).catch((error) => {
+			return Promise.reject(error);
+
+		})
 	}
 	   
 	getUser = async () => {
@@ -31,8 +36,7 @@ class UserService {
 
 	getUsers = async () => {
 		return new Promise(function (resolve, reject) {
-			// fetch('https://mocki.io/v1/b8909f0a-f883-4169-9db4-964afd678329')
-			fetch(url + 'users'+1)
+			fetch(url + 'users')
 				.then(response => response.json())
 				.then((data) => {
 					resolve(data);

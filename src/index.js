@@ -3,11 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './redux/reducers';
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import storageSession from 'redux-persist/lib/storage/session';
+
+const persistConfig = {
+  key: 'root',
+  storage: storageSession,
+  blacklist: ['errorPage'] 
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+const persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+      </PersistGate>
+    </Provider>
+
   </React.StrictMode>
 );
 
