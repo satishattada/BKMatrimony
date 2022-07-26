@@ -1,46 +1,78 @@
 
 import React, { Component } from "react";
 import './styles.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as appAction from '../../redux/actions';
 import we from './../../assets/wed3.jpg';
-import Input from './../../components/input/input';
-import Button from './../../components/button/button';
-
-export class Login extends Component {
+import Input from '../../components/input/input';
+import Button from '../../components/button/button';
+class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      username: '',
+      password: ''
+    }
   }
+
+  setUserName = (username) => {
+    this.setState({ username })
+  }
+
+  setPassword = (password) => {
+    this.setState({ password })
+  }
+
+  handleSubmit = () => {
+    const payload = {
+      email: this.state.username,
+      password: this.state.password
+    }
+  
+    this.props.appAction.loginUser(payload).then(() => {
+    })
+  
+  }
+
   render() {
-    console.log(we);
     return (
-      <div className="login-container">
-        <div className="row m-0">
-          <div className="col-md-4">
-            <div className="login-content">
+    <div className="login-container">
+      <div className="row m-0">
+        <div className="col-md-4">
+          <div className="login-content">
             <div className="main-content">
               <h1>Login</h1>
-              <Input
-                labelName="User Name"
+              <Input labelName="User Name"
                 type="text"
-                placeholder="User Name"
-              />
+                placeholder="User Name" onChangeEvent={(event) => {this.setUserName(event.target.value)}} />
 
-              <Input
-                labelName="Password"
+              <Input labelName="Password"
                 type="password"
-                placeholder="Password"
-              />
-              <Button btnClass="btn-danger" value="Login"/>
-              </div>
+                placeholder="Password" onChangeEvent={(event) => {this.setPassword(event.target.value)}} />
+              <Button btnClass="btn-danger" value="Login" onSubmitBtn={this.handleSubmit}/>
             </div>
           </div>
-          <div className="col-md-8">
-            <img className="wedding-image" src={we} alt="wedding  logo" />
-          </div>
+        </div>
+        <div className="col-md-8">
+          <img className="wedding-image" src={we} alt="wedding  logo" />
         </div>
       </div>
-    );
+
+    </div>
+    )
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  appAction: bindActionCreators(appAction, dispatch),
+});
+
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user.userData
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

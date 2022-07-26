@@ -6,11 +6,24 @@ import Form from 'react-bootstrap/Form';
 import FormSelect from "react-bootstrap/esm/FormSelect";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as appAction from '../../redux/actions';
 
 export class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+  }
+
+  componentDidMount = () => {
+    // this.props.appAction.getUserDetails().then(() => {
+
+    // });
+    // this.props.appAction.updateUser().then(() => {
+    //   alert();
+
+    // })
   }
   render() {
     return (
@@ -90,33 +103,15 @@ export class Register extends Component {
   }
 }
 
-export default Register;
+const mapDispatchToProps = (dispatch) => ({
+  appAction: bindActionCreators(appAction, dispatch),
+});
 
+const mapStateToProps = (state) => {
+  return {
+    userData: state.user.userData,
+    usersData: state.user.usersData
+  };
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -8,10 +8,10 @@ export class Button extends Component {
     this.state = {}
   }
   render() {
-    const { value, btnClass } = this.props;
+    const { value, btnClass, onSubmitBtn } = this.props;
     return (
       <div className="btn-container">
-        <button type="submit" className={'btn '+btnClass}>{value}</button>
+        <button type="submit" className={'btn '+btnClass} onClick={onSubmitBtn} > {value}</button>
       </div>
     );
   }

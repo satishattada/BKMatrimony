@@ -1,19 +1,21 @@
 import './App.css';
+import { useSelector } from "react-redux";
 import RoutesContainer from "./routes/routes";
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './redux/reducers'
-import thunk from "redux-thunk" 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+import Login from './pages/login/login';
+
 
 function App() {
+  const accessToken = useSelector(state => state?.user?.accessToken);
+  if (!accessToken) {
+    return <Login />
+  }
   return (
-    <Provider store={store}>
-      <RoutesContainer />
-    </Provider>
+    <RoutesContainer />
   );
 }
 
-export default App;
+export default (App);
+
 

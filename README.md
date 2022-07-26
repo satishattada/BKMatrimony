@@ -95,6 +95,8 @@ Start JSON Server
 
 json-server --watch data.json --port 3004
 
+json-server data.json -m ./node_modules/json-server-auth --port 3004
+
 Alternative port
 You can start JSON Server on other ports with the --port flag:
 Now if you go to http://localhost:3000/posts/1, you'll get

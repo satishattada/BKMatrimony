@@ -8,11 +8,11 @@ export class Input extends Component {
     this.state = {}
   }
   render() {
-    const { labelName, type, placeholder } = this.props;
+    const { labelName, type, placeholder, onChangeEvent } = this.props;
     return (
       <div className="input-container">
         <label>{labelName}</label>
-        <input className="input-field" type={type} placeholder={placeholder}></input>
+        <input className="input-field" type={type} placeholder={placeholder} onChange={onChangeEvent}></input>
       </div>
     );
   }
