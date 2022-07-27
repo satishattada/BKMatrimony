@@ -1,4 +1,4 @@
-import './styles.css';
+
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Layout from "./../pages/layout/layout";
 import Home from "./../pages/layout/home/home";
