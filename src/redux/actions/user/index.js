@@ -4,6 +4,7 @@ export const loginUser = (params) => async (dispatch) => {
 
   return UserService.loginUser(params).then(
     (data) => {
+      console.log(data);
       if(data.accessToken) {
         dispatch({
           type: 'GET_LOGIN_SUCCESS',

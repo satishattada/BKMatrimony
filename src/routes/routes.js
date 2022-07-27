@@ -26,7 +26,7 @@ function RoutesContainer() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/matches" element={<Matches />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/food" element={<Food />} />

@@ -7,9 +7,12 @@ import { bindActionCreators } from 'redux';
 import * as appAction from '../../redux/actions';
 import Input from "../../components/input/input";
 import { Button } from "react-bootstrap";
-
+import { withParamsAndNavigate } from "../../components/with-params-navigate/with-params-navigate";
+// const navigate = useNavigate();
 export class Register extends Component {
+
   constructor(props) {
+
     super(props);
     this.state = {
       firstName: '',
@@ -73,7 +76,7 @@ export class Register extends Component {
         break;
     }
 
-    this.setState({errors});
+    this.setState({ errors });
 
   }
   handleSubmit = (e) => {
@@ -82,20 +85,20 @@ export class Register extends Component {
 
     let errors = this.state.errors;
     const { firstName,
-    lastName,
-    email,
-    password,
-    rePassword,
-    gender,
-    phoneNumber } = this.state;
+      lastName,
+      email,
+      password,
+      rePassword,
+      gender,
+      phoneNumber } = this.state;
     let validation = true;
-    if(firstName.length < 5) {
+    if (firstName.length < 5) {
       errors.firstName = 'First Name must be 5 characters long!';
       validation = false;
     }
 
-    
-    if(lastName.length < 5) {
+
+    if (lastName.length < 5) {
       errors.lastName = 'Last Name must be 5 characters long!';
       validation = false;
 
@@ -103,30 +106,30 @@ export class Register extends Component {
 
     const validEmailRegex =
       RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i);
-      console.log(validEmailRegex.test(email));
+    console.log(validEmailRegex.test(email));
     if (!validEmailRegex.test(email)) {
       errors.email = 'Please enter vaild email';
       validation = false;
 
     }
 
-    if(password.length < 5 || password.length > 10) {
+    if (password.length < 5 || password.length > 10) {
       errors.password = 'Pasword should not contain more than 10 chars or less thans 5 chars';
       validation = false;
 
     }
 
-    if(password !== rePassword) {
+    if (password !== rePassword) {
       errors.rePassword = 'Password Mismatch';
       validation = false;
     }
 
-    if(phoneNumber.length !== 10) {
+    if (phoneNumber.length !== 10) {
       errors.phoneNumber = 'Phone number should contain 10 numbers';
       validation = false;
     }
 
-    if(validation) {
+    if (validation) {
       validation = true;
       // hit the api to add the register form
       const payload = {
@@ -137,15 +140,17 @@ export class Register extends Component {
         phoneNumber: phoneNumber,
         gender: gender,
       }
-        
-    this.props.appAction.registerUser(payload).then((res) => {
-      if(res === 'success') {
-          alert('registered successfully')
-      }
-    })
+
+      this.props.appAction.registerUser(payload).then((res) => {
+        if (res === 'success') {
+          alert('registered successfully');
+          const { navigate } = this.props;
+          navigate('/')
+        }
+      })
 
     } else {
-      this.setState({errors});
+      this.setState({ errors });
     }
 
 
@@ -177,28 +182,28 @@ export class Register extends Component {
     //   default:
     //     break;
     // }
-  
-    this.setState({errors}, ()=> {
-        console.log(errors)
+
+    this.setState({ errors }, () => {
+      console.log(errors)
     })
   }
 
   // validate()
   // componentDidMount = () => {
-    // this.props.appAction.getUserDetails().then(() => {
+  // this.props.appAction.getUserDetails().then(() => {
 
-    // });
-    // this.props.appAction.updateUser().then(() => {
-    //   alert();
+  // });
+  // this.props.appAction.updateUser().then(() => {
+  //   alert();
 
-    // })
+  // })
   // }
   render() {
     const { errors } = this.state;
     return (
 
       <div className="container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e) => { this.handleSubmit(e) }}>
           <Input labelName="First Name"
             type="text"
             placeholder="First Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'firstName') }} />
@@ -222,8 +227,8 @@ export class Register extends Component {
             type="password"
             placeholder="Re enter Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'rePassword') }} />
           <label className="errorStyle">{errors.rePassword}</label>
-         
-         
+
+
           {/* <div>
           <label>Gender</label>
           <input type="radio">Male</input>
@@ -289,4 +294,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(withParamsAndNavigate(Register));

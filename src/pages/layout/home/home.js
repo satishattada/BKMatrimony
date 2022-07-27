@@ -18,11 +18,12 @@ class Home extends Component {
   }
 
   componentDidMount = () => {
-    if (!this.props.userData.id) {
-      this.props.appAction.getUserDetails().then(() => {
-        this.setState({ userData: this.props.userData });
-      })
-    } else {
+
+    if (this.props.userData.id) {
+    //   this.props.appAction.getUserDetails().then(() => {
+    //     this.setState({ userData: this.props.userData });
+    //   })
+    // } else {
       this.setState({ userData: this.props.userData });
     }
 
@@ -111,7 +112,7 @@ class Home extends Component {
                     <div className="dash-name">
                       <h2 className={`${className} welcome-message`} >
                         "HI "
-                        <span><b>{userData.name}</b></span>
+                        <span><b>{userData.firstName} {userData.lastName}</b></span>
                         ", welcome back"
                       </h2>
                       <ul>
