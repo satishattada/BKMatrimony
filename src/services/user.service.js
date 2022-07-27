@@ -17,6 +17,19 @@ class UserService {
 
 		})
 	}
+
+	registerUser = async (userData) => {
+		return fetch(url + 'register', {
+			method: 'POST',
+			headers: apiHeaders,
+			body: JSON.stringify(userData)
+		}).then(data => {
+			return data.json()
+		}).catch((error) => {
+			return Promise.reject(error);
+
+		})
+	}
 	   
 	getUser = async () => {
 		return new Promise(function (resolve, reject) {

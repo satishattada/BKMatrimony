@@ -18,3 +18,7 @@
     float: left;
     margin-left: 35px;
 }
+
+.errorStyle {
+    color: red;
+}
