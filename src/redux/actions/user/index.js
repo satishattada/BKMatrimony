@@ -32,12 +32,15 @@ export const registerUser = (params) => async (dispatch) => {
 
   return UserService.registerUser(params).then(
     (data) => {
+      console.log('{{{{{{{{{{{{{data}}}}}}}}}}}}}');
+      console.log(data);
+
       if(data.accessToken) {
         dispatch({
           type: 'GET_REGISTER_SUCCESS',
           payload: data,
         });
-        return Promise.resolve("sucess");
+        return Promise.resolve("success");
       } else {
         dispatch({
           type: 'GET_REGISTER_FAIL',

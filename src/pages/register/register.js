@@ -127,7 +127,6 @@ export class Register extends Component {
     }
 
     if(validation) {
-      alert('success');
       validation = true;
       // hit the api to add the register form
       const payload = {
@@ -139,11 +138,11 @@ export class Register extends Component {
         gender: gender,
       }
         
-    // this.props.appAction.registerUser(payload).then((res) => {
-    //   if(res === 'success') [
-
-    //   ]
-    // })
+    this.props.appAction.registerUser(payload).then((res) => {
+      if(res === 'success') {
+          alert('registered successfully')
+      }
+    })
 
     } else {
       this.setState({errors});

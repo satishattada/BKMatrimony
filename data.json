@@ -102,44 +102,13 @@
       "gender": "Female"
     },
     {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$lQzU9TW/BjwRy3j6YPhJOOoYU9Vqv331QIRFSCkmbvDHV0V0EQuY6",
-      "firstname": "Olivier",
-      "lastname": "Monge",
-      "age": 32,
-      "id": "a-ElKxh"
-    },
-    {
-      "email": "vattada@gmail.com",
-      "password": "$2a$10$Vzn7.F.gYfMg0yb3rpp40OHto5Ndefz6Ycn9psokeSpDZO73kGYCu",
-      "firstName": "Vihan",
+      "email": "sattada@gmail.com",
+      "password": "$2a$10$eAgsYlE.BktxJiE.IsdTYO6frXj4Zf1xhTTwvje01Ms8GEtx7Te66",
+      "firstName": "Satish",
       "lastName": "Attada",
-      "phoneNumber": "07879799086",
-      "age": "28 years",
-      "height": "160cm - 5ft 3in",
-      "location": "Visakhapatnam - Andhra Pradesh",
-      "religion": "Hindu",
-      "caste": "Kalinga",
-      "motherTongue": "Telugu",
-      "education": "B.Pharm",
+      "phoneNumber": "1234567890",
       "gender": "Male",
-      "id": "2tftAwf"
-    },
-    {
-      "email": "vattada1@gmail.com",
-      "password": "$2a$10$GXiuOmy/4f.CqEKzTm/mY.CBu0aAS6RKqExqZnKp4POpZmw882uOa",
-      "firstName": "Vihan",
-      "lastName": "Attada",
-      "phoneNumber": "07879799086",
-      "age": "28 years",
-      "height": "160cm - 5ft 3in",
-      "location": "Visakhapatnam - Andhra Pradesh",
-      "religion": "Hindu",
-      "caste": "Kalinga",
-      "motherTongue": "Telugu",
-      "education": "B.Pharm",
-      "gender": "Male",
-      "id": "FdvOEG0"
+      "id": "sG993Ov"
     }
   ],
   "profile": {
