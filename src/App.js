@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/login/login';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Register from './pages/register/register';
-
+import {withRouter} from 'react-router-dom';
 
 function App() {
   const accessToken = useSelector(state => state?.user?.accessToken);
@@ -29,6 +29,6 @@ function App() {
   );
 }
 
-export default (App);
+export default withRouter(App);
 
 
