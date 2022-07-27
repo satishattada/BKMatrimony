@@ -4,9 +4,11 @@ import './styles.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../redux/actions';
-import we from './../../assets/wed3.jpg';
+import mar from './../../assets/mar3.jpg';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button';
+import {  Link } from "react-router-dom";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +41,10 @@ class Login extends Component {
     return (
     <div className="login-container">
       <div className="row m-0">
-        <div className="col-md-4">
+      <div className="col-md-6">
+          <img className="wedding-image" src={mar} alt="wedding  logo" />
+        </div>
+        <div className="col-md-5">
           <div className="login-content">
             <div className="main-content">
               <h1>Login</h1>
@@ -51,12 +56,13 @@ class Login extends Component {
                 type="password"
                 placeholder="Password" onChangeEvent={(event) => {this.setPassword(event.target.value)}} />
               <Button btnClass="btn-danger" value="Login" onSubmitBtn={this.handleSubmit}/>
+              {/* <Link>Forget Password</Link>
+              <Link>Register</Link> */}
+              <Link to={`/register`}>{'Register'}</Link>
             </div>
           </div>
         </div>
-        <div className="col-md-8">
-          <img className="wedding-image" src={we} alt="wedding  logo" />
-        </div>
+       
       </div>
 
     </div>

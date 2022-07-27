@@ -9,6 +9,7 @@ const initialState = {
 const user = (state = initialState, action) => {
   switch (action.type) {
     case 'GET_LOGIN_SUCCESS':
+    case 'GET_REGISTER_SUCCESS':
       return { ...state, accessToken: action.payload };
     case 'GET_USER_SUCCESS':
       return { ...state, userData: action.payload };

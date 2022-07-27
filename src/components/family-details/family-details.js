@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAddressCard, faAward, faBook, faLocationArrow, faPrayingHands, faUser, faUserFriends, } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserFriends, } from '@fortawesome/free-solid-svg-icons';
 import './family-details.css';
 import { connect } from 'react-redux';
 import FamilyPopup from '../family-information-popup/family-information-popup';
