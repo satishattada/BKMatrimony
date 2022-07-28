@@ -43,6 +43,7 @@ import './header.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 class Header extends Component {
   constructor(props) {
@@ -75,6 +76,7 @@ class Header extends Component {
             <Link className='bell-button' to="/profile">
             <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
             </Link>
+           <div className='logb'> <Button variant="warning">Logout</Button></div>
              {/* <button className='bell-button' >
             <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
           </button> */}
