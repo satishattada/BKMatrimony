@@ -1,5 +1,5 @@
 .container {
-    margin: 20px;
+    /* margin: 20px; */
 }
 .register-heading{
     text-align: left;
@@ -7,18 +7,58 @@
     margin: 10px;
 }
 .register{
-    width: 60%;
-}
-.reg{
-    width: 70%;
-    background-color: rgb(247, 133, 133) !important;
-    color: white;
-    border-radius: 10px !important ;
-    border: 1px solid rgb(247, 111, 111) !important ;
-    float: left;
-    margin-left: 35px;
+   text-align: center;
+   font-weight: 500;
 }
 
 .errorStyle {
     color: red;
+}
+
+.gender{
+    font-weight: 500;
+    margin: 20px 0px 0px 0px;
+}
+input#radio{
+    margin: 10px;
+}
+.profile{
+    font-weight:500 ;
+    margin: 10px 0px;
+} 
+.profile-option{
+ 
+    background-color: rgb(245, 129, 129);
+    border-radius: 5px;
+    border:1px solid rgb(247, 81, 81); 
+    color: white;
+    padding: 6px;
+    margin-bottom: 20px;
+    /* position: relative;
+    left:10%; */
+    width: 20%;
+    
+}
+.wedding-image {
+  
+   display: inline-block;
+   height: 500px;
+   margin-top: 50px;
+}
+.register-btn{
+    width: 25%;
+   display: inline-block;
+    align-items: center !important;
+    margin-left: 10px;
+    position: relative;
+    left: 30%;
+    padding: 6px !important;
+    border-radius: 7px !important;
+} 
+.gen{
+    
+    margin:10px 30px;
+}
+.regspage{
+    width: 100%;
 }

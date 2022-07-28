@@ -10,17 +10,14 @@ import Matches from '../pages/layout/matches/matches';
 import Food from '../pages/layout/food/food';
 import Increment from '../pages/layout/increase/increase';
 import UserDetails from '../pages/layout/user-details/user-details';
-// import EducationDetails from '../pages/layout/education-details/education-details';
-// import MediaDetails from '../pages/layout/media-detais/media-details';
-// import PartnerDetails from '../pages/layout/partner-preferences/partner-details';
-// import Verify from '../pages/layout/verify/verify';
-// import Family from '../pages/layout/family-details/family-details';
 import InterestReceived from '../pages/layout/interest-received/interest-received';
 import InterestSent from '../pages/layout/interest-sent/interest-sent';
 import Shortlisted from '../pages/layout/shortlisted/shortlisted';
 import Connection from '../pages/layout/connections/connection';
 import Blocked from '../pages/layout/blocked/blocked';
 import Buy from '../pages/layout/buy/buy';
+import ForgotPassword from "../pages/forgot-password/forgot-password";
+
 function RoutesContainer() {
   return (
     <BrowserRouter>
@@ -49,6 +46,8 @@ function RoutesContainer() {
         <Route path="*" element={<NoPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
       </Routes>
     </BrowserRouter>
   );
