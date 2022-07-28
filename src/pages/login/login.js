@@ -16,8 +16,8 @@ export class Login extends Component {
     this.state = {
       username: '',
       password: '',
+      validationError: '',
       errors: {
-
         username: '',
         password: '',
 
@@ -26,22 +26,32 @@ export class Login extends Component {
   }
 
   setUserName = (username) => {
-    this.setState({ username });
+    const errors = this.state.errors;
+    errors.username = '';
+    this.setState({ errors, username, validationError: '' });
   }
 
   setPassword = (password) => {
-    this.setState({ password })
+    const errors = this.state.errors;
+    errors.password = '';
+    this.setState({ errors, password, validationError: '' })
   }
 
   validateForm = () => {
-    const { username, password } = this.state
+    const { username, password } = this.state;
+    let { errors } = this.state;
     let validation = true;
     if (username.length === 0) {
       validation = false;
+      errors.username = "Email should not be empty";
     }
     if (password.length === 0) {
       validation = false;
+      errors.password = "Password should not be empty";
+
     }
+    this.setState({ errors });
+
     return validation;
   }
 
@@ -51,15 +61,18 @@ export class Login extends Component {
       password: this.state.password
     }
     const validationStatus = this.validateForm()
-    // if (validationStatus === false) {
-    //   alert('please fill  the required fields')
-    // }
-    // console.log(this.state);
-    this.props.appAction.loginUser(payload).then(() => {
-      const { navigate } = this.props;
-    navigate('/')
-    });
+    if (validationStatus) {
 
+      this.props.appAction.loginUser(payload).then((res) => {
+        if (res === 'success') {
+          const { navigate } = this.props;
+          navigate('/profile')
+        } else {
+          this.setState({ validationError: res })
+        }
+
+      });
+    }
   }
   register = () => {
     const { navigate } = this.props;
@@ -67,7 +80,8 @@ export class Login extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    let { errors, validationError } = this.state;
+    validationError = validationError ? validationError + ', Please try with valid credentials' : '';
     return (
       <div className="container">
         <div className="login-container">
@@ -79,32 +93,34 @@ export class Login extends Component {
               <div className="login-content">
                 <div className="main-content">
                   <h1 className="lheading">Login</h1>
-                  <Input 
+                  <label className="errorStyle">{validationError}</label>
+
+                  <Input
                     testID="userNameTestId"
                     labelName="User Name"
                     type="text"
                     placeholder="User Name" onChangeEvent={(event) => { this.setUserName(event.target.value) }} />
                   <label className="errorStyle">{errors.username}</label>
 
-                  <Input 
+                  <Input
                     testID="passwordTestId"
-                    
+
                     labelName="Password"
                     type="password"
                     placeholder="Password" onChangeEvent={(event) => { this.setPassword(event.target.value) }} />
                   <label className="errorStyle">{errors.password}</label>
 
-                  <Button 
+                  <Button
                     testID="submitTestID"
-                  
-                  btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
+
+                    btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
                   <div className="fpli">
                     <Link to={`/forgot-password`}>{'ForgotPassword'} ?</Link>
                   </div>
 
                   <p className="dheading">Don't have an account?</p>
 
-                  <Button 
+                  <Button
                     testID="registerTestID" btnClass="btn-danger" value="Register" onSubmitBtn={this.register} />
 
                 </div>

@@ -14,14 +14,18 @@ export class Layout extends Component {
   }
   submitLogout = () => {
     this.props.appAction.logoutUser().then(() => {
-      // this.props.navigate('/login');
+      this.props.navigate('/login');
     });
 
+  }
+
+  submitPfrofile = () => {
+      this.props.navigate('/profile');
   }
   render() {
     return (
       <div className='layout-container'>
-        <Header logout={this.submitLogout}/>
+        <Header logout={this.submitLogout} profile={this.submitProfile} />
     
       <div className="page-container">
         <Outlet />

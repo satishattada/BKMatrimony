@@ -13,7 +13,6 @@ import ForgotPassword from './pages/forgot-password/forgot-password';
 
   if (!accessToken) {
     return (
-      // <Login />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -23,9 +22,8 @@ import ForgotPassword from './pages/forgot-password/forgot-password';
         </Routes>
       </BrowserRouter>
     )
-  } else {
-    return <RoutesContainer />
   }
+    return <RoutesContainer />
 }
 
 export default App;
