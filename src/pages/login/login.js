@@ -26,7 +26,7 @@ export class Login extends Component {
   }
 
   setUserName = (username) => {
-    this.setState({ username })
+    this.setState({ username });
   }
 
   setPassword = (password) => {
@@ -51,14 +51,14 @@ export class Login extends Component {
       password: this.state.password
     }
     const validationStatus = this.validateForm()
-    if (validationStatus === false) {
-      alert('please fill  the required fields')
-    }
-    console.log(this.state);
+    // if (validationStatus === false) {
+    //   alert('please fill  the required fields')
+    // }
+    // console.log(this.state);
     this.props.appAction.loginUser(payload).then(() => {
-
-    })
-
+      const { navigate } = this.props;
+    navigate('/')
+    });
 
   }
   register = () => {
@@ -79,24 +79,33 @@ export class Login extends Component {
               <div className="login-content">
                 <div className="main-content">
                   <h1 className="lheading">Login</h1>
-                  <Input labelName="User Name"
+                  <Input 
+                    testID="userNameTestId"
+                    labelName="User Name"
                     type="text"
                     placeholder="User Name" onChangeEvent={(event) => { this.setUserName(event.target.value) }} />
                   <label className="errorStyle">{errors.username}</label>
 
-                  <Input labelName="Password"
+                  <Input 
+                    testID="passwordTestId"
+                    
+                    labelName="Password"
                     type="password"
                     placeholder="Password" onChangeEvent={(event) => { this.setPassword(event.target.value) }} />
                   <label className="errorStyle">{errors.password}</label>
 
-                  <Button btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
+                  <Button 
+                    testID="submitTestID"
+                  
+                  btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
                   <div className="fpli">
                     <Link to={`/forgot-password`}>{'ForgotPassword'} ?</Link>
                   </div>
 
                   <p className="dheading">Don't have an account?</p>
 
-                  <Button btnClass="btn-danger" value="Register" onSubmitBtn={this.register} />
+                  <Button 
+                    testID="registerTestID" btnClass="btn-danger" value="Register" onSubmitBtn={this.register} />
 
                 </div>
               </div>

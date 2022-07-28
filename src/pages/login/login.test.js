@@ -7,8 +7,10 @@ let wrapper;
 configure({ adapter: new Adapter() });
 const defaultProps = {
   appAction: {
-    loginUser: jest.fn().mockImplementation(() => Promise.resolve())
-  }
+    loginUser: jest.fn().mockImplementation(() => Promise.resolve()),
+  },
+  navigate: jest.fn().mockImplementation('/register')
+
 }
 beforeEach(() => {
   wrapper = shallow(<Login {...defaultProps} />);
@@ -26,8 +28,15 @@ describe('<Login />', () => {
   it('username test', () => {
     const component = wrapper.instance();
     const uName = wrapper.find({testID:'userNameTestId'}).props();
-    uName.onChangeEvent({target: {value: 'satish'}});
-    expect(component.state.username).toEqual('satish');
+    uName.onChangeEvent({target: {value: 'satish@gmail.com'}});
+    expect(component.state.username).toEqual('satish@gmail.com');
+  });
+
+  it('username test not equal', () => {
+    const component = wrapper.instance();
+    const uName = wrapper.find({testID:'userNameTestId'}).props();
+    uName.onChangeEvent({target: {value: 'satish@gmail.com'}});
+    expect(component.state.username).not.toBe('aparna@gmail.com');
   });
 
   it('password test', () => {
@@ -37,8 +46,14 @@ describe('<Login />', () => {
     expect(component.state.password).toEqual('attada');
   });
 
-  it('password test', () => {
+  it('submit button test', () => {
     const uName = wrapper.find({testID:'submitTestID'}).props();
+    uName.onSubmitBtn();
+  });
+
+  
+  it('register button test', () => {
+    const uName = wrapper.find({testID:'registerTestID'}).props();
     uName.onSubmitBtn();
   });
 
