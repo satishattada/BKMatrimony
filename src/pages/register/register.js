@@ -1,17 +1,18 @@
 
 import React, { Component } from "react";
 import './styles.css';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../redux/actions';
 import Input from "../../components/input/input";
 import { Button } from "react-bootstrap";
+import { withParamsAndNavigate } from "../../components/with-params-navigate/with-params-navigate";
 import mar4 from './../../assets/mar4.jpg';
 
 export class Register extends Component {
+
   constructor(props) {
+
     super(props);
     this.state = {
       firstName: '',
@@ -90,7 +91,6 @@ export class Register extends Component {
       rePassword,
       gender,
       phoneNumber } = this.state;
-
     let validation = true;
     if (firstName.length < 5) {
       errors.firstName = 'First Name must be 5 characters long!';
@@ -143,7 +143,9 @@ export class Register extends Component {
 
       this.props.appAction.registerUser(payload).then((res) => {
         if (res === 'success') {
-          alert('registered successfully')
+          alert('registered successfully');
+          const { navigate } = this.props;
+          navigate('/')
         }
       })
 
@@ -153,12 +155,10 @@ export class Register extends Component {
 
 
 
-
     this.setState({ errors }, () => {
       console.log(errors)
     })
   }
-
 
   render() {
     const { errors } = this.state;
@@ -262,4 +262,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-        export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(withParamsAndNavigate(Register));

@@ -7,9 +7,9 @@ import Login from './pages/login/login';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Register from './pages/register/register';
 
-
 function App() {
   const accessToken = useSelector(state => state?.user?.accessToken);
+  
   if (!accessToken) {
     return (
       <BrowserRouter>
@@ -22,9 +22,6 @@ function App() {
     )
   }
   return (
-    // <header>
-    //   learn react
-    // </header>
     <RoutesContainer />
   );
 }
