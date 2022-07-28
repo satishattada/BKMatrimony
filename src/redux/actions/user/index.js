@@ -1,11 +1,11 @@
 import UserService from "../../../services/user.service";
 
 export const loginUser = (params) => async (dispatch) => {
-
+alert();
   return UserService.loginUser(params).then(
     (data) => {
       console.log(data);
-      if(data.accessToken) {
+      if (data.accessToken) {
         dispatch({
           type: 'GET_LOGIN_SUCCESS',
           payload: data,
@@ -17,7 +17,7 @@ export const loginUser = (params) => async (dispatch) => {
         });
         return Promise.reject();
       }
- 
+
     },
     (error) => {
       dispatch({
@@ -28,15 +28,22 @@ export const loginUser = (params) => async (dispatch) => {
   );
 };
 
+export const logoutUser = () => async (dispatch) => {
+  alert();
+  dispatch({
+    type: 'GET_LOGOUT_SUCCESS',
+    payload: null,
+  });
+  return Promise.resolve("sucess");
+}
+
 
 export const registerUser = (params) => async (dispatch) => {
 
   return UserService.registerUser(params).then(
     (data) => {
-      console.log('{{{{{{{{{{{{{data}}}}}}}}}}}}}');
-      console.log(data);
 
-      if(data.accessToken) {
+      if (data.accessToken) {
         dispatch({
           type: 'GET_REGISTER_SUCCESS',
           payload: data,
@@ -48,7 +55,7 @@ export const registerUser = (params) => async (dispatch) => {
         });
         return Promise.resolve("fail");
       }
- 
+
     },
     (error) => {
       dispatch({

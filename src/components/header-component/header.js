@@ -9,12 +9,18 @@ import { faBell, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { Dropdown } from "react-bootstrap";
+import { withParamsAndNavigate } from '../with-params-navigate/with-params-navigate';
 
 class Header extends Component {
   constructor(props) {
     super(props)
   }
+
+  myProfile = () => {
+    this.props.navigate('/profile')
+  }
   render() {
+    const { logout } = this.props;
     return (
       <div className="header-container" >
         <Nav>
@@ -44,8 +50,8 @@ class Header extends Component {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item href="/profile">My profile</Dropdown.Item>
-        <Dropdown.Item href="#">Log out</Dropdown.Item>
+        <Dropdown.Item href="#" onClick={this.myProfile}>My profile</Dropdown.Item>
+        <Dropdown.Item href="#" onClick={logout}>Log out</Dropdown.Item>
         
       </Dropdown.Menu>
     </Dropdown>
@@ -57,4 +63,4 @@ class Header extends Component {
     );
   }
 }
-export default Header;
+export default withParamsAndNavigate(Header);

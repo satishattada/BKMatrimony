@@ -155,4 +155,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 
-export default connect(mapDispatchToProps)(withParamsAndNavigate(ForgotPassword));
+export default connect(null, mapDispatchToProps)(withParamsAndNavigate(ForgotPassword));
