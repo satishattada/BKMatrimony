@@ -1,12 +1,14 @@
 
 import React, { Component } from "react";
 import './styles.css';
-
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../redux/actions';
 import Input from "../../components/input/input";
 import { Button } from "react-bootstrap";
+import mar4 from './../../assets/mar4.jpg';
 
 export class Register extends Component {
   constructor(props) {
@@ -88,6 +90,7 @@ export class Register extends Component {
       rePassword,
       gender,
       phoneNumber } = this.state;
+
     let validation = true;
     if (firstName.length < 5) {
       errors.firstName = 'First Name must be 5 characters long!';
@@ -161,92 +164,102 @@ export class Register extends Component {
     const { errors } = this.state;
     return (
 
-      <div className="container">
-        <h4 className="register">Register Page</h4>
-        <form  onSubmit={this.handleSubmit}>
-          <Input labelName="First Name"
-            type="text"
-            placeholder="First Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'firstName') }} />
-          <label className="errorStyle">{errors.firstName}</label>
-          <Input labelName="Last Name"
-            type="text"
-            placeholder="Last Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'lastName') }} />
-          <label className="errorStyle">{errors.lastName}</label>
-
-          <Input labelName="Email"
-            type="text"
-            placeholder="example@" onChangeEvent={(event) => { this.setDetails(event.target.value, 'email') }} />
-          <label className="errorStyle">{errors.email}</label>
-
-          <Input labelName="Password"
-            type="password"
-            placeholder="password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'password') }} />
-          <label className="errorStyle">{errors.password}</label>
-
-          <Input labelName="Re enter Password"
-            type="password"
-            placeholder="Re enter Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'rePassword') }} />
-          <label className="errorStyle">{errors.rePassword}</label>
-         
-          <label className="gender">Gender</label>
-
-          <div className="radio-buttons">
-            <span className="gen">Male
-            <input
-              id="radio"
-              value="Male"
-              name="platform"
-              type="radio"
-              onChange={this.handleGender}
-            />
-            </span>
-           <span className="gen" >Female
-            <input
-              id="radio"
-              value="Female"
-              name="platform"
-              type="radio"
-              onChange={this.handleGender}
-            />
-            </span> 
+      <div className="container">             
+        <div className="row">
+          <div className="col-md-5">
+            <img className="wedding-image" src={mar4} alt="wedding  logo" />
           </div>
+          <div className="col-md-7">
+            <div className="regspage">
+              <h4 className="register">Register Page</h4>
+              <form onSubmit={this.handleSubmit}>
+                <Input labelName="First Name"
+                  type="text"
+                  placeholder="First Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'firstName') }} />
+                <label className="errorStyle">{errors.firstName}</label>
+                <Input labelName="Last Name"
+                  type="text"
+                  placeholder="Last Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'lastName') }} />
+                <label className="errorStyle">{errors.lastName}</label>
+
+                <Input labelName="Email"
+                  type="text"
+                  placeholder="example@" onChangeEvent={(event) => { this.setDetails(event.target.value, 'email') }} />
+                <label className="errorStyle">{errors.email}</label>
+
+                <Input labelName="Password"
+                  type="password"
+                  placeholder="password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'password') }} />
+                <label className="errorStyle">{errors.password}</label>
+
+                <Input labelName="Re enter Password"
+                  type="password"
+                  placeholder="Re enter Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'rePassword') }} />
+                <label className="errorStyle">{errors.rePassword}</label>
+
+                <label className="gender">Gender</label>
+
+                <div className="radio-buttons">
+                  <span className="gen">Male
+                    <input
+                      id="radio"
+                      value="Male"
+                      name="platform"
+                      type="radio"
+                      onChange={this.handleGender}
+                    />
+                  </span>
+                  <span className="gen" >Female
+                    <input
+                      id="radio"
+                      value="Female"
+                      name="platform"
+                      type="radio"
+                      onChange={this.handleGender}
+                    />
+                  </span>
+                </div>
 
 
-          <Input labelName="Phone"
-            type="phone"
-            placeholder="phonenumber" onChangeEvent={(event) => { this.setDetails(event.target.value, 'phoneNumber') }} />
-          <label className="errorStyle">{errors.phoneNumber}</label>
+                <Input labelName="Phone"
+                  type="phone"
+                  placeholder="phonenumber" onChangeEvent={(event) => { this.setDetails(event.target.value, 'phoneNumber') }} />
+                <label className="errorStyle">{errors.phoneNumber}</label>
 
-           <div className="profile"> 
-            <label>Profile Creating For</label><br></br>
-            <select className="profile-option"  onChange={this.handleDropdown}>
-              <option>select</option>
-              <option>Self</option>
-              <option>Daughter</option>
-              <option>Son</option>
-              <option>Friend</option>
-              <option>Relative</option>
-              <option>Brother</option>
-            </select>
+                <div className="profile">
+                  <label>Profile Creating For</label><br></br>
+                  <select className="profile-option" onChange={this.handleDropdown}>
+                    <option>select</option>
+                    <option>Self</option>
+                    <option>Daughter</option>
+                    <option>Son</option>
+                    <option>Friend</option>
+                    <option>Relative</option>
+                    <option>Brother</option>
+                  </select>
 
-           </div> 
-          <Button className="register-btn"  type="submit" >Submit</Button>
-        </form>
-      </div>
-    );
+                </div>
+                <Button className="register-btn" type="submit" >Submit</Button>
+              </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        
+        );
     // onClick={() => { this.handleSubmit() }}
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  appAction: bindActionCreators(appAction, dispatch),
+          appAction: bindActionCreators(appAction, dispatch),
 });
 
 const mapStateToProps = (state) => {
   return {
-    userData: state.user.userData,
-    usersData: state.user.usersData
+          userData: state.user.userData,
+        usersData: state.user.usersData
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+        export default connect(mapStateToProps, mapDispatchToProps)(Register);

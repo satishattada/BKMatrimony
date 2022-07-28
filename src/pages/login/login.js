@@ -7,14 +7,20 @@ import * as appAction from '../../redux/actions';
 import mar from './../../assets/mar3.jpg';
 import Input from '../../components/input/input';
 import Button from '../../components/button/button';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: {
+
+        username: '',
+        password: '',
+
+      }
     }
   }
 
@@ -25,47 +31,75 @@ class Login extends Component {
   setPassword = (password) => {
     this.setState({ password })
   }
+  validateForm = () => {
+    const { username, password } = this.state
+    let validation = true;
+    if (username.length === 0) {
+      validation = false;
+    }
+    if (password.length === 0) {
+      validation = false;
+    }
+    return validation;
+  }
 
   handleSubmit = () => {
     const payload = {
       email: this.state.username,
       password: this.state.password
     }
-  
+    const validationStatus = this.validateForm()
+    if (validationStatus === false) {
+      alert('please fill  the required fields')
+    }
+    console.log(this.state);
     this.props.appAction.loginUser(payload).then(() => {
+      
     })
-  
+    
+    
   }
 
   render() {
+    const { errors } = this.state;
     return (
-    <div className="login-container">
-      <div className="row m-0">
-      <div className="col-md-6">
-          <img className="wedding-image" src={mar} alt="wedding  logo" />
-        </div>
-        <div className="col-md-5">
-          <div className="login-content">
-            <div className="main-content">
-              <h1>Login</h1>
-              <Input labelName="User Name"
-                type="text"
-                placeholder="User Name" onChangeEvent={(event) => {this.setUserName(event.target.value)}} />
+      <div className="login-container">
+        <div className="row m-0">
+          <div className="col-md-6">
+            <img className="wedding-image" src={mar} alt="wedding  logo" />
+          </div>
+          <div className="col-md-5">
+            <div className="login-content">
+              <div className="main-content">
+                <h1>Login</h1>
+                <Input labelName="User Name"
+                  type="text"
+                  placeholder="User Name" onChangeEvent={(event) => { this.setUserName(event.target.value) }} />
+                <label className="errorStyle">{errors.username}</label>
 
-              <Input labelName="Password"
-                type="password"
-                placeholder="Password" onChangeEvent={(event) => {this.setPassword(event.target.value)}} />
-              <Button btnClass="btn-danger" value="Login" onSubmitBtn={this.handleSubmit}/>
-              {/* <Link>Forget Password</Link>
-              <Link>Register</Link> */}
-              <Link to={`/register`}>{'Register'}</Link>
+                <Input labelName="Password"
+                  type="password"
+                  placeholder="Password" onChangeEvent={(event) => { this.setPassword(event.target.value) }} />
+                <label className="errorStyle">{errors.password}</label>
+
+                <Button btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
+
+                <div className="rplinks">
+                  <div className="row">
+                    <div className="col-md-9">
+                      <Link to={`/forgot-password`}>{'ForgotPassword'}</Link>
+                    </div>
+                    <div className="col-md-3">
+                      <Link to={`/register`}>{'Register'}</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-       
-      </div>
 
-    </div>
+      </div>
     )
   }
 }

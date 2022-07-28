@@ -109,6 +109,15 @@
       "phoneNumber": "1234567890",
       "gender": "Male",
       "id": "sG993Ov"
+    },
+    {
+      "email": "vattada@gmail.com",
+      "password": "$2a$10$sGPvKINLnnq7UZAlnVF0HeXLTZOk5ILAPCSoxevQDBXwXjfojrFuG",
+      "firstName": "vihan",
+      "lastName": "attada",
+      "phoneNumber": "1233450944",
+      "gender": "Male",
+      "id": "1R7FYIW"
     }
   ],
   "profile": {
