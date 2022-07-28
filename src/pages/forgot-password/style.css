@@ -25,4 +25,30 @@
     width: 80%;
     position: relative;
     top:20%;
+    height: 400px;
+}
+.input-container {
+    margin-top: 0px;
+}
+.fp-content{
+    border: 1px solid #e4dada82;
+    width: 90%;
+    position: relative;
+    top: 20%;
+}
+.sub{
+    width: 100%;
+    margin-top: 20px;
+}
+.lol {
+    margin-top: 20px;
+    text-align: center !important ;
+    border:1px solid orange;
+    width: 50% !important ;
+    position: relative;
+    left: 23%;
+    background: rgb(247, 109, 109);
+    border-radius: 5px;
+    padding: 5px;
+   
 }

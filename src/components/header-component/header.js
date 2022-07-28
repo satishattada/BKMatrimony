@@ -1,40 +1,4 @@
-// import React, { Component } from 'react';
-// import bk from '../../assets/bk-logo.png';
-// import './header.css';
-// import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
-// class Header extends Component {
-//     constructor(props) {
-//         super(props);
-//     }
-
-//     render() {
-//         return (
-//             <div className="header-container">
-//                 <img className="bk-logo" src={bk} alt=" " />
-//                 <nav className='header-navbar'>
-//                     <a href='#'>Home</a>
-//                     <a href='#'>Search</a>
-//                     <a href='#'>Discover Matches</a>
-//                     <a href='input'>Input</a>
-//                     <select>
-//                         <option>Blocked</option>
-//                         <option>Interest received</option>
-//                         <option>Interest sent</option>
-//                         <option>Viewed</option>
-//                         <option>connections</option>
-//                         <option>Blocked</option>
-//                         <option>Shortlisted</option>
-//                     </select>
-//                     <a href='home'>Buy Plan</a>
-
-//                 </nav>
-//             </div>
-//         );
-//     }
-// }
-
-// export default Header;
 import React, { Component } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -44,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 
 class Header extends Component {
   constructor(props) {
@@ -53,9 +18,9 @@ class Header extends Component {
     return (
       <div className="header-container" >
         <Nav>
-           <Link to="/"> 
-          <img className="bk-logo" src={bk} alt=" " />
-           </Link> 
+          <Link to="/">
+            <img className="bk-logo" src={bk} alt=" " />
+          </Link>
           <div className='header-navbar'>
             <Link className='nav-link' to="/">{'Home'}</Link>
             <Link className='nav-link' to="/matches">{'Discover Matches'}</Link>
@@ -68,18 +33,24 @@ class Header extends Component {
             </NavDropdown>
             <Nav.Link href="/buy">Buy Plan</Nav.Link>  </div>
 
-          
-            <Link className='bell-button' to="">
-            <FontAwesomeIcon className='bell-icon' icon={faBell} />
-            </Link>
 
-            <Link className='bell-button' to="/profile">
-            <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
-            </Link>
-           <div className='logb'> <Button variant="warning">Logout</Button></div>
-             {/* <button className='bell-button' >
-            <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
-          </button> */}
+          <Link className='bell-button' to="">
+            <FontAwesomeIcon className='bell-icon' icon={faBell} />
+          </Link>
+
+          <Dropdown className='user'>
+      <Dropdown.Toggle variant="" id="dropdown-basic">
+      <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        <Dropdown.Item href="/profile">My profile</Dropdown.Item>
+        <Dropdown.Item href="#">Log out</Dropdown.Item>
+        
+      </Dropdown.Menu>
+    </Dropdown>
+
+          
         </Nav>
       </div>
 

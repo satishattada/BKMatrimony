@@ -30,7 +30,18 @@ class UserService {
 
 		})
 	}
-	   
+	forgotPasswordUser = async (userData) => {
+		return fetch(url + 'forgot-password', {
+			method: 'POST',
+			headers: apiHeaders,
+			body: JSON.stringify(userData)
+		}).then(data => {
+			return data.json()
+		}).catch((error) => {
+			return Promise.reject(error);
+
+		})
+	}
 	getUser = async () => {
 		return new Promise(function (resolve, reject) {
 			// fetch('https://mocki.io/v1/b68a5f90-99f3-4742-82e3-6fae626a16f3')

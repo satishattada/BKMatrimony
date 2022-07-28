@@ -5,9 +5,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../redux/actions';
 import Input from "../../components/input/input";
-import { Button } from "react-bootstrap";
 import { withParamsAndNavigate } from "../../components/with-params-navigate/with-params-navigate";
 import mar4 from './../../assets/mar4.jpg';
+import { Link } from "react-router-dom";
+import Button from "../../components/button/button";
 
 export class Register extends Component {
 
@@ -159,12 +160,16 @@ export class Register extends Component {
       console.log(errors)
     })
   }
+  login = () => {
+    const { navigate } = this.props;
+    navigate('/login')
+  }
 
   render() {
     const { errors } = this.state;
     return (
 
-      <div className="container">             
+      <div className="container">
         <div className="row">
           <div className="col-md-5">
             <img className="wedding-image" src={mar4} alt="wedding  logo" />
@@ -239,26 +244,32 @@ export class Register extends Component {
                   </select>
 
                 </div>
-                <Button className="register-btn" type="submit" >Submit</Button>
+                <Button btnClass="btn-warning" value="Submit" />
+                <p className="am-text">Already a Member ?</p>
+
+
+                <Button btnClass="btn-danger" value="Back To Login" onSubmitBtn={this.login} />
+
+
               </form>
-              </div>
             </div>
           </div>
-          </div>
-        
-        );
+        </div>
+      </div>
+
+    );
     // onClick={() => { this.handleSubmit() }}
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-          appAction: bindActionCreators(appAction, dispatch),
+  appAction: bindActionCreators(appAction, dispatch),
 });
 
 const mapStateToProps = (state) => {
   return {
-          userData: state.user.userData,
-        usersData: state.user.usersData
+    userData: state.user.userData,
+    usersData: state.user.usersData
   };
 };
 
