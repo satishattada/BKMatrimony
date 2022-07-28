@@ -10,7 +10,7 @@ import Button from '../../components/button/button';
 import { Link } from "react-router-dom";
 import { withParamsAndNavigate } from "../../components/with-params-navigate/with-params-navigate";
 
-class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,6 +32,7 @@ class Login extends Component {
   setPassword = (password) => {
     this.setState({ password })
   }
+
   validateForm = () => {
     const { username, password } = this.state
     let validation = true;
@@ -60,7 +61,7 @@ class Login extends Component {
 
 
   }
-  register=()=>{
+  register = () => {
     const { navigate } = this.props;
     navigate('/register')
   }
@@ -89,34 +90,29 @@ class Login extends Component {
                   <label className="errorStyle">{errors.password}</label>
 
                   <Button btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
-                 <div className="fpli">
-                 <Link  to={`/forgot-password`}>{'ForgotPassword'} ?</Link>
-                 </div>
-                    
-                    <p className="dheading">Don't have an account?</p>
+                  <div className="fpli">
+                    <Link to={`/forgot-password`}>{'ForgotPassword'} ?</Link>
+                  </div>
 
-                  <Button  btnClass="btn-danger"  value="Register" onSubmitBtn={this.register} />
-                
+                  <p className="dheading">Don't have an account?</p>
+
+                  <Button btnClass="btn-danger" value="Register" onSubmitBtn={this.register} />
+
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
       </div>
-
-        
-      
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   appAction: bindActionCreators(appAction, dispatch),
 });
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.user.userData
   };

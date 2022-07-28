@@ -40,8 +40,6 @@ function RoutesContainer() {
           <Route path="/Blocked" element={<Blocked />} />
           <Route path="/shortlisted" element={<Shortlisted />} />
           <Route path="/buy" element={<Buy />} />
-
-
         </Route>
         <Route path="*" element={<NoPage />} />
         <Route path="/login" element={<Login />} />

@@ -108,3 +108,6 @@ search for powershell
 right click and run as administration
 run this simple command Set-ExecutionPolicy RemoteSigned
 Press A And Enter
+
+npm test
+ npm run test -- -u --coverage --watchAll=false

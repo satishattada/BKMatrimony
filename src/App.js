@@ -7,11 +7,12 @@ import Login from './pages/login/login';
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import Register from './pages/register/register';
 
-function App() {
+ export function App() {
   const accessToken = useSelector(state => state?.user?.accessToken);
-  
+
   if (!accessToken) {
     return (
+      // <Login />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -20,12 +21,11 @@ function App() {
         </Routes>
       </BrowserRouter>
     )
+  } else {
+    return <RoutesContainer />
   }
-  return (
-    <RoutesContainer />
-  );
 }
 
-export default (App);
+export default App;
 
 

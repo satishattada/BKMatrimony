@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> <AdaptiveTaskInstructions /> Snapshot Test 1`] = `
+<div
+  className="login-container"
+>
+  <div
+    className="row m-0"
+  >
+    <div
+      className="col-md-6"
+    >
+      <img
+        alt="wedding  logo"
+        className="wedding-image"
+        src="mar3.jpg"
+      />
+    </div>
+    <div
+      className="col-md-5"
+    >
+      <div
+        className="login-content"
+      >
+        <div
+          className="main-content"
+        >
+          <h1>
+            Login
+          </h1>
+          <Input
+            labelName="User Name"
+            onChangeEvent={[Function]}
+            placeholder="User Name"
+            testID="userNameTestId"
+            type="text"
+          />
+          <label
+            className="errorStyle"
+          />
+          <Input
+            labelName="Password"
+            onChangeEvent={[Function]}
+            placeholder="Password"
+            testID="passwordTestId"
+            type="password"
+          />
+          <label
+            className="errorStyle"
+          />
+          <Button
+            btnClass="btn-warning"
+            onSubmitBtn={[Function]}
+            testID="submitTestID"
+            value="Login"
+          />
+          <div
+            className="rplinks"
+          >
+            <div
+              className="row"
+            >
+              <div
+                className="col-md-9"
+              >
+                <Link
+                  to="/forgot-password"
+                >
+                  ForgotPassword
+                </Link>
+              </div>
+              <div
+                className="col-md-3"
+              >
+                <Link
+                  to="/register"
+                >
+                  Register
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
