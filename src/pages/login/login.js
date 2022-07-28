@@ -9,7 +9,7 @@ import Input from '../../components/input/input';
 import Button from '../../components/button/button';
 import { Link } from "react-router-dom";
 
-class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +31,7 @@ class Login extends Component {
   setPassword = (password) => {
     this.setState({ password })
   }
+
   validateForm = () => {
     const { username, password } = this.state
     let validation = true;
@@ -49,15 +50,10 @@ class Login extends Component {
       password: this.state.password
     }
     const validationStatus = this.validateForm()
-    if (validationStatus === false) {
-      alert('please fill  the required fields')
-    }
-    console.log(this.state);
-    this.props.appAction.loginUser(payload).then(() => {
-      
-    })
-    
-    
+    // if (validationStatus === false) {
+    //   alert('please fill  the required fields')
+    // }
+    this.props.appAction.loginUser(payload);
   }
 
   render() {
@@ -72,17 +68,21 @@ class Login extends Component {
             <div className="login-content">
               <div className="main-content">
                 <h1>Login</h1>
-                <Input labelName="User Name"
+                <Input 
+                  testID="userNameTestId"
+                  labelName="User Name"
                   type="text"
                   placeholder="User Name" onChangeEvent={(event) => { this.setUserName(event.target.value) }} />
                 <label className="errorStyle">{errors.username}</label>
 
-                <Input labelName="Password"
+                <Input 
+                 testID="passwordTestId"
+                  labelName="Password"
                   type="password"
                   placeholder="Password" onChangeEvent={(event) => { this.setPassword(event.target.value) }} />
                 <label className="errorStyle">{errors.password}</label>
 
-                <Button btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
+                <Button testID="submitTestID" btnClass="btn-warning" value="Login" onSubmitBtn={this.handleSubmit} />
 
                 <div className="rplinks">
                   <div className="row">
@@ -104,11 +104,11 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   appAction: bindActionCreators(appAction, dispatch),
 });
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     userData: state.user.userData
   };
