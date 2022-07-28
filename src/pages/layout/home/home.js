@@ -146,7 +146,7 @@ class Home extends Component {
               <div className="row  " >row</div>
               <div>
                 {usersData?.map((user, i) => {
-                  return (<div className={this.getClass(user.gender)} key={i}> {user.name} </div>)
+                  return (<div className={this.getClass(user.gender)} key={i}> {user.firstName} </div>)
 
                 })}
               </div>
