@@ -47,7 +47,6 @@ class ForgotPassword extends Component {
 
         const validEmailRegex =
             RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i);
-        console.log(validEmailRegex.test(email));
         if (!validEmailRegex.test(email)) {
             errors.email = 'Please enter vaild email';
             validation = false;

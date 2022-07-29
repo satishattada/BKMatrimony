@@ -33,12 +33,10 @@ export class Register extends Component {
     }
   }
   handleGender = (e) => {
-    console.log(e.target.value);
     this.setState({ gender: e.target.value });
 
   }
   handleDropdown = (e) => {
-    console.log(e.target.value);
     this.setState({ dropDown: e.target.value });
 
   }
@@ -107,7 +105,6 @@ export class Register extends Component {
 
     const validEmailRegex =
       RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i);
-    console.log(validEmailRegex.test(email));
     if (!validEmailRegex.test(email)) {
       errors.email = 'Please enter vaild email';
       validation = false;

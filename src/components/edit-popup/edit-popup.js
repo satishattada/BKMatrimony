@@ -44,11 +44,12 @@ class EditPopup extends Component {
             case 'maritalStatus':
                 userData.maritalStatus = value;
                 break;
+            case 'motherTongue':
+                userData.motherTongue = value;
         }
         this.setState({
             userData
-        })
-        console.log(value)
+        });
     }
 
     saveDetails = () => {

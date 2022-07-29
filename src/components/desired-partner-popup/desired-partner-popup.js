@@ -42,8 +42,7 @@ class DesiredPartnerPopup extends Component {
                                 userData.specialCases = value
                                 break;
         }
-        this.setState({ userData })
-        console.log(value)
+        this.setState({ userData });
     }
     saveDetails = () => {
 

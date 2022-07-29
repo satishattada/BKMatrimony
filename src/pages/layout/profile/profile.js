@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import userService from '../../../services/user.service';
 import "./profile.css";
 import female from '../../../assets/female_large.jpg';
 import PersonalDetails from '../../../components/personal-details/personal-details';
@@ -8,6 +7,8 @@ import PartnerPreferences from '../../../components/partner-preferences/partner-
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as appAction from '../../../redux/actions';
 
 class Profile extends Component {
     constructor(props) {
@@ -18,16 +19,18 @@ class Profile extends Component {
     }
     componentDidMount = () => {
         this.setState({ userData: this.props.userData });
-        // userService.getUser().then(
-        //     (data) => {
-        //         this.setState({
-        //             userData: data
-        //         })
-        //     },
-        //     (error) => {
-        //         error.toString();
-        //     }
-        // )
+    }
+
+    updateUserDetails = (userData) => {
+
+        this.props.appAction.updateUser(userData).then((res) => {
+                if(res === 'success') {
+                    alert('user details updated successfully')
+                } else {
+                    alert(res+ 'some issue, please try with valid data')
+
+                }
+        })
     }
 
     render() {
@@ -79,7 +82,7 @@ class Profile extends Component {
 
                 <Tabs defaultActiveKey="key1" id="uncontrolled-tab-example" className="mb-3">
                     <Tab eventKey="key1" title="Personal Details">
-                        <PersonalDetails />
+                        <PersonalDetails userData={userData} updateUserDetails={this.updateUserDetails}/>
                     </Tab>
                     <Tab eventKey="key2" title="Family Details">
                         <FamilyDetails />
@@ -93,10 +96,14 @@ class Profile extends Component {
     }
 }
 
+export const mapDispatchToProps = (dispatch) => ({
+    appAction: bindActionCreators(appAction, dispatch),
+  });
+
 const mapStateToProps = (state) => {
     return {
         userData: state.user.userData,
     };
 };
 
-export default connect(mapStateToProps)(Profile);
+  export default connect(mapStateToProps, mapDispatchToProps)(Profile);

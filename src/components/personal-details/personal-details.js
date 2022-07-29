@@ -24,8 +24,8 @@ class PersonalDetails extends Component {
             backgroundInfoTitle: '',
             showBasicModal: false,
             showCareerModal: false,
-            showLocationModal:false,
-            showBackgroundModal:false,
+            showLocationModal: false,
+            showBackgroundModal: false,
 
         }
     }
@@ -60,9 +60,9 @@ class PersonalDetails extends Component {
         this.setState({
             showEditModal: false,
             showBasicModal: false,
-            showCareerModal:false,
-            showLocationModal:false,
-            showBackgroundModal:false,
+            showCareerModal: false,
+            showLocationModal: false,
+            showBackgroundModal: false,
 
         });
     }
@@ -71,7 +71,7 @@ class PersonalDetails extends Component {
         this.setState({
             basicInfoTitle: 'Update Basic Information',
             showBasicModal: true,
-          
+
         })
     }
 
@@ -95,15 +95,16 @@ class PersonalDetails extends Component {
     }
 
 
-    setBasicInfo = (userData) => {
-        console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
-        console.log(userData);
+    setBasicInfo = (basicDetails) => {
+        let {userData} = this.props;
+        userData = {...userData, ...basicDetails};
+        this.props.updateUserDetails(userData);
+        this.closeModal();
 
     }
     setCareerInfo = (userData) => {
         console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
         console.log(userData);
-
     }
     setLocationInfo = (userData) => {
         console.log('{{{{{{{{{{{{{{{{{{{{{{{{userData}}}}}}}}}}}}}}}}}}}}}}}}');
@@ -122,7 +123,7 @@ class PersonalDetails extends Component {
         // const {userData}=this.state
         const { userData } = this.props;
         const { showEditModal, editModalTitle, editModalValue, showBasicModal, basicInfoTitle, showCareerModal,
-         careerInfoTitle ,showLocationModal,showBackgroundModal,locationInfoTitle,backgroundInfoTitle} = this.state;
+            careerInfoTitle, showLocationModal, showBackgroundModal, locationInfoTitle, backgroundInfoTitle } = this.state;
         return (
             <>
                 <Popup inputValue={editModalValue}
@@ -137,14 +138,14 @@ class PersonalDetails extends Component {
                     setCareerInfo={this.setCareerInfo} />
 
                 <LocationPopup locationInfo={userData}
-                title={locationInfoTitle} show={showLocationModal} handleClose={this.closeModal} 
-                setLocationInfo={this.setLocationInfo}
+                    title={locationInfoTitle} show={showLocationModal} handleClose={this.closeModal}
+                    setLocationInfo={this.setLocationInfo}
                 />
 
                 <BackgroundPopup backgroundInfo={userData}
-                title={backgroundInfoTitle} show={showBackgroundModal} handleClose={this.closeModal}
-                setBackgroundInfo={this.setBackgroundInfo}
-                
+                    title={backgroundInfoTitle} show={showBackgroundModal} handleClose={this.closeModal}
+                    setBackgroundInfo={this.setBackgroundInfo}
+
                 />
                 <div className='contact-container'>
                     <FontAwesomeIcon className='iconcard' icon={faAddressCard} />
@@ -284,9 +285,5 @@ class PersonalDetails extends Component {
     }
 
 }
-const mapStateToProps = (state) => {
-    return {
-        userData: state.user.userData
-    }
-}
-export default connect(mapStateToProps)(PersonalDetails);
+
+export default (PersonalDetails);
