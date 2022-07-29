@@ -3,6 +3,8 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from '../button/button';
 import female from '../../assets/female_large.jpg';
+import './styles.css';
+
 
 class ProfileCard extends Component {
   constructor(props) {
@@ -17,26 +19,31 @@ class ProfileCard extends Component {
 
     return (
       <>
-        <CardGroup>
-          <Card>
+        <CardGroup  >
+          <Card >
+          <div>
             {
               (userData?.profilePhoto?.image?.data) ?
 
-                <Card.Img variant="top" src={propfilePhoto} /> :
-                <Card.Img variant="top" src={female} />
+                <Card.Img className='profile-photos-container'   variant="top" src={propfilePhoto} /> :
+                <Card.Img  className='profile-photos-container'  variant="top" src={female} />
 
             }
+       </div>
             <Card.Body>
-              <Card.Title></Card.Title>
+              <Card.Title>
+                
+                <h4 className='profile-name'>{userData.firstName}</h4>
+ 
+
+              </Card.Title>
               <Card.Text>
                 <h6></h6>
-                <p></p>
+                <small className='user-description'>{userData.age+ ', '+ userData.height+','+ userData.city+','+userData.caste}</small>
+
                 <Button btnClass="btn-danger" value="Veiw Profile" />
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
           </Card>
         </CardGroup>
       </>

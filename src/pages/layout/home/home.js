@@ -8,7 +8,6 @@ import { bindActionCreators } from 'redux';
 import * as appAction from '../../../redux/actions';
 import { Link } from "react-router-dom";
 import ProfileCard from "../../../components/profile-card/profile-card";
-
 import female from '../../../assets/female_large.jpg';
 
 class Home extends Component {
