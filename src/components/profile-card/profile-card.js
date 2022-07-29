@@ -21,7 +21,7 @@ class ProfileCard extends Component {
       <>
         <CardGroup  >
           <Card >
-          <div>
+          <div className='profileContent'>
             {
               (userData?.profilePhoto?.image?.data) ?
 
