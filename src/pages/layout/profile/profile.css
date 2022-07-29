@@ -28,3 +28,14 @@
     display: flex;
     margin:10px;
 }
+
+.profile-image {
+    position: relative;
+}
+
+.editIcon {
+    position: absolute;
+    top: 34px;
+    right: 20px;
+    cursor: pointer;
+}

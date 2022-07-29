@@ -15,7 +15,7 @@ class ProfileCard extends Component {
   render() {
     const { userData } = this.props
     const propfilePhoto = userData?.profilePhoto?.image?.data ?
-      "data:image/jpeg;base64," + userData?.profilePhoto?.image?.data : '';
+      userData?.profilePhoto?.image?.data : '';
 
     return (
       <>

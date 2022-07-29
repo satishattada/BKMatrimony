@@ -74,16 +74,14 @@ class Home extends Component {
   render() {
     const { userData, usersData } = this.state;
     const className = "blueCls";
-    const profilePhoto = userData?.profilePhoto?.image?.data ?
-      "data:image/jpeg;base64," + userData?.profilePhoto?.image?.data : '';
     return (
       <div className="home-container container ">
-        <div className="verify-details">
+        {/* <div className="verify-details">
           <p className="details">
             your document verification is still pending!
             <a href="#" className='verify  btn  ' >verify</a>
           </p>
-        </div>
+        </div> */}
         <div className="home-row">
           <div className=" row">
             <div className="home-sidebar col-md-3 col-sm-3">
@@ -92,8 +90,8 @@ class Home extends Component {
         <img className="female-image" src={propfilePhoto} alt="" /> */}
 
                 {
-                  (userData?.profilePhoto?.image?.data) ?
-                    <img className="profile-female-image" src={profilePhoto} alt="" /> :
+                  (userData?.profilePhoto) ?
+                    <img className="profile-female-image" src={userData?.profilePhoto?.image?.data} alt="" /> :
                     <img className="profile-female-image" src={female} alt="" />
                 }
               </div>
@@ -152,7 +150,6 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="row  " >row</div>
               {/* <ProfileCard /> */}
               <div className="row">
                 {usersData?.map((user, i) => {
