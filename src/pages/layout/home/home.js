@@ -22,32 +22,16 @@ class Home extends Component {
   componentDidMount = () => {
 
     if (this.props.userData.id) {
-      //   this.props.appAction.getUserDetails().then(() => {
-      //     this.setState({ userData: this.props.userData });
-      //   })
-      // } else {
       this.setState({ userData: this.props.userData });
     }
 
-    // if no new data
-    this.props.appAction.getUsersDetails().then((data) => {
+    const gender = this.props.userData.gender === "Female"? 'Male': 'Female';
+console.log(gender);
+    this.props.appAction.getUsersDetails(gender).then((data) => {
 
       this.setState({ usersData: this.props.usersData });
     });
 
-    // if new data loads every time 
-    // this.props.appAction.getUsersDetails().then((data) => {
-    //   this.setState({ usersData: data });
-    // });
-
-    // UserService.getUsers().then(
-    //   (data) => {
-    //     this.setState({ usersData: data });
-    //   },
-    //   (error) => {
-    //     error.toString();
-    //   },
-    // );
   }
 
   getColorStyle = (gender) => {

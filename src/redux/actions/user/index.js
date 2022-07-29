@@ -55,7 +55,7 @@ export const registerUser = (params) => async (dispatch) => {
         dispatch({
           type: 'GET_REGISTER_FAIL',
         });
-        return Promise.resolve("fail");
+        return Promise.resolve(data);
       }
 
     },

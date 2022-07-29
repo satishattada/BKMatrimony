@@ -71,9 +71,9 @@ class UserService {
 
 	}
 
-	getUsers = async () => {
+	getUsers = async (gender) => {
 		return new Promise(function (resolve, reject) {
-			fetch(url + 'users')
+			fetch(url + 'users?gender='+gender)
 				.then(response => response.json())
 				.then((data) => {
 					resolve(data);

@@ -21,25 +21,32 @@ class ProfileCard extends Component {
       <>
         <CardGroup  >
           <Card >
-          <div className='profileContent'>
-            {
-              (userData?.profilePhoto?.image?.data) ?
+            <div className='profileContent'>
+              {
+                (userData?.profilePhoto?.image?.data) ?
 
-                <Card.Img className='profile-photos-container'   variant="top" src={propfilePhoto} /> :
-                <Card.Img  className='profile-photos-container'  variant="top" src={female} />
+                  <Card.Img className='profile-photos-container' variant="top" src={propfilePhoto} /> :
+                  <Card.Img className='profile-photos-container' variant="top" src={female} />
 
-            }
-       </div>
+              }
+            </div>
             <Card.Body>
               <Card.Title>
-                
+
                 <h4 className='profile-name'>{userData.firstName}</h4>
- 
+
 
               </Card.Title>
               <Card.Text>
-                <h6></h6>
-                <small className='user-description'>{userData.age+ ', '+ userData.height+','+ userData.city+','+userData.caste}</small>
+                <small className='user-description'>
+                  {userData?.age ? userData?.age : ''+ ', '}
+                  </small>
+                  <small className='user-description'>{ userData.height? userData.height: ''  + ',' }
+                  </small>
+                  <small className='user-description'>{ userData.city? userData.city: ''  + ',' }
+                  </small>
+                  <small className='user-description'>{ userData.caste? userData.caste: ''  + ',' }
+                  </small>
 
                 <Button btnClass="btn-danger" value="Veiw Profile" />
               </Card.Text>

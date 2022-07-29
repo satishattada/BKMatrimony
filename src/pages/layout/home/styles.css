@@ -128,9 +128,7 @@ height: 250px;
 .bold-name{
     color: rgb(192, 132, 13) ;
 }
-.dash-name ul li a {
-   
-    font-family:  sans-serif;
-    font-weight: 800 !important ;
-    color: red !important;
+.bold-profile {
+   text-decoration: underline ;
+    
 }

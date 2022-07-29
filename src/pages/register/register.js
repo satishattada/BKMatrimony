@@ -22,6 +22,7 @@ export class Register extends Component {
       gender: '',
       rePassword: '',
       phoneNumber: '',
+      validationError: null,
       errors: {
         firstName: '',
         lastName: '',
@@ -128,13 +129,14 @@ export class Register extends Component {
       validation = false;
     }
 
+
     if (validation) {
       validation = true;
       // hit the api to add the register form
       const payload = {
         firstName: firstName,
         lastName: lastName,
-        email: email,
+        email: email.toLowerCase(),
         password: password,
         phoneNumber: phoneNumber,
         gender: gender,
@@ -145,6 +147,9 @@ export class Register extends Component {
           alert('registered successfully');
           const { navigate } = this.props;
           navigate('/')
+        } else {
+          this.setState({ validationError: res })
+
         }
       })
 
@@ -164,7 +169,9 @@ export class Register extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+
+    let { errors, validationError } = this.state;
+    validationError = validationError ? validationError + ', Please try with another Email' : '';
     return (
 
       <div className="container">
@@ -175,6 +182,7 @@ export class Register extends Component {
           <div className="col-md-7">
             <div className="regspage">
               <h4 className="register">Register Page</h4>
+              <label className="errorStyle">{validationError}</label>
               <form onSubmit={this.handleSubmit}>
                 <Input labelName="First Name"
                   type="text"
