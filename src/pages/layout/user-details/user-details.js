@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
-import { Button } from 'react-bootstrap';
 import BasicPopup from '../../../components/basic-popup/basic-popup';
 import { connect } from 'react-redux';
-import { Outlet, Link, useParams, withRouter } from "react-router-dom";
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';

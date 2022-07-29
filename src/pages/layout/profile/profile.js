@@ -9,12 +9,13 @@ import Tab from 'react-bootstrap/Tab';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../../redux/actions';
-
+import FileBase64 from 'react-file-base64';
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userData: {},
+            profilePhoto: {}
         }
     }
     componentDidMount = () => {
@@ -33,14 +34,36 @@ class Profile extends Component {
         })
     }
 
+      // Callback~
+  getFiles(file){
+   console.log(file);
+   const profilePhoto =  {
+    image: {
+      mime: "image/jpeg",
+      data: file.base64
+    }
+    };
+
+   this.setState({profilePhoto})
+  }
+
     render() {
-        const { userData } = this.state;
+        const { userData, profilePhoto } = this.state;
+
+        const photo =  profilePhoto?.image?.data? profilePhoto?.image?.data: '';
         return (
             <div className='container'>
                
                 <div className='profile-section'>
                     <div className='profile-image'>
-                        <img className="profile-female-image" src={female} alt="" />
+                        {/* <img className="profile-female-image" src={female} alt="" /> */}
+                       { profilePhoto?.image?.data && 
+                        <img className="profile-female-image" src={photo} alt="" />
+                        }
+
+                        <FileBase64
+                            multiple={ false }
+                            onDone={ this.getFiles.bind(this) } />
                     </div>
                     <div className='profile-data-section'>
                         <h4 className='profile-name'>{userData.name}</h4>

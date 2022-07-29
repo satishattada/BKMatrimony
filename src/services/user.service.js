@@ -32,8 +32,6 @@ class UserService {
 	}
 
 	updateUser = async (userData) => {
-		console.log('{{{{{{{{{{{{userData}}}}}}}}}}}}')
-		console.log(userData);
 		return fetch(url + 'users/'+userData.id, {
 			method: 'PUT',
 			headers: apiHeaders,

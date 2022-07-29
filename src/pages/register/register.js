@@ -7,7 +7,6 @@ import * as appAction from '../../redux/actions';
 import Input from "../../components/input/input";
 import { withParamsAndNavigate } from "../../components/with-params-navigate/with-params-navigate";
 import mar4 from './../../assets/mar4.jpg';
-import { Link } from "react-router-dom";
 import Button from "../../components/button/button";
 
 export class Register extends Component {
@@ -72,6 +71,8 @@ export class Register extends Component {
         errors.phoneNumber = '';
 
         this.setState({ phoneNumber: value });
+        break;
+      default: 
         break;
     }
 
