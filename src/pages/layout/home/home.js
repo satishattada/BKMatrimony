@@ -6,7 +6,9 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appAction from '../../../redux/actions';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ProfileCard from "../../../components/profile-card/profile-card";
+import female from '../../../assets/female_large.jpg';
 
 class Home extends Component {
   constructor(props) {
@@ -20,10 +22,10 @@ class Home extends Component {
   componentDidMount = () => {
 
     if (this.props.userData.id) {
-    //   this.props.appAction.getUserDetails().then(() => {
-    //     this.setState({ userData: this.props.userData });
-    //   })
-    // } else {
+      //   this.props.appAction.getUserDetails().then(() => {
+      //     this.setState({ userData: this.props.userData });
+      //   })
+      // } else {
       this.setState({ userData: this.props.userData });
     }
 
@@ -49,7 +51,7 @@ class Home extends Component {
   }
 
   getColorStyle = (gender) => {
-    return gender === 'Female'? {color:'blue',background:'pink'}: {color:'green',background:'yellow'};
+    return gender === 'Female' ? { color: 'blue', background: 'pink' } : { color: 'green', background: 'yellow' };
 
 
     // let colorCode = '';
@@ -67,13 +69,13 @@ class Home extends Component {
   }
 
   getClass = (gender) => {
-    return gender === 'Female'? 'blueCls': 'greenCls';
+    return gender === 'Female' ? 'blueCls' : 'greenCls';
   }
   render() {
     const { userData, usersData } = this.state;
     const className = "blueCls";
-    const propfilePhoto =  userData?.profilePhoto?.image?.data?
-     "data:image/jpeg;base64,"+userData?.profilePhoto?.image?.data: '';
+    const profilePhoto = userData?.profilePhoto?.image?.data ?
+      "data:image/jpeg;base64," + userData?.profilePhoto?.image?.data : '';
     return (
       <div className="home-container container ">
         <div className="verify-details">
@@ -84,10 +86,17 @@ class Home extends Component {
         </div>
         <div className="home-row">
           <div className=" row">
-        <div className="home-sidebar col-md-3 col-sm-3">
-        <div className="img">
-              <img className="female-image" src={propfilePhoto} alt="" />
-        </div>
+            <div className="home-sidebar col-md-3 col-sm-3">
+              <div className="img">
+                {/* propfilePhoto?<img className="female-image" src={propfilePhoto} alt="" />:
+        <img className="female-image" src={propfilePhoto} alt="" /> */}
+
+                {
+                  (userData?.profilePhoto?.image?.data) ?
+                    <img className="profile-female-image" src={profilePhoto} alt="" /> :
+                    <img className="profile-female-image" src={female} alt="" />
+                }
+              </div>
               <div className="progress-bar " role="progressbar" >progress bar</div>
               <div className="side-navbar">
                 {/* <a href="#" > Basic Details</a> */}
@@ -144,11 +153,20 @@ class Home extends Component {
                 </div>
               </div>
               <div className="row  " >row</div>
-              <div>
+              {/* <ProfileCard /> */}
+              <div className="row">
                 {usersData?.map((user, i) => {
-                  return (<div className={this.getClass(user.gender)} key={i}> {user.firstName} </div>)
+                  return (
+                    <div className="col-md-4">
+                      <ProfileCard userData={user} />
+                    </div>
+                  )
+                  // <div className={this.getClass(user.gender)} key={i}> {user.firstName} 
+
+                  // </div>)
 
                 })}
+
               </div>
             </div>
           </div>

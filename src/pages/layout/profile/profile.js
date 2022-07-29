@@ -48,16 +48,21 @@ class Profile extends Component {
   }
 
     render() {
-        const { userData, profilePhoto } = this.state;
-
-        const photo =  profilePhoto?.image?.data? profilePhoto?.image?.data: '';
+        const { userData } = this.state;
+        const profilePhoto = userData?.profilePhoto?.image?.data ?
+            "data:image/jpeg;base64," + userData?.profilePhoto?.image?.data : '';
         return (
             <div className='container'>
-               
+
                 <div className='profile-section'>
                     <div className='profile-image'>
-                        {/* <img className="profile-female-image" src={female} alt="" /> */}
-                       { profilePhoto?.image?.data && 
+                        {
+                            (userData?.profilePhoto?.image?.data) ?
+                                <img className="profile-female-image" src={profilePhoto} alt="" /> :
+                                <img className="profile-female-image" src={female} alt="" />
+                        }
+
+                        { profilePhoto?.image?.data && 
                         <img className="profile-female-image" src={photo} alt="" />
                         }
 
@@ -66,7 +71,8 @@ class Profile extends Component {
                             onDone={ this.getFiles.bind(this) } />
                     </div>
                     <div className='profile-data-section'>
-                        <h4 className='profile-name'>{userData.name}</h4>
+                        <h4 className='profile-name'>{userData.firstName}</h4>
+                        <h4 className='profile-name'>{userData.lastName}</h4>
                         <small>
                             <span className='profile-id'>{userData.id}</span>
                             <div className='profile-data'>
@@ -118,8 +124,8 @@ export const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
     return {
-      userData: state.user.userData,
+        userData: state.user.userData,
     };
-  };
+};
 
   export default connect(mapStateToProps, mapDispatchToProps)(Profile);
