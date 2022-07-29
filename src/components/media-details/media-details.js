@@ -18,7 +18,7 @@ class MediaDetails extends Component {
         return (<div>
 
             <div className='media-container'>
-                <h5>Welcome Miss. {userData.name} @ LoveVivah!</h5><br /><br />
+                <h5 className='heading-welcome'>Welcome Miss <span className='bold-color' >{userData.name} </span>@ Bk Matrimony!</h5>
                 <div className='media-info'>
                     <div className='row'>
                         <h6>Get more responses by adding your photos</h6>

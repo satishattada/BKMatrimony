@@ -12,6 +12,7 @@ import * as appAction from '../../../redux/actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import AddMediaPopup from '../../../components/add-media-popup/add-media-popup';
+import MediaDetails from '../../../components/media-details/media-details';
 
 class Profile extends Component {
     constructor(props) {
@@ -84,8 +85,8 @@ class Profile extends Component {
 
                         </div>
                         <div className='profile-data-section'>
-                            <h4 className='profile-name'>{userData.firstName}</h4>
-                            <h4 className='profile-name'>{userData.lastName}</h4>
+                            <h4 className='profile-name'>{userData.firstName+''+userData.lastName}</h4>
+                         
                             <small>
                                 <span className='profile-id'>{userData.id}</span>
                                 <div className='profile-data'>
@@ -124,6 +125,9 @@ class Profile extends Component {
                         </Tab>
                         <Tab eventKey="key3" title="Partner Perferences" >
                             <PartnerPreferences />
+                        </Tab>
+                        <Tab eventKey="key4" title="Media(videos & photos)" >
+                            <MediaDetails />
                         </Tab>
                     </Tabs>
                 </div>

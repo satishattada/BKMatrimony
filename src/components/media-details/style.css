@@ -46,3 +46,11 @@ padding: 8px 0px;
 .facebookbtn{
     width: 70%;
 }
+.heading-welcome{
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+.bold-color{
+    color: orange;
+}

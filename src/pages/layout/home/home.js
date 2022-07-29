@@ -117,14 +117,16 @@ class Home extends Component {
                 <div className="row" >
                   <div className="col-md-8 col-sm-8">
                     <div className="dash-name">
-                      <h2 className={`${className} welcome-message`} >
-                        "HI "
-                        <span><b>{userData.firstName} {userData.lastName}</b></span>
-                        ", welcome back"
+                      {/* <h2 className={`${className} welcome-message`} > */}
+                      <h2 className='welcome-message '>
+
+                         HI "
+                        <span className="bold-name"><b>{userData.firstName} {userData.lastName}</b></span>
+                        " welcome back.
                       </h2>
                       <ul>
                         <li>
-                          <Link to="/profile">{'My Profile'}</Link>
+                          <span className="bold-profile"><Link to="/profile">{'My Profile'}</Link></span>
                         </li>
                         <li>{userData.id}</li>
                         <li>{userData.email}</li>
