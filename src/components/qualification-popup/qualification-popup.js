@@ -40,8 +40,7 @@ setDetails=(value,type)=>{
         break;
 
     }
-    this.setState({userData})
-    console.log(value)
+    this.setState({userData});
 }
 saveDetails = () => {
 

@@ -42,8 +42,7 @@ class EducationPopup extends Component {
            
 
         }
-        this.setState({ userData })
-        console.log(value)
+        this.setState({ userData });
     }
     saveDetails = () => {
 

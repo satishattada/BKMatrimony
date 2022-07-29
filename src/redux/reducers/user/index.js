@@ -14,9 +14,15 @@ const user = (state = initialState, action) => {
         ...state, accessToken: action.payload.accessToken,
         userData: action.payload.user
       };
+    case 'GET_UPDATE_USER_SUCCESS':
+
+      return {
+        ...state,
+        userData: action.payload
+      };
     case 'GET_LOGOUT_SUCCESS':
       return {
-        ...state, 
+        ...state,
         accessToken: '',
         userData: {}
       };

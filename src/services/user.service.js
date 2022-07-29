@@ -30,6 +30,21 @@ class UserService {
 
 		})
 	}
+
+	updateUser = async (userData) => {
+		console.log('{{{{{{{{{{{{userData}}}}}}}}}}}}')
+		console.log(userData);
+		return fetch(url + 'users/'+userData.id, {
+			method: 'PUT',
+			headers: apiHeaders,
+			body: JSON.stringify(userData)
+		}).then(data => {
+			return data.json()
+		}).catch((error) => {
+			return Promise.reject(error);
+		})
+	}
+	
 	forgotPasswordUser = async (userData) => {
 		return fetch(url + 'forgot-password', {
 			method: 'POST',
@@ -61,51 +76,6 @@ class UserService {
 	getUsers = async () => {
 		return new Promise(function (resolve, reject) {
 			fetch(url + 'users')
-				.then(response => response.json())
-				.then((data) => {
-					resolve(data);
-				}).catch((error) => {
-					return reject(error);
-				});
-		}).catch((error) => {
-			return Promise.reject(error);
-		});
-
-	}
-
-
-	updateUser = async () => {
-		const userData = {
-			"id": "1",
-			"name": "Aparna Duggapu",
-			"email": "aparnaduggapu@gmail.com",
-			"phoneNumber": "07879799086",
-			"age": "28 years",
-			"height": "150cm - 5ft 3in",
-			"location": "Visakhapatnam - Andhra Pradesh",
-			"religion": "Hindu",
-			"caste": "Kalinga",
-			"motherTongue": "Telugu",
-			"education": "B.Pharm",
-			"gender": "Female",
-			"college": "vignan institue",
-			"working": "no",
-			"settleDownAbroad": "yes",
-			"workAfterMarriage": "yes",
-			"countryOfResidence": "india",
-			"gothram": "srivatshala",
-			"manglik": "not known",
-			"birth": "23-march-1991",
-			"maritalStatus": "not specified",
-			"timeOfBirth": "23hr-30m-3s"
-		  }
-		const requestOptions = {
-			method: 'PUT',
-			headers: apiHeaders,
-			body: JSON.stringify(userData)
-		}
-		return new Promise(function (resolve, reject) {
-			fetch(url + 'users/'+1, requestOptions)
 				.then(response => response.json())
 				.then((data) => {
 					resolve(data);

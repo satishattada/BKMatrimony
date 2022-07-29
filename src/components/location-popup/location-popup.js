@@ -30,8 +30,7 @@ class LocationPopup extends Component {
                 userData.location = value
                 break;
         }
-        this.setState({ userData })
-        console.log(value)
+        this.setState({ userData });
     }
     saveDetails = () => {
 

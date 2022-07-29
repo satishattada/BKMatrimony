@@ -1,9 +1,12 @@
+import { crypt } from "../../../helper/helper";
 import UserService from "../../../services/user.service";
 
 export const loginUser = (params) => async (dispatch) => {
   return UserService.loginUser(params).then(
     (data) => {
+      
       if (data.accessToken) {
+        data.user = {...data.user, password: params.password};
         dispatch({
           type: 'GET_LOGIN_SUCCESS',
           payload: data,
@@ -41,6 +44,8 @@ export const registerUser = (params) => async (dispatch) => {
     (data) => {
 
       if (data.accessToken) {
+        data.user = {...data.user, password: params.password};
+
         dispatch({
           type: 'GET_REGISTER_SUCCESS',
           payload: data,
@@ -63,26 +68,37 @@ export const registerUser = (params) => async (dispatch) => {
   );
 };
 
-export const getUserDetails = (params) => async (dispatch) => {
 
-  return UserService.getUser(params).then(
+export const updateUser = (params) => async (dispatch) => {
+
+  return UserService.updateUser(params).then(
     (data) => {
 
-      dispatch({
-        type: 'GET_USER_SUCCESS',
-        payload: data,
-      });
-      return Promise.resolve("sucess");
+      if (data.id) {
+        data = {...data, password: params.password};
+
+        dispatch({
+          type: 'GET_UPDATE_USER_SUCCESS',
+          payload: data,
+        });
+        return Promise.resolve("success");
+      } else {
+        dispatch({
+          type: 'GET_UPDATE_USER_FAIL',
+        });
+        return Promise.resolve(data);
+      }
+
     },
     (error) => {
-    
       dispatch({
-        type: 'GET_USER_FAIL',
+        type: 'GET_UPDATE_USER_FAIL',
       });
       return Promise.reject();
     },
   );
 };
+
 
 export const getUsersDetails = (params) => async (dispatch) => {
 
@@ -90,26 +106,6 @@ export const getUsersDetails = (params) => async (dispatch) => {
     (data) => {
       dispatch({
         type: 'GET_USERS_SUCCESS',
-        payload: data,
-      });
-      return Promise.resolve(data);
-    },
-    (error) => {
-      dispatch({
-        type: 'GET_USERS_FAIL',
-      });
-      return Promise.reject();
-    },
-  );
-};
-
-
-export const updateUser = (params) => async (dispatch) => {
-
-  return UserService.updateUser(params).then(
-    (data) => {
-      dispatch({
-        type: 'UPDATE_USERS_SUCCESS',
         payload: data,
       });
       return Promise.resolve(data);

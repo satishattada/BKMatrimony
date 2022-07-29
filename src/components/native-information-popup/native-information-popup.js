@@ -36,8 +36,7 @@ class NativePopup extends Component {
                         userData.familyIncome = value
                         break;
         }
-        this.setState({ userData })
-        console.log(value)
+        this.setState({ userData });
     }
     saveDetails = () => {
 
