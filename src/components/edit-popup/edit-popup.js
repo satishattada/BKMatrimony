@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './style.css'
-import { Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
+
 
 class EditPopup extends Component {
     constructor(props) {
@@ -23,7 +23,10 @@ class EditPopup extends Component {
     setDetails = (value, type) => {
         let { userData } = this.state;
         switch (type) {
-            case 'name':
+            case 'firstName':
+                userData.name = value;
+                break;
+                case 'lastName':
                 userData.name = value;
                 break;
             case 'birth':
@@ -70,13 +73,24 @@ class EditPopup extends Component {
                 <Modal.Body>
                     <Form>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">Name</Form.Label>
+                            <Form.Label column sm="3">First Name</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.name}
+                                    defaultValue={userData.firstName}
                                     aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
-                                    onChange={(event) => { this.setDetails(event.target.value, 'name') }}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'firstName') }}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
+                            <Form.Label column sm="3">Last Name</Form.Label>
+                            <Col sm="9">
+                                <Form.Control
+                                    defaultValue={userData.lastName}
+                                    aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2"
+                                    onChange={(event) => { this.setDetails(event.target.value, 'lastName') }}
                                 />
                             </Col>
                         </Form.Group>
@@ -96,7 +110,6 @@ class EditPopup extends Component {
                                 <Form.Control
                                     defaultValue={userData.age}
                                     onChange={(event) => { this.setDetails(event.target.value, 'age') }}
-
                                 />
                             </Col>
                         </Form.Group><Form.Group as={Row} className="mb-3">
@@ -110,17 +123,9 @@ class EditPopup extends Component {
                         </Form.Group><Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Gender</Form.Label>
                             <Col sm="9">
-
-                                <DropdownButton title="Select Gender" variant="warning">
-                                    <FormControl
-                                        defaultValue={userData.gender}
-                                        onChange = {(event) => { this.setDetails(event.target.value, 'gender') }}
-                                    />
-                                    <Dropdown.Item href="#">male</Dropdown.Item>
-                                    <Dropdown.Item href="#">other</Dropdown.Item>
-                                </DropdownButton>
-
-                            </Col>
+                            <Form.Check type="radio" aria-label="radio 1" label='Male'/>                          
+                            <Form.Check type="radio" aria-label="radio 1" label='Female'/>                        
+                            </Col>                   
                         </Form.Group><Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Height</Form.Label>
                             <Col sm="9">

@@ -22,22 +22,25 @@ export class Register extends Component {
       gender: '',
       rePassword: '',
       phoneNumber: '',
+      profileFor: '',
       validationError: null,
       errors: {
         firstName: '',
         lastName: '',
         email: '',
         password: '',
-        rePassword: ''
+        rePassword: '',
+        gender: '',
+        dropdown: ''
       }
     }
   }
   handleGender = (e) => {
     this.setState({ gender: e.target.value });
-
+    // this.setState({ errors });
   }
   handleDropdown = (e) => {
-    this.setState({ dropDown: e.target.value });
+    this.setState({ profileFor: e.target.value });
 
   }
 
@@ -73,7 +76,7 @@ export class Register extends Component {
 
         this.setState({ phoneNumber: value });
         break;
-      default: 
+      default:
         break;
     }
 
@@ -91,7 +94,8 @@ export class Register extends Component {
       password,
       rePassword,
       gender,
-      phoneNumber } = this.state;
+      phoneNumber,
+      profileFor, } = this.state;
     let validation = true;
     if (firstName.length < 5) {
       errors.firstName = 'First Name must be 5 characters long!';
@@ -129,6 +133,16 @@ export class Register extends Component {
       validation = false;
     }
 
+    if (!gender) {
+      errors.gender = 'Gender is required';
+      validation = false;
+
+    }
+    if (!profileFor) {
+      errors.dropdown = ' please select the options';
+      validation = false;
+
+    }
 
     if (validation) {
       validation = true;
@@ -140,6 +154,7 @@ export class Register extends Component {
         password: password,
         phoneNumber: phoneNumber,
         gender: gender,
+        profileFor: profileFor
       }
 
       this.props.appAction.registerUser(payload).then((res) => {
@@ -184,73 +199,87 @@ export class Register extends Component {
               <h4 className="register">Register Page</h4>
               <label className="errorStyle">{validationError}</label>
               <form onSubmit={this.handleSubmit}>
-                <Input labelName="First Name"
-                  type="text"
-                  placeholder="First Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'firstName') }} />
-                <label className="errorStyle">{errors.firstName}</label>
-                <Input labelName="Last Name"
-                  type="text"
-                  placeholder="Last Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'lastName') }} />
-                <label className="errorStyle">{errors.lastName}</label>
-
-                <Input labelName="Email"
-                  type="text"
-                  placeholder="example@" onChangeEvent={(event) => { this.setDetails(event.target.value, 'email') }} />
-                <label className="errorStyle">{errors.email}</label>
-
-                <Input labelName="Password"
-                  type="password"
-                  placeholder="password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'password') }} />
-                <label className="errorStyle">{errors.password}</label>
-
-                <Input labelName="Re enter Password"
-                  type="password"
-                  placeholder="Re enter Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'rePassword') }} />
-                <label className="errorStyle">{errors.rePassword}</label>
-
-                <label className="gender">Gender</label>
-
-                <div className="radio-buttons">
-                  <span className="gen">Male
-                    <input
-                      id="radio"
-                      value="Male"
-                      name="platform"
-                      type="radio"
-                      onChange={this.handleGender}
-                    />
-                  </span>
-                  <span className="gen" >Female
-                    <input
-                      id="radio"
-                      value="Female"
-                      name="platform"
-                      type="radio"
-                      onChange={this.handleGender}
-                    />
-                  </span>
+                <div>
+                  <Input labelName="First Name"
+                    type="text"
+                    placeholder="First Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'firstName') }} />
+                  <label className="errorStyle">{errors.firstName}</label>
                 </div>
+                <div>
+                  <Input labelName="Last Name"
+                    type="text"
+                    placeholder="Last Name" onChangeEvent={(event) => { this.setDetails(event.target.value, 'lastName') }} />
+                  <label className="errorStyle">{errors.lastName}</label>
+                </div>
+                <div>
+                  <Input labelName="Email"
+                    type="text"
+                    placeholder="Example@" onChangeEvent={(event) => { this.setDetails(event.target.value, 'email') }} />
+                  <label className="errorStyle">{errors.email}</label>
+                </div>
+                <div>
+                  <Input labelName="Password"
+                    type="password"
+                    placeholder="Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'password') }} />
+                  <label className="errorStyle">{errors.password}</label>
+                </div>
+                <div>
+                  <Input labelName="Re enter Password"
+                    type="password"
+                    placeholder="Re enter Password" onChangeEvent={(event) => { this.setDetails(event.target.value, 'rePassword') }} />
+                  <label className="errorStyle">{errors.rePassword}</label>
+                </div>
+                <div>
 
 
-                <Input labelName="Phone"
-                  type="phone"
-                  placeholder="phonenumber" onChangeEvent={(event) => { this.setDetails(event.target.value, 'phoneNumber') }} />
-                <label className="errorStyle">{errors.phoneNumber}</label>
 
-                <div className="profile">
-                  <label>Profile Creating For</label><br></br>
+                  <label className="gender">Gender</label>
+
+                  <div className="radio-buttons">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                        value="Male"
+                        onChange={this.handleGender} />
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Male
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                        value="Female"
+                        onChange={this.handleGender} />
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Female
+                      </label>
+                    </div>
+                  </div>
+                  <label className="errorStyle">{errors.gender}</label>
+
+                </div>
+                <div>
+                  <Input labelName="Phone"
+                    type="phone"
+                    placeholder="phonenumber" onChangeEvent={(event) => { this.setDetails(event.target.value, 'phoneNumber') }} />
+                  <label className="errorStyle">{errors.phoneNumber}</label>
+                </div>
+                <div>
+                  <label className="profile">Profile Creating For</label><br></br>
                   <select className="profile-option" onChange={this.handleDropdown}>
-                    <option>select</option>
-                    <option>Self</option>
-                    <option>Daughter</option>
-                    <option>Son</option>
-                    <option>Friend</option>
-                    <option>Relative</option>
-                    <option>Brother</option>
+                    <option value="">Select</option>
+                    <option value="self">Self</option>
+                    <option value="daughter">Daughter</option>
+                    <option value="son">Son</option>
+                    <option value="friend">Friend</option>
+                    <option value="relative">Relative</option>
+                    <option value="brother">Brother</option>
                   </select>
-
+                  <label className="errorStyle">{errors.dropdown}</label>
                 </div>
+                <br></br>
+
                 <Button btnClass="btn-warning" value="Submit" />
+
                 <p className="am-text">Already a Member ?</p>
 
 

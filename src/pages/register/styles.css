@@ -1,82 +1,88 @@
 .container {
     /* margin: 20px; */
 }
-.register-heading{
+
+.register-heading {
     text-align: left;
     padding: 10px;
     margin: 10px;
 }
-.register{
-   text-align: center;
-   font-weight: 500;
+
+.register {
+    text-align: center;
+    font-weight: 500;
 }
 
 .errorStyle {
     color: red;
 }
 
-.gender{
+.gender {
     font-weight: 500;
-    margin: 20px 0px 0px 0px;
 }
-input#radio{
+
+input#radio {
     margin: 10px;
 }
-.profile{
-    font-weight:500 ;
+
+.profile {
+    font-weight: 500;
     margin: 10px 0px;
-} 
-.profile-option{
- 
-   
+}
+
+.profile-option {
     border-radius: 5px;
-     
-    color:black;
+    color: black;
     padding: 6px;
-    margin-bottom: 20px;
     /* position: relative;
     left:10%; */
     width: 100%;
-    
+
 }
+
 .wedding-image {
-  
-   display: inline-block;
-   height: 600px;
-   margin-top: 20px;
-   
+
+    display: inline-block;
+    height: 600px;
+    margin-top: 20px;
+
 }
-.register-btn{
+
+.register-btn {
     width: 100%;
-   display: inline-block;
+    display: inline-block;
     align-items: center !important;
-   
-   
+
+
     padding: 6px !important;
     border-radius: 7px !important;
-} 
-.gen{
-    
-    margin:10px 30px;
 }
-.regspage{
+
+.gen {
+
+    margin: 10px 30px;
+}
+
+.regspage {
     width: 100%;
     padding: 20px;
     border: 1px solid rgb(189 174 174 / 36%);
 }
+
 .lol {
     margin-top: 20px;
-    text-align: center !important ;
-    border:1px solid orange;
-    width: 50% !important ;
+    text-align: center !important;
+    border: 1px solid orange;
+    width: 50% !important;
     position: relative;
     left: 23%;
     background: rgb(247, 109, 109);
     border-radius: 5px;
     padding: 5px;
-   
+
 }
-.am-text{
+
+.am-text {
     position: relative;
     left: 0%;
     color: red;
@@ -85,4 +91,13 @@ input#radio{
     text-align: center;
     margin-top: 20px;
 
+}
+
+.radio-buttons {
+    display: flex;
+    margin-top: 5px;
+}
+
+.form-check {
+    margin-right: 20px;
 }
