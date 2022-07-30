@@ -11,48 +11,48 @@ class BackgroundPopup extends Component {
     constructor(props) {
         super(props)
     this.state={
-        userData:''
+        backgroundInfo:this.props.backgroundInfo
     }
     }
     componentDidMount=()=>{
-        let userData=this.props.backgroundInfo;
+        let backgroundInfo=this.props.backgroundInfo;
         this.setState({
-            userData
+            backgroundInfo
         })
     }
 setDetails=(value,type)=>{
-    let {userData}=this.state;
+    let {backgroundInfo}=this.state;
     switch(type){
         case'religion':
-           userData.religion=value
+           backgroundInfo.religion=value
         break;
         case'MotherTongue':
-        userData.MotherTongue=value
+        backgroundInfo.MotherTongue=value
         break;
         case'caste':
-        userData.caste=value
+        backgroundInfo.caste=value
         break;
         case'manglik':
-        userData.manglik=value
+        backgroundInfo.manglik=value
         break;
         case'gothram':
-        userData.ghotram=value
+        backgroundInfo.ghotram=value
         break;
 
     }
-    this.setState({userData});
+    this.setState({backgroundInfo});
 }
 saveDetails = () => {
 
-    let { userData } = this.state;
-    this.props.setBackgroundInfo(userData);
+    let { backgroundInfo } = this.state;
+    this.props.setBackgroundInfo(backgroundInfo);
     // this.props.handleClose();
 }
 
 
     render() {
         const { show, handleClose, title} = this.props;
-        let {userData}=this.state;
+        let {backgroundInfo}=this.state;
         return (<>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='email-heading' closeButton>
@@ -64,7 +64,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Religion</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.religion}
+                                    defaultValue={backgroundInfo.religion}
                                     onChange={(event) => { this.setDetails(event.target.value, 'religion') }}
                                 />
                             </Col>
@@ -73,7 +73,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">MotherTongue</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.motherTongue}
+                                    defaultValue={backgroundInfo.motherTongue}
                                     onChange={(event) => { this.setDetails(event.target.value, 'motherTongue') }}
                                 />
                             </Col>
@@ -82,7 +82,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Caste</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.caste}
+                                    defaultValue={backgroundInfo.caste}
                                     onChange={(event) => { this.setDetails(event.target.value, 'caste') }}
                                 />
                             </Col>
@@ -91,7 +91,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Manglik  </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.manglik}
+                                    defaultValue={backgroundInfo.manglik}
                                     onChange={(event) => { this.setDetails(event.target.value, 'manglik') }}
                                 />
                             </Col>
@@ -100,7 +100,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Gothram </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.gothram}
+                                    defaultValue={backgroundInfo.gothram}
                                     onChange={(event) => { this.setDetails(event.target.value, 'gothram') }}
                                 />
                             </Col>

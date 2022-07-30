@@ -65,6 +65,7 @@ export class Login extends Component {
 
       this.props.appAction.loginUser(payload).then((res) => {
         if (res === 'success') {
+          
           const { navigate } = this.props;
           navigate('/profile')
         } else {

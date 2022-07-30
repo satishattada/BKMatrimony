@@ -50,12 +50,12 @@ class FamilyDetails extends Component {
         const { userData } = this.props;
         const { showFamilyModal, showNativeModal, familyInfoTitle, nativeInfoTitle } = this.state;
         return (<>
-
+ {showFamilyModal && (
             <FamilyPopup familyInfo={userData}
                 title={familyInfoTitle} show={showFamilyModal} handleClose={this.closeModal}
                 setFamilyInfo={this.setFamilyInfo}
             />
-
+ )}
             <NativePopup nativeInfo={userData}
                 title={nativeInfoTitle} show={showNativeModal} handleClose={this.closeModal}
                 setNativeInfo={this.setNativeInfo}
@@ -68,11 +68,11 @@ class FamilyDetails extends Component {
 
                 <div className='family-information'>
                     <div className='row'>
-                        <div className='col-md-6'>Father's occupation</div>
+                        <div className='col-md-6'>Father occupation</div>
                         <div className='col-md-6'>{userData.fatherOccupation}</div>
                     </div>
                     <div className='row'>
-                        <div className='col-md-6'>Mother's occupation</div>
+                        <div className='col-md-6'>Mother occupation</div>
                         <div className='col-md-6'>{userData.motherOccupation}</div>
                     </div>
                     <div className='row'>

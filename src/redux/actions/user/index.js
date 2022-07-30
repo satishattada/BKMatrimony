@@ -38,6 +38,15 @@ export const logoutUser = () => async (dispatch) => {
 }
 
 
+export const selectProfile = (userData) => async (dispatch) => {
+  dispatch({
+    type: 'GET_SELECT_PROFILE_SUCCESS',
+    payload: userData,
+  });
+  return Promise.resolve("sucess");
+}
+
+
 export const registerUser = (params) => async (dispatch) => {
 
   return UserService.registerUser(params).then(

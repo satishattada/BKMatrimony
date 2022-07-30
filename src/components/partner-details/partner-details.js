@@ -37,7 +37,7 @@ class PartnerDetail extends Component {
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Manglik</div>
-                            <div className='col-md-6'>{userData.mangalik}</div>
+                            <div className='col-md-6'>{userData.manglik}</div>
                         </div>
                        
                         
@@ -54,40 +54,40 @@ class PartnerDetail extends Component {
                             <div className='col-md-6'>{userData.caste}</div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-6'>Manglik</div>
-                            <div className='col-md-6'>{userData.manglik}</div>
+                            <div className='col-md-6'>Annual Income</div>
+                            <div className='col-md-6'>{userData.annualIncome}</div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-6'>gothram</div>
+                            <div className='col-md-6'>Gothram</div>
                             <div className='col-md-6'>{userData.gothram}</div>
                         </div>
                        <div className='row'>
-                            <div className='col-md-6'>Drinks and Smoke</div>
-                            <div className='col-md-6'>{userData.smoke}</div>
+                            <div className='col-md-6'>State Of Residence</div>
+                            <div className='col-md-6'>{userData.stateOfResidence}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Diet</div>
                             <div className='col-md-6'>{userData.diet}</div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-6'>Education</div>
-                            <div className='col-md-6'>{userData.education}</div>
+                            <div className='col-md-6'>Educational Qualification</div>
+                            <div className='col-md-6'>{userData.qualification}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Special Cases</div>
                             <div className='col-md-6'>{userData.specialCases}</div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-6'>annualIncome</div>
+                            <div className='col-md-6'>Annual Income</div>
                             <div className='col-md-6'>{userData. annualIncome}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Country Of Residence</div>
-                            <div className='col-md-6'>{userData.CountryOfResidence}</div>
+                            <div className='col-md-6'>{userData.countryOfResidence}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>City Of Residence</div>
-                            <div className='col-md-6'>{userData.cityOfRecidence}</div>
+                            <div className='col-md-6'>{userData.cityOfResidence}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Marital Status</div>

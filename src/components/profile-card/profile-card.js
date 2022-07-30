@@ -11,9 +11,12 @@ class ProfileCard extends Component {
     super(props)
   }
 
+  getProfile = (userData) => {
+      this.props.getProfile(userData);
+  }
 
   render() {
-    const { userData } = this.props
+    const { userData, getProfile } = this.props
     const propfilePhoto = userData?.profilePhoto?.image?.data ?
       userData?.profilePhoto?.image?.data : '';
 
@@ -48,7 +51,7 @@ class ProfileCard extends Component {
                   <small className='user-description'>{ userData.caste? userData.caste: ''  + ',' }
                   </small>
 
-                <Button btnClass="btn-danger" value="Veiw Profile" />
+                <Button btnClass="btn-danger" value="View Profile" onSubmitBtn={() => {this.getProfile(userData)}}/>
               </Card.Text>
             </Card.Body>
           </Card>

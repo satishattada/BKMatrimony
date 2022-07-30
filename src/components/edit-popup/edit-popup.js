@@ -11,60 +11,66 @@ class EditPopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userData: ''
+            basicInfo: this.props.basicInfo
         }
     }
 
     componentDidMount = () => {
-        let userData = this.props.basicInfo;
-        this.setState({ userData });
+        let basicInfo = this.props.basicInfo;
+        this.setState({ basicInfo });
     }
 
     setDetails = (value, type) => {
-        let { userData } = this.state;
+        let { basicInfo } = this.state;
         switch (type) {
             case 'firstName':
-                userData.name = value;
+                basicInfo.firstName = value;
                 break;
-                case 'lastName':
-                userData.name = value;
+            case 'lastName':
+                basicInfo.lastName = value;
                 break;
             case 'birth':
-                userData.birth = value;
+                basicInfo.birth = value;
                 break;
             case 'age':
-                userData.age = value;
+                basicInfo.age = value;
                 break;
             case 'location':
-                userData.location = value;
+                basicInfo.location = value;
                 break;
             case 'gender':
-                userData.gender = value;
+                basicInfo.gender = value;
                 break;
             case 'height':
-                userData.height = value;
+                basicInfo.height = value;
                 break;
             case 'maritalStatus':
-                userData.maritalStatus = value;
+                basicInfo.maritalStatus = value;
                 break;
             case 'motherTongue':
-                userData.motherTongue = value;
+                basicInfo.motherTongue = value;
+            case 'gender':
+                    basicInfo.gender = value;
         }
         this.setState({
-            userData
+            basicInfo
         });
     }
 
     saveDetails = () => {
 
-        let { userData } = this.state;
-        this.props.setBasicInfo(userData);
+        let { basicInfo } = this.state;
+        this.props.setBasicInfo(basicInfo);
         // this.props.handleClose();
     }
 
     render() {
-        const { show, handleClose, basicInfo, title } = this.props;
-        let { userData } = this.state;
+        const { show, handleClose, title } = this.props;
+        const { basicInfo} = this.state;
+        console.log(basicInfo)
+        if(!show) {
+            return;
+        }
         return (<>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='email-heading' closeButton>
@@ -76,7 +82,7 @@ class EditPopup extends Component {
                             <Form.Label column sm="3">First Name</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.firstName}
+                                    defaultValue={basicInfo.firstName}
                                     aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
                                     onChange={(event) => { this.setDetails(event.target.value, 'firstName') }}
@@ -87,7 +93,7 @@ class EditPopup extends Component {
                             <Form.Label column sm="3">Last Name</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.lastName}
+                                    defaultValue={basicInfo.lastName}
                                     aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
                                     onChange={(event) => { this.setDetails(event.target.value, 'lastName') }}
@@ -98,47 +104,65 @@ class EditPopup extends Component {
                             <Form.Label column sm="3">Date Of Birth</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.birth}
+                                    defaultValue={basicInfo.birth}
                                     type="date"
                                     onChange={(event) => { this.setDetails(event.target.value, 'birth') }}
 
                                 />
                             </Col>
-                        </Form.Group><Form.Group as={Row} className="mb-3">
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Age</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.age}
+                                    defaultValue={basicInfo.age}
                                     onChange={(event) => { this.setDetails(event.target.value, 'age') }}
                                 />
                             </Col>
-                        </Form.Group><Form.Group as={Row} className="mb-3">
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">location</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.location}
+                                    defaultValue={basicInfo.location}
                                     onChange={(event) => { this.setDetails(event.target.value, 'location') }}
                                 />
                             </Col>
-                        </Form.Group><Form.Group as={Row} className="mb-3">
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Gender</Form.Label>
                             <Col sm="9">
-                            <Form.Check type="radio" aria-label="radio 1" label='Male'/>                          
-                            <Form.Check type="radio" aria-label="radio 1" label='Female'/>                        
-                            </Col>                   
-                        </Form.Group><Form.Group as={Row} className="mb-3">
+                                <Form.Check type="radio"
+                                id={`male`} 
+                                name={'gender'}
+                                checked={basicInfo.gender === 'Male'? true: false}
+                                aria-label="radio 1" label='Male' 
+                                onChange={(event) => { this.setDetails('Male', 'gender') }}
+
+                                    />
+                                <Form.Check type="radio"
+                                id={`female`} 
+                                name={'gender'}
+                                checked={basicInfo.gender === 'Female'? true: false}
+                                aria-label="radio 1" label='Female' 
+                                onChange={(event) => { this.setDetails('Female', 'gender') }}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Height</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.height}
+                                    defaultValue={basicInfo.height}
                                     onChange={(event) => { this.setDetails(event.target.value, 'height') }}
                                 />
                             </Col>
-                        </Form.Group><Form.Group as={Row} className="mb-3">
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Marital Status</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.maritalStatus}
+                                    defaultValue={basicInfo.maritalStatus}
                                     onChange={(event) => { this.setDetails(event.target.value, 'maritalStatus') }}
                                 />
                             </Col>
@@ -147,7 +171,7 @@ class EditPopup extends Component {
                             <Form.Label column sm="3">MotherTongue</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.motherTongue}
+                                    defaultValue={basicInfo.motherTongue}
                                     onChange={(event) => { this.setDetails(event.target.value, 'motherTongue') }}
                                 />
                             </Col>

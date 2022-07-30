@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { faUserFriends, } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FamilyInfoDetailPopup from '../family-info-detail-popup/family-info-detail-popup';
+import FamilyPopup from '../family-information-popup/family-information-popup';
 
 class FamilyInfoDetails extends Component {
     constructor(props) {
@@ -14,17 +15,37 @@ class FamilyInfoDetails extends Component {
 
         }
     }
+    saveDetails = () => {
+
+        let { familyInfo } = this.state;
+        this.props.setFamilyInfo(familyInfo);
+        // this.props.handleClose();
+    }
+//     setFamilyInfo=(familyInfo)=>{
+
+//         let {userData} = this.state;
+//         userData = {...userData, ...familyInfo};
+//         this.updateUserDetails(userData);
+//         this.closeModal();
+
+//     console.log(familyInfo)
+// }
 
     openFamilyInfoDetailModal = () => {
         this.props.editFamilyInfoDetails();
     }
 
     render() {
-        const { userData } = this.props
-
+        const { userData } = this.props;
+        const { showFamilyModal, showNativeModal, familyInfoTitle, nativeInfoTitle } = this.state;
         return (
             <div>
-
+                {showFamilyModal && (
+                    <FamilyInfoDetailPopup familyInfo={userData}
+                        title={familyInfoTitle} show={showFamilyModal} handleClose={this.closeModal}
+                        setFamilyInfo={this.setFamilyInfo}
+                    />
+                )}
                 <div className='family-container'>
                     <FontAwesomeIcon className='iconcard' icon={faUserFriends} />
                     <span className='family-heading'>Family information</span>
@@ -32,21 +53,21 @@ class FamilyInfoDetails extends Component {
 
                     <div className='family-information'>
                         <div className='row'>
-                            <div className='col-md-6'>Father's occupation</div>
+                            <div className='col-md-6'>Father occupation</div>
                             <div className='col-md-6'>{userData.fatherOccupation}</div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-6'>Mother's occupation</div>
+                            <div className='col-md-6'>Mother occupation</div>
                             <div className='col-md-6'>{userData.motherOccupation}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'> Sister's</div>
-                            <div className='col-md-6'>{userData.Sister}</div>
+                            <div className='col-md-6'>{userData.sisters}</div>
                         </div>
 
                         <div className='row'>
                             <div className='col-md-6'>Brother's</div>
-                            <div className='col-md-6'>{userData.Brother}</div>
+                            <div className='col-md-6'>{userData.brothers}</div>
                         </div>
 
                         <div className='row'>
@@ -63,15 +84,15 @@ class FamilyInfoDetails extends Component {
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Family Value</div>
-                            <div className='col-md-6'>{userData.familyValue}</div>
+                            <div className='col-md-6'>{userData.value}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Family Status</div>
-                            <div className='col-md-6'>{userData.familyStatus}</div>
+                            <div className='col-md-6'>{userData.status}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Family Income</div>
-                            <div className='col-md-6'>{userData.familyIncome}</div>
+                            <div className='col-md-6'>{userData.income}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>About Family</div>

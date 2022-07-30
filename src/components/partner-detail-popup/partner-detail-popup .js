@@ -11,63 +11,72 @@ class PartnerDetailPopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userData: ''
+            partnerDetailInfo: this.props.partnerDetailInfo
         }
     }
     componentDidMount = () => {
-        let userData = this.props.partnerDetailInfo;
+        let partnerDetailInfo = this.props.partnerDetailInfo;
         this.setState({
-            userData
+            partnerDetailInfo
         })
     }
     setDetails = (value, type) => {
-        let { userData } = this.state;
+        let { partnerDetailInfo } = this.state;
         switch (type) {
             case 'religion':
-                userData.religion = value
+                partnerDetailInfo.religion = value
                 break;
-            case 'MotherTongue':
-                userData.MotherTongue = value
+            case 'motherTongue':
+                partnerDetailInfo.motherTongue = value
                 break;
-                case 'Caste':
-                    userData.Caste = value
-                    break;
-                    case 'manglik':
-                        userData.Manglik = value
-                        break;
-                        case 'gothram':
-                            userData.gothram = value
-                            break;
-                            case 'aboutPartner':
-                                userData.aboutPartner = value
-                                break;
-                                case 'specialCases':
-                            userData.gothram = value
-                            break;
-                            case 'diet':
-                            userData.diet = value
-                            break;
-                            case 'annualIncome':
-                            userData.annualIncome = value
-                            break;
-                            case 'education':
-                            userData.education = value
-                            break;
-                           
+            case 'caste':
+                partnerDetailInfo.caste = value
+                break;
+            case 'manglik':
+                partnerDetailInfo.manglik = value
+                break;
+            case 'gothram':
+                partnerDetailInfo.gothram = value
+                break;
+            case 'aboutPartner':
+                partnerDetailInfo.aboutPartner = value
+                break;
+            case 'specialCases':
+                partnerDetailInfo.specialCases = value
+                break;
+            case 'diet':
+                partnerDetailInfo.diet = value
+                break;
+            case 'annualIncome':
+                partnerDetailInfo.annualIncome = value
+                break;
+            case 'qualification':
+                partnerDetailInfo.qualification = value
+                break;
+            case 'stateOfResidence':
+                partnerDetailInfo.stateOfResidence = value
+                break;
+            case 'cityOfResidence':
+                partnerDetailInfo.cityOfResidence = value
+                break;
         }
-        this.setState({ userData });
+        this.setState({ partnerDetailInfo });
     }
     saveDetails = () => {
 
-        let { userData } = this.state;
-        this.props.setPartnerDetailInfo(userData);
+        let { partnerDetailInfo } = this.state;
+        this.props.setPartnerDetailInfo(partnerDetailInfo);
         // this.props.handleClose();
     }
 
 
     render() {
         const { show, handleClose, title } = this.props;
-        let { userData } = this.state;
+        let { partnerDetailInfo } = this.state;
+        console.log(partnerDetailInfo)
+        if (!show) {
+            return;
+        }
         return (<>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='email-heading' closeButton>
@@ -75,11 +84,11 @@ class PartnerDetailPopup extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                    <Form.Group as={Row} className="mb-3">
+                        <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Age</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.age}
+                                    defaultValue={partnerDetailInfo.age}
                                     onChange={(event) => { this.setDetails(event.target.value, 'age') }}
                                 />
                             </Col>
@@ -88,43 +97,44 @@ class PartnerDetailPopup extends Component {
                             <Form.Label column sm="3">Height</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.height}
+                                    defaultValue={partnerDetailInfo.height}
                                     onChange={(event) => { this.setDetails(event.target.value, 'height') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">religion</Form.Label>
+                            <Form.Label column sm="3">Religion</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.religion}
+                                    defaultValue={partnerDetailInfo.religion}
                                     onChange={(event) => { this.setDetails(event.target.value, 'religion') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">MotherTongue </Form.Label>
+                            <Form.Label column sm="3">Mother Tongue </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.MotherTongue}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'MotherTongue') }}
+                                    defaultValue={partnerDetailInfo.motherTongue}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'motherTongue') }}
                                 />
                             </Col>
                         </Form.Group>
-                       
+
                         <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Caste </Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.Caste}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'Caste') }}
+                                    defaultValue={partnerDetailInfo.caste}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'caste') }}
                                 />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">maritalStatus</Form.Label>
+                            <Form.Label column sm="3">Marital Status</Form.Label>
                             <Col sm="9">
-                            <Form.Select>
+                                <Form.Select defaultValue={partnerDetailInfo.maritalStatus}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'maritalStatus') }}>
                                     <option>select</option>
                                     <option>Doesn't matter</option>
                                     <option>Never Married</option>
@@ -133,15 +143,15 @@ class PartnerDetailPopup extends Component {
                                     <option>Divorced</option>
                                     <option>Widowed</option>
                                 </Form.Select>
-                                
+
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Country of Residence</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.CountryOfResidence  }
-                                    onChange={(event) => { this.setDetails(event.target.value, 'CountryOfResidence') }}
+                                    defaultValue={partnerDetailInfo.countryOfResidence}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'countryOfResidence') }}
                                 />
                             </Col>
                         </Form.Group>
@@ -149,8 +159,17 @@ class PartnerDetailPopup extends Component {
                             <Form.Label column sm="3">State of Residence</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.StateOfResidence  }
-                                    onChange={(event) => { this.setDetails(event.target.value, 'StateOfResidence') }}
+                                    defaultValue={partnerDetailInfo.stateOfResidence}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'stateOfResidence') }}
+                                />
+                            </Col>
+                        </Form.Group>
+                        <Form.Group as={Row} className="mb-3">
+                            <Form.Label column sm="3">City of Residence</Form.Label>
+                            <Col sm="9">
+                                <Form.Control
+                                    defaultValue={partnerDetailInfo.cityOfResidence}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'cityOfResidence') }}
                                 />
                             </Col>
                         </Form.Group>
@@ -158,52 +177,39 @@ class PartnerDetailPopup extends Component {
                             <Form.Label column sm="3">Manglik</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.manglik}
+                                    defaultValue={partnerDetailInfo.manglik}
                                     onChange={(event) => { this.setDetails(event.target.value, 'manglik') }}
                                 />
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">gothram</Form.Label>
+                            <Form.Label column sm="3">Gothram</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.gothram}
+                                    defaultValue={partnerDetailInfo.gothram}
                                     onChange={(event) => { this.setDetails(event.target.value, 'gothram') }}
                                 />
                             </Col>
                         </Form.Group>
-                        <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">gothram</Form.Label>
-                            <Col sm="9">
-                                <Form.Control
-                                    defaultValue={userData.gothram}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'gothram') }}
-                                />
-                            </Col>
-                        </Form.Group>
-                        <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">gothram</Form.Label>
-                            <Col sm="9">
-                                <Form.Control
-                                    defaultValue={userData.gothram}
-                                    onChange={(event) => { this.setDetails(event.target.value, 'gothram') }}
-                                />
-                            </Col>
-                        </Form.Group>
+
+
                         <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Educational Qualification</Form.Label>
                             <Col sm="9">
-                                
-                                    <Form.Control type="text"  />
-                                
+
+                                <Form.Control type="text"
+                                    defaultValue={partnerDetailInfo.qualification}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'qualification') }}
+                                />
+
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3">
-                            <Form.Label column sm="3">annualIncome</Form.Label>
+                            <Form.Label column sm="3">Annual Income</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.annualIncome}
+                                    defaultValue={partnerDetailInfo.annualIncome}
                                     onChange={(event) => { this.setDetails(event.target.value, 'annualIncome') }}
                                 />
                             </Col>
@@ -212,7 +218,7 @@ class PartnerDetailPopup extends Component {
                             <Form.Label column sm="3">Special Cases</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.specialCases}
+                                    defaultValue={partnerDetailInfo.specialCases}
                                     onChange={(event) => { this.setDetails(event.target.value, 'specialCases') }}
                                 />
                             </Col>
@@ -220,11 +226,13 @@ class PartnerDetailPopup extends Component {
                         <Form.Group as={Row} className="mb-3">
                             <Form.Label column sm="3">Diet</Form.Label>
                             <Col sm="9">
-                            <Form.Select>
+                                <Form.Select
+                                    defaultValue={partnerDetailInfo.diet}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'diet') }}>
                                     <option>select</option>
                                     <option>Non-veg</option>
                                     <option>Veg</option>
-                                    <option>Both</option>                                                                    
+                                    <option>Both</option>
                                 </Form.Select>
                             </Col>
                         </Form.Group>
@@ -232,13 +240,15 @@ class PartnerDetailPopup extends Component {
                             <Form.Label column sm="3">About Partner</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                as="textarea"  
-                                   Row={3}
+                                    as="textarea"
+                                    Row={3}
+                                    defaultValue={partnerDetailInfo.aboutPartner}
+                                    onChange={(event) => { this.setDetails(event.target.value, 'aboutPartner') }}
                                 />
                             </Col>
                         </Form.Group>
 
-                       
+
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>

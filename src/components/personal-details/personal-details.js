@@ -26,7 +26,7 @@ class PersonalDetails extends Component {
             showCareerModal: false,
             showLocationModal: false,
             showBackgroundModal: false,
-
+            editModalType:'',
         }
     }
 
@@ -45,10 +45,10 @@ class PersonalDetails extends Component {
         });
         switch (type) {
             case 'email':
-                this.setState({ editModalTitle: 'Update Email' });
+                this.setState({ editModalTitle: 'Update Email',editModalType:'email' });
                 break;
             case 'phoneNumber':
-                this.setState({ editModalTitle: 'Update Phone Number' });
+                this.setState({ editModalTitle: 'Update Phone Number', editModalType:'number'});
                 break;
         }
     }
@@ -96,8 +96,8 @@ class PersonalDetails extends Component {
 
 
     setBasicInfo = (basicDetails) => {
-        let {userData} = this.props;
-        userData = {...userData, ...basicDetails};
+        let { userData } = this.props;
+        userData = { ...userData, ...basicDetails };
         this.props.updateUserDetails(userData);
         this.closeModal();
 
@@ -117,36 +117,56 @@ class PersonalDetails extends Component {
         console.log(userData);
 
     }
+    submitPopupData=(value,type)=>{
+        let { userData } = this.props;
+        // userData = { ...userData, ...basicDetails };
+        if(type==='email'){
+            userData = { ...userData, email:value }; 
+        }else{
+            userData = { ...userData, phoneNumber:value }; 
 
+        }
+
+        this.props.updateUserDetails(userData);
+        this.closeModal();
+
+    }
 
     render() {
         // const {userData}=this.state
         const { userData } = this.props;
-        const { showEditModal, editModalTitle, editModalValue, showBasicModal, basicInfoTitle, showCareerModal,
+        const { showEditModal, editModalTitle,
+            editModalType, editModalValue, showBasicModal, basicInfoTitle, showCareerModal,
             careerInfoTitle, showLocationModal, showBackgroundModal, locationInfoTitle, backgroundInfoTitle } = this.state;
         return (
             <>
-                <Popup inputValue={editModalValue}
-                    title={editModalTitle} show={showEditModal} handleClose={this.closeModal} />
+                <Popup inputValue={editModalValue} type={editModalType}
+                    title={editModalTitle} show={showEditModal} handleClose={this.closeModal} 
+                    submitPopupData={this.submitPopupData}/>
+                {showBasicModal && (
+                    <EditPopup basicInfo={userData}
+                        title={basicInfoTitle} show={showBasicModal} handleClose={this.closeModal}
+                        setBasicInfo={this.setBasicInfo} />
+                )}
 
-                <EditPopup basicInfo={userData}
-                    title={basicInfoTitle} show={showBasicModal} handleClose={this.closeModal}
-                    setBasicInfo={this.setBasicInfo} />
+                {showCareerModal && (
+                    <CareerPopup careerInfo={userData}
+                        title={careerInfoTitle} show={showCareerModal} handleClose={this.closeModal}
+                        setCareerInfo={this.setCareerInfo} />
+                )}
+                {showLocationModal && (
+                    <LocationPopup locationInfo={userData}
+                        title={locationInfoTitle} show={showLocationModal} handleClose={this.closeModal}
+                        setLocationInfo={this.setLocationInfo}
+                    />
+                )}
+                {showBackgroundModal && (
+                    <BackgroundPopup backgroundInfo={userData}
+                        title={backgroundInfoTitle} show={showBackgroundModal} handleClose={this.closeModal}
+                        setBackgroundInfo={this.setBackgroundInfo}
 
-                <CareerPopup careerInfo={userData}
-                    title={careerInfoTitle} show={showCareerModal} handleClose={this.closeModal}
-                    setCareerInfo={this.setCareerInfo} />
-
-                <LocationPopup locationInfo={userData}
-                    title={locationInfoTitle} show={showLocationModal} handleClose={this.closeModal}
-                    setLocationInfo={this.setLocationInfo}
-                />
-
-                <BackgroundPopup backgroundInfo={userData}
-                    title={backgroundInfoTitle} show={showBackgroundModal} handleClose={this.closeModal}
-                    setBackgroundInfo={this.setBackgroundInfo}
-
-                />
+                    />
+                )}
                 <div className='contact-container'>
                     <FontAwesomeIcon className='iconcard' icon={faAddressCard} />
                     <span className='personal-heading'>Contact information</span>
@@ -177,8 +197,12 @@ class PersonalDetails extends Component {
 
                     <div className='basic-information'>
                         <div className='row'>
-                            <div className='col-md-6'>Name</div>
-                            <div className='col-md-6'>{userData.name}</div>
+                            <div className='col-md-6'>First Name</div>
+                            <div className='col-md-6'>{userData.firstName}</div>
+                        </div>
+                        <div className='row'>
+                            <div className='col-md-6'> Last Name</div>
+                            <div className='col-md-6'>{userData.lastName}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-6'>Date Of Birth</div>

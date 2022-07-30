@@ -11,38 +11,38 @@ class LocationPopup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userData: ''
+            locationInfo: this.props.locationInfo
         }
     }
     componentDidMount = () => {
-        let userData = this.props.locationInfo;
+        let locationInfo = this.props.locationInfo;
         this.setState({
-            userData
+            locationInfo
         })
     }
     setDetails = (value, type) => {
-        let { userData } = this.state;
+        let { locationInfo } = this.state;
         switch (type) {
             case 'countryOfResidence':
-                userData.countryOfResidence = value
+                locationInfo.countryOfResidence = value
                 break;
             case 'location':
-                userData.location = value
+                locationInfo.location = value
                 break;
         }
-        this.setState({ userData });
+        this.setState({ locationInfo });
     }
     saveDetails = () => {
 
-        let { userData } = this.state;
-        this.props.setLocationInfo(userData);
+        let { locationInfo } = this.state;
+        this.props.setLocationInfo(locationInfo);
         // this.props.handleClose();
     }
 
 
     render() {
         const { show, handleClose, title } = this.props;
-        let { userData } = this.state;
+        let { locationInfo } = this.state;
         return (<>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='email-heading' closeButton>
@@ -54,7 +54,7 @@ class LocationPopup extends Component {
                             <Form.Label column sm="3">countryOfResidence</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.countryOfResidence}
+                                    defaultValue={locationInfo.countryOfResidence}
                                     onChange={(event) => { this.setDetails(event.target.value, 'countryOfResidence') }}
                                 />
                             </Col>
@@ -63,7 +63,7 @@ class LocationPopup extends Component {
                             <Form.Label column sm="3">Location/City</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.location}
+                                    defaultValue={locationInfo.location}
                                     onChange={(event) => { this.setDetails(event.target.value, 'location') }}
                                 />
                             </Col>

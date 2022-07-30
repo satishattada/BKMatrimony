@@ -3,7 +3,8 @@
 const initialState = {
   userData: {},
   usersData: [],
-  accessToken: ''
+  accessToken: '',
+  selectedProfile: {}
 };
 
 const user = (state = initialState, action) => {
@@ -12,12 +13,18 @@ const user = (state = initialState, action) => {
     case 'GET_REGISTER_SUCCESS':
       return {
         ...state, accessToken: action.payload.accessToken,
-        userData: action.payload.user
+        userData: action.payload.user,
+        selectedProfile: action.payload.user
       };
     case 'GET_UPDATE_USER_SUCCESS':
       return {
         ...state,
         userData: action.payload
+      };
+    case 'GET_SELECT_PROFILE_SUCCESS':
+      return {
+        ...state,
+        selectedProfile: action.payload
       };
     case 'GET_LOGOUT_SUCCESS':
       return {

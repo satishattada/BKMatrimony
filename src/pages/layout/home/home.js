@@ -9,6 +9,8 @@ import * as appAction from '../../../redux/actions';
 import { Link } from "react-router-dom";
 import ProfileCard from "../../../components/profile-card/profile-card";
 import female from '../../../assets/female_large.jpg';
+import { withParamsAndNavigate } from "../../../components/with-params-navigate/with-params-navigate";
+import Button from "../../../components/button/button";
 
 class Home extends Component {
   constructor(props) {
@@ -54,6 +56,12 @@ console.log(gender);
 
   getClass = (gender) => {
     return gender === 'Female' ? 'blueCls' : 'greenCls';
+  }
+
+  getProfile = (userData) => {
+   this.props.appAction.selectProfile(userData).then(() => {
+    this.props.navigate('/profile')
+   })
   }
   render() {
     const { userData, usersData } = this.state;
@@ -110,7 +118,10 @@ console.log(gender);
                       </h2>
                       <ul>
                         <li>
-                          <span className="bold-profile"><Link to="/profile">{'My Profile'}</Link></span>
+                          <span className="bold-profile">
+                            <Button value={'My Profile'} btnClass={'btn-warning'} onSubmitBtn={()=>{this.getProfile(userData)}} />
+                            {/* <Link to="/profile">{'My Profile'}</Link> */}
+                            </span>
                         </li>
                         <li>{userData.id}</li>
                         <li>{userData.email}</li>
@@ -141,7 +152,7 @@ console.log(gender);
                 {usersData?.map((user, i) => {
                   return (
                     <div className="col-md-4">
-                      <ProfileCard userData={user} />
+                      <ProfileCard userData={user} getProfile={this.getProfile}/>
                     </div>
                   )
                   // <div className={this.getClass(user.gender)} key={i}> {user.firstName} 
@@ -170,5 +181,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withParamsAndNavigate(Home));
 

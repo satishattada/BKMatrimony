@@ -11,48 +11,49 @@ class CareerPopup extends Component {
     constructor(props) {
         super(props)
     this.state={
-        userData:''
+        careerInfo: this.props.careerInfo
     }
     }
     componentDidMount=()=>{
-        let userData=this.props.careerInfo;
-        this.setState({
-            userData
-        })
+        let careerInfo = this.props.careerInfo;
+        this.setState({ careerInfo });
     }
 setDetails=(value,type)=>{
-    let {userData}=this.state;
+    let {careerInfo}=this.state;
     switch(type){
         case'education':
-           userData.education=value
+           careerInfo.education=value
         break;
         case'college':
-        userData.college=value
+        careerInfo.college=value
         break;
         case'working':
-        userData.working=value
+        careerInfo.working=value
         break;
         case'settleDownAbroad':
-        userData.settleDoenAbroad=value
+        careerInfo.settleDoenAbroad=value
         break;
         case'workAfterMarriage':
-        userData.workAfterMarriage=value
+        careerInfo.workAfterMarriage=value
         break;
 
     }
-    this.setState({userData});
+    this.setState({careerInfo});
 }
 saveDetails = () => {
 
-    let { userData } = this.state;
-    this.props.setCareerInfo(userData);
+    let { careerInfo } = this.state;
+    this.props.setCareerInfo(careerInfo);
     // this.props.handleClose();
 }
 
 
     render() {
-        const { show, handleClose, careerInfo, title} = this.props;
-        let {userData}=this.state;
+        const { show, handleClose,  title} = this.props;
+        let {careerInfo}=this.state;
+        if(!show) {
+            return;
+        }
         return (<>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='email-heading' closeButton>
@@ -64,7 +65,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Education</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.education}
+                                    defaultValue={careerInfo.education}
                                     onChange={(event) => { this.setDetails(event.target.value, 'education') }}
                                 />
                             </Col>
@@ -73,7 +74,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">College/university</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.college}
+                                    defaultValue={careerInfo.college}
                                     onChange={(event) => { this.setDetails(event.target.value, 'college') }}
                                 />
                             </Col>
@@ -82,7 +83,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Working</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.working}
+                                    defaultValue={careerInfo.working}
                                     onChange={(event) => { this.setDetails(event.target.value, 'working') }}
                                 />
                             </Col>
@@ -91,7 +92,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Settle Down Abroad</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.settleDownAbroad}
+                                    defaultValue={careerInfo.settleDownAbroad}
                                     onChange={(event) => { this.setDetails(event.target.value, 'settleDownAbroad') }}
                                 />
                             </Col>
@@ -100,7 +101,7 @@ saveDetails = () => {
                             <Form.Label column sm="3">Work After Marriage</Form.Label>
                             <Col sm="9">
                                 <Form.Control
-                                    defaultValue={userData.workAfterMarriage}
+                                    defaultValue={careerInfo.workAfterMarriage}
                                     onChange={(event) => { this.setDetails(event.target.value, 'workAfterMarriage') }}
                                 />
                             </Col>

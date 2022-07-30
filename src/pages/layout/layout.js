@@ -21,17 +21,20 @@ export class Layout extends Component {
 
   }
 
-  submitProfile = () => {
-    this.props.navigate('/profile');
+  submitProfile = (userData) => {
+    this.props.appAction.selectProfile(userData).then(() => {
+      this.props.navigate('/profile')
+     })
   }
   render() {
+    const{userData}=this.props
     // if no access token, redirect to login
     if (!this.props.accessToken) {
       return <Login />
     }
     return (
       <div className='layout-container'>
-        <Header logout={this.submitLogout} profile={this.submitProfile} />
+        <Header logout={this.submitLogout} profile={()=>{this.submitProfile(userData)}} />
 
         <div className="page-container">
           <Outlet />
@@ -47,7 +50,8 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export const mapStateToProps = (state) => {
   return {
-    accessToken: state.user.accessToken
+    accessToken: state.user.accessToken,
+    userData:state.user.userData
   };
 };
 
