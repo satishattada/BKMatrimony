@@ -49,8 +49,18 @@ class Header extends Component {
         <Dropdown.Item href="#" onClick={logout}>Log out</Dropdown.Item>
         
       </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown>  
 
+
+          
+            {/* <div className='right-menu'>
+              <FontAwesomeIcon className='user-logo' icon={faUserCircle} />
+              <div className='down-menu'>
+                <Link to={'/profile'}>My profile</Link><br></br>
+                <Link to={'/logout'}>Log out</Link>
+
+              </div>
+            </div> */}
           
         </Nav>
       </div>

@@ -24,11 +24,19 @@ class Profile extends Component {
         this.state = {
             userData: {},
             profilePhoto: {},
-            showProfilePhotoModal: false
+            showProfilePhotoModal: false,
+            showEdit: false
         }
     }
     componentDidMount = () => {
         this.setState({ userData: this.props.userData });
+        this.isLoggedUser();
+    }
+
+    isLoggedUser = () => {
+        const { loggedUser, userData} = this.props;
+        const showEdit =  loggedUser.id === userData.id? true: false;
+        this.setState({showEdit});
     }
 
     updateUserDetails = (userData) => {
@@ -112,6 +120,7 @@ class Profile extends Component {
             showFamilyInfoDetailModal,
             partnerInfoDetailTitle,
             showPartnerModal,
+            showEdit
             // showFamilyModal
             
         } = this.state;
@@ -137,8 +146,9 @@ class Profile extends Component {
 
                         <div className='profile-section'>
                             <div className='profile-image'>
+                            {showEdit &&(
                                 <FontAwesomeIcon className='iconcard editIcon' icon={faEdit} onClick={this.editProfilePhoto} />
-
+                                )}
                                 {
                                     (userData?.profilePhoto) ?
                                         <img className="profile-female-image" src={userData?.profilePhoto?.image?.data} alt="" /> :
@@ -180,20 +190,20 @@ class Profile extends Component {
 
                         <Tabs defaultActiveKey="key1" id="uncontrolled-tab-example" className="mb-3">
                             <Tab eventKey="key1" title="Personal Details">
-                                <PersonalDetails userData={userData} updateUserDetails={this.updateUserDetails} />
+                                <PersonalDetails showEdit={showEdit} userData={userData} updateUserDetails={this.updateUserDetails} />
                             </Tab>
                             <Tab eventKey="key2" title="Family Details">
                                 {/* <FamilyDetails /> */}
-                                <FamilyInfoDetails editFamilyInfoDetails={this.openEditFamilyInfoDetailModal} />
+                                <FamilyInfoDetails showEdit={showEdit} editFamilyInfoDetails={this.openEditFamilyInfoDetailModal} />
 
                             </Tab>
                             <Tab eventKey="key3" title="Partner Perferences" >
                                 {/* <PartnerPreferences /> */}
-                                <PartnerDetail editPartnerDetail={this.openEditPartnerlModal} />
+                                <PartnerDetail showEdit={showEdit} editPartnerDetail={this.openEditPartnerlModal} />
 
                             </Tab>
                             <Tab eventKey="key4" title="Media(videos & photos)" >
-                                <MediaDetails />
+                                <MediaDetails showEdit={showEdit} userData={userData} updateUserDetails={this.updateUserDetails}/>
                             </Tab>
                         </Tabs>
                     </div>
@@ -210,6 +220,7 @@ export const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
     return {
         userData: state.user.selectedProfile,
+        loggedUser: state.user.userData
     };
 };
 

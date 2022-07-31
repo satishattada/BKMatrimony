@@ -17,15 +17,17 @@ class PartnerDetail extends Component {
         this.props.editPartnerDetail();
     }
     render() {
-        const { userData } = this.props
+        const { userData ,showEdit} = this.props
         return (
             <div>
                 
                 <div className='partner-container'>
                     
                     <span className='partner-heading'>Desired Partner</span>
+                    {showEdit && (
                     <Button className='edit-button' onClick={() => { this.openPartnerModal() }}>Edit</Button>
-                    <div className='partner-information'>
+                    )}
+                   <div className='partner-information'>
                         <div className='row'>
                             <div className='col-md-6'>Age</div>
                             <div className='col-md-6'>{userData.age}</div>

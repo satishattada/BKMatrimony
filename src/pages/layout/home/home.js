@@ -116,16 +116,16 @@ console.log(gender);
                         <span className="bold-name"><b>{userData.firstName} {userData.lastName}</b></span>
                         " welcome back.
                       </h2>
-                      <ul>
+                      <ul >
                         <li>
                           <span className="bold-profile">
                             <Button value={'My Profile'} btnClass={'btn-warning'} onSubmitBtn={()=>{this.getProfile(userData)}} />
                             {/* <Link to="/profile">{'My Profile'}</Link> */}
                             </span>
-                        </li>
-                        <li>{userData.id}</li>
-                        <li>{userData.email}</li>
-                        <li>{userData.phoneNumber}</li>
+                        </li><br></br>
+                        <li >{userData.id}</li><br></br>
+                        <li >{userData.email}</li><br></br>
+                        <li >{userData.phoneNumber}</li>
 
                       </ul>
                     </div>

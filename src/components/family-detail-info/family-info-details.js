@@ -36,7 +36,8 @@ class FamilyInfoDetails extends Component {
     }
 
     render() {
-        const { userData } = this.props;
+        const { userData ,showEdit} = this.props
+      
         const { showFamilyModal, showNativeModal, familyInfoTitle, nativeInfoTitle } = this.state;
         return (
             <div>
@@ -49,8 +50,9 @@ class FamilyInfoDetails extends Component {
                 <div className='family-container'>
                     <FontAwesomeIcon className='iconcard' icon={faUserFriends} />
                     <span className='family-heading'>Family information</span>
+                    {showEdit && (
                     <Button className='edit-button' onClick={() => this.openFamilyInfoDetailModal()}>Edit</Button>
-
+                    )}
                     <div className='family-information'>
                         <div className='row'>
                             <div className='col-md-6'>Father occupation</div>
